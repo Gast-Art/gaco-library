@@ -1,4 +1,4 @@
-import { CollapsibleTimeline } from '../src';
+import { CollapsibleTimeline } from '..';
 declare const _default: {
     title: string;
     component: typeof CollapsibleTimeline;
