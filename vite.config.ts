@@ -24,17 +24,15 @@ export default defineConfig({
       output: {
         globals: {
           react: 'React',
-          '@emotion/react': '@emotion/react',
         },
       },
     },
   },
   plugins: [
     react({
-      jsxImportSource: '@emotion/react',
       exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
       babel: {
-        plugins: ['@emotion/babel-plugin'],
+        plugins: [],
       },
     }),
     dts(),

@@ -1,15 +1,4 @@
-# react-vite-storybook-typescript-starter
-
-This is a starter for providing reusable React component packages. It brings Typescript, Storybook and Vite along.
-
-## Getting started
-
-Add the package with the package manager via NPMs or GitHubs registry of choice to your project:
-
-- **yarn**: `yarn add react-vite-storybook-typescript-starter`
-- **npm**: `npm install react-vite-storybook-typescript-starter`
-- **pnpm**: `pnpm add react-vite-storybook-typescript-starter`
-- **npx**: `npx -p react-vite-storybook-typescript-starter`
+# GACO Compoonent library
 
 ## Resources
 
