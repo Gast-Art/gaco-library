@@ -1,2 +1,2 @@
-export * from './Spinner';
+export * from './ThemeProvider';
 //# sourceMappingURL=index.d.ts.map

@@ -1,9 +1,0 @@
-import{f as p,o as O}from"./styled-components.browser.esm-DDmRYb9g.js";import{d as R}from"./index-ogSvIofg.js";import{R as r}from"./index-B-SYruCi.js";const g={colors:{background:"#fff",text:"#000",primary:"#0070f3"}},v={colors:{background:"#000",text:"#fff",primary:"#0070f3"}},{useParameter:P,addons:k,useEffect:C,useMemo:M}=__STORYBOOK_MODULE_PREVIEW_API__,{deprecate:S}=__STORYBOOK_MODULE_CLIENT_LOGGER__;var A=Object.defineProperty,b=(e,t)=>{for(var a in t)A(e,a,{get:t[a],enumerable:!0})},o="themes",x=`storybook/${o}`,I="theme",u={},y={REGISTER_THEMES:`${x}/REGISTER_THEMES`},D={};b(D,{initializeThemeState:()=>d,pluckThemeFromContext:()=>T,useThemeParameters:()=>H});function T({globals:e}){return e[I]||""}function H(e){return S(R`The useThemeParameters function is deprecated. Please access parameters via the context directly instead e.g.
-    - const { themeOverride } = context.parameters.themes ?? {};
-    `),e?e.parameters[o]??u:P(o,u)}function d(e,t){k.getChannel().emit(y.REGISTER_THEMES,{defaultTheme:t,themes:e})}var L=([e,t])=>t,N=({Provider:e,GlobalStyles:t,defaultTheme:a,themes:m={}})=>{let n=Object.keys(m),s=a||n[0];return d(n,s),(c,i)=>{let{themeOverride:l}=i.parameters[o]??{},E=T(i),_=M(()=>{let f=l||E||s,h=Object.entries(m);return h.length===1?L(h[0]):m[f]},[E,l]);return e?r.createElement(e,{theme:_},t&&r.createElement(t,null),c()):r.createElement(r.Fragment,null,t&&r.createElement(t,null),c())}};const F=p`
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-    background-color: ${({theme:e})=>e.colors.background};
-  }
-  `,Y={viewMode:"canvas",actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/}}},j=[N({themes:{light:g,dark:v},defaultTheme:"light",Provider:O,GlobalStyles:F})];export{j as decorators,Y as parameters};

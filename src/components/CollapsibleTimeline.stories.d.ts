@@ -10,3 +10,4 @@ declare const _default: {
 };
 export default _default;
 export declare function Basic(): import("react/jsx-runtime").JSX.Element;
+//# sourceMappingURL=CollapsibleTimeline.stories.d.ts.map

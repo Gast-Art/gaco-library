@@ -5,3 +5,4 @@ interface SpinnerProps {
 }
 export declare const Spinner: FC<SpinnerProps>;
 export {};
+//# sourceMappingURL=Spinner.d.ts.map

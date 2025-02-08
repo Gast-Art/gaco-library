@@ -4,3 +4,4 @@ type Props = PropsWithChildren<{
 }>;
 export declare function TimelineEntry({ timestamp, children }: Props): import("react/jsx-runtime").JSX.Element;
 export {};
+//# sourceMappingURL=TimelineEntry.d.ts.map
