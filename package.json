@@ -1,5 +1,5 @@
 {
-  "name": "gaco-library",
+  "name": "@gaco/gaco-library",
   "version": "0.1.0",
   "description": "Gaco Component library, for use in Gaco projects.",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter"
+    "url": "git+https://github.com/Gast-Art/gaco-library.git"
   },
   "author": "openscript GmbH <hi+npm@openscript.ch>",
   "license": "MIT",
@@ -90,5 +90,12 @@
   "dependencies": {
     "@storybook/theming": "^8.5.3",
     "styled-components": "^6.1.15"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "bugs": {
+    "url": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter/issues"
+  },
+  "homepage": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter#readme"
 }
