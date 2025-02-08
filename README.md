@@ -1,4 +1,4 @@
-# GACO Compoonent library
+# GACO Component library
 
 ## Resources
 
