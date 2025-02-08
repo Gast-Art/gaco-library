@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "Gaco Component library, for use in Gaco projects.",
   "type": "module",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "vite build",
+    "build": "tsc && vite build",
     "build:storybook": "storybook build",
     "check:format": "eslint . --max-warnings 0",
     "check:types": "tsc --noEmit",
@@ -27,20 +28,20 @@
   },
   "author": "openscript GmbH <hi+npm@openscript.ch>",
   "license": "MIT",
-  "main": "./react-vite-storybook-typescript-starter.umd.js",
-  "module": "./react-vite-storybook-typescript-starter.es.js",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
   "exports": {
     ".": {
-      "import": "./react-vite-storybook-typescript-starter.es.js",
-      "require": "./react-vite-storybook-typescript-starter.umd.js"
+      "import": "./index.es.js",
+      "require": "./index.umd.js"
     }
   },
   "size-limit": [
     {
-      "path": "./dist/react-vite-storybook-typescript-starter.es.js"
+      "path": "./dist/index.es.js"
     },
     {
-      "path": "./dist/react-vite-storybook-typescript-starter.umd.js"
+      "path": "./dist/index.umd.js"
     }
   ],
   "peerDependencies": {
@@ -96,7 +97,7 @@
     "doc": "docs"
   },
   "bugs": {
-    "url": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter/issues"
+    "url": "https://github.com/openscript-ch/gaco-library/issues"
   },
-  "homepage": "https://github.com/openscript-ch/react-vite-storybook-typescript-starter#readme"
+  "homepage": "https://github.com/openscript-ch/gaco-library#readme"
 }

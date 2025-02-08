@@ -12,7 +12,7 @@ const spin = keyframes`
 
 const SpinnerWrapper = styled.div<{ size: number }>`
   display: inline-block;
-  border: 4px solid ${({ theme }) => theme.colors.text};
+  border: 4px solid ${({ theme }) => theme?.colors?.text};
   border-right-color: transparent;
   border-radius: 50%;
   animation: ${spin} 1.5s linear infinite;

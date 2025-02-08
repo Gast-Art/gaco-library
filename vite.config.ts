@@ -17,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       name: packageJson.name,
-      fileName: (format) => `react-vite-storybook-typescript-starter.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       external: makeExternalPredicate([...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.peerDependencies)]),
@@ -35,6 +35,8 @@ export default defineConfig({
         plugins: [],
       },
     }),
-    dts(),
+    dts({
+      insertTypesEntry: true,
+    }),
   ],
 });

@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*", "./*.ts", "./vite.config.ts", "./postbuild.js", "./.eslintrc.js"],
+  "include": ["./src/**/*", "./*.ts", "./vite.config.ts", "index.es.js", "index.umd.js", "./postbuild.js", "./.eslintrc.js"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "ES6",
@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "declaration": true,
+    "declarationMap": true,
     "emitDecoratorMetadata": true,
     "noEmit": false,
     "skipLibCheck": true,
