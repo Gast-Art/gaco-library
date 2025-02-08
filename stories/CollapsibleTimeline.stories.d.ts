@@ -9,7 +9,4 @@ declare const _default: {
     };
 };
 export default _default;
-export declare function Basic(): JSX.Element;
-export declare namespace Basic {
-    var parameters: any;
-}
+export declare function Basic(): import("react/jsx-runtime").JSX.Element;

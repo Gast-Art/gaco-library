@@ -1,5 +1,5 @@
 import { Entry } from './entry';
-export declare type State = {
+export type State = {
     entries: Entry[];
 };
 export declare const emptyState: State;

@@ -1,4 +1,4 @@
-export declare type Entry = {
+export type Entry = {
     timestamp: number;
     title?: string;
 };
