@@ -15,7 +15,7 @@ const makeExternalPredicate = (externals: string[]) => {
 export default defineConfig({
   build: {
     lib: {
-      entry: 'src/index.tsx',
+      entry: 'src/index.ts',
       name: packageJson.name,
       fileName: (format) => `react-vite-storybook-typescript-starter.${format}.js`,
     },
