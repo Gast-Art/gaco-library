@@ -1,4 +1,28 @@
 import { FC } from 'react';
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const SpinnerWrapper = styled.div<{ size: number }>`
+  display: inline-block;
+  border: 4px solid ${({ theme }) => theme.colors.text};
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ${spin} 1.5s linear infinite;
+  height: ${({ size }) => `${size}rem`};
+  width: ${({ size }) => `${size}rem`};
+  position: relative;
+  text-indent: -9999px;
+  overflow: hidden;
+  white-space: nowrap;
+`;
 
 interface SpinnerProps {
   size?: number;
@@ -7,14 +31,8 @@ interface SpinnerProps {
 
 export const Spinner: FC<SpinnerProps> = ({ size = 2, className }) => {
   return (
-    <div
-      className={`inline-block animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white ${className}`}
-      role="status"
-      style={{ height: `${size}rem`, width: `${size}rem` }}
-    >
-      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-        Loading...
-      </span>
-    </div>
+    <SpinnerWrapper size={size} className={className} role="status">
+      Loading...
+    </SpinnerWrapper>
   );
 };

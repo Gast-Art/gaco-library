@@ -7,18 +7,13 @@ module.exports = {
       to: '/docs',
     },
   ],
-  addons: [
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        configureJSX: true,
-        transcludeMarkdown: true,
-      },
+  addons: [{
+    name: '@storybook/addon-docs',
+    options: {
+      configureJSX: true,
+      transcludeMarkdown: true,
     },
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-storysource',
-  ],
+  }, '@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-storysource', '@storybook/addon-themes'],
   async viteFinal(config, { configType }) {
     config.plugins = config.plugins.filter((plugin) => !(Array.isArray(plugin) && plugin[0]?.name.includes('vite:react')));
     if (config.optimizeDeps) {
