@@ -1,4 +1,4 @@
-import { CollapsibleTimeline, TimelineEntry } from '../src';
+import { CollapsibleTimeline, TimelineEntry } from '..';
 
 export default {
   title: 'Collapsible Timeline',
