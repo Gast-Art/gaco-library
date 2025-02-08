@@ -1,5 +1,5 @@
-const fs = require('fs');
+import { copyFileSync } from 'fs';
 
-fs.copyFileSync('./LICENSE', './dist/LICENSE');
-fs.copyFileSync('./package.json', './dist/package.json');
-fs.copyFileSync('./README.md', './dist/README.md');
+copyFileSync('./LICENSE', './dist/LICENSE');
+copyFileSync('./package.json', './dist/package.json');
+copyFileSync('./README.md', './dist/README.md');

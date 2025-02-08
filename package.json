@@ -2,6 +2,7 @@
   "name": "@gaco/gaco-library",
   "version": "0.1.0",
   "description": "Gaco Component library, for use in Gaco projects.",
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "build:storybook": "storybook build",
