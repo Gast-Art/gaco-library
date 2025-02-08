@@ -22,13 +22,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: yarn install --mode=skip-build
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Create Github release
-        run: npm run release:create-github-release
+        run: yarn release:create-github-release
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
