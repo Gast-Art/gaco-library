@@ -1,6 +1,6 @@
 {
   "name": "@gaco/gaco-library",
-  "version": "0.1.0",
+  "version": "0.2.3",
   "description": "Gaco Component library, for use in Gaco projects.",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -10,7 +10,8 @@
     "check:format": "eslint . --max-warnings 0",
     "check:types": "tsc --noEmit",
     "check:size": "npm run build && size-limit",
-    "postbuild": "node ./postbuild.js",
+    "prepare-publish": "cp package.json dist/ && cp README.md dist/",
+    "publish:pkg": "npm run prepare-publish && npm publish dist/",
     "release:major": "standard-version --release-as major && git push --follow-tags",
     "release:minor": "standard-version --release-as minor && git push --follow-tags",
     "release:patch": "standard-version --release-as patch && git push --follow-tags",
@@ -91,6 +92,7 @@
   },
   "dependencies": {
     "@storybook/theming": "^8.5.3",
+    "react-icons": "^5.4.0",
     "styled-components": "^6.1.15"
   },
   "directories": {
