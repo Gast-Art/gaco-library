@@ -18,6 +18,11 @@ export declare const darkTheme: {
         navBg: string;
         navColor: string;
         primary: string;
+        textInputBorder: string;
+        textInputDisabledBackground: string;
+        error: string;
+        success: string;
+        warning: string;
     };
 };
 //# sourceMappingURL=dark.d.ts.map

@@ -18,6 +18,11 @@ export declare const lightTheme: {
         navBg: string;
         navColor: string;
         primary: string;
+        textInputBorder: string;
+        textInputDisabledBackground: string;
+        error: string;
+        success: string;
+        warning: string;
     };
 };
 //# sourceMappingURL=light.d.ts.map
