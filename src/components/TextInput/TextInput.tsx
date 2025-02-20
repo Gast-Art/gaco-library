@@ -1,47 +1,60 @@
-import styled from 'styled-components';
 import { FaExclamationCircle } from 'react-icons/fa';
+import styled from 'styled-components';
 
 const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.colors.error};
-  font-size: ${({ theme }) => theme.sizes.fonts.sm};
+  font-size: ${({ theme }) => theme.sizes.fonts.xxs};
   display: flex;
   align-items: center;
   margin-top: 0.25rem;
+  margin-left: 0.25rem;
 `;
 
 const Label = styled.label`
-  font-size: ${({ theme }) => theme.sizes.fonts.sm};
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-  display: block;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.25rem;
+  color: ${({ theme }) => theme.colors.textInputLabel};
+  pointer-events: none;
+  transition: all 0.2s ease;
 `;
 
 const InputWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  margin-top: 1.5rem;
 `;
 
 interface InputProps {
   $error?: boolean;
 }
 
-const Input = styled.input<InputProps>`
-  height: 2rem;
-  border: 1px solid ${({ theme }) => theme.colors.textInputBorder};
-  border-radius: ${({ theme }) => theme.sizes.borderRadius};
-  padding: 0.5rem 1rem;
+const Input = styled.input<InputProps & { value: string }>`
+  height: ${({ theme }) => theme.sizes.formControl};
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.textInputBorder};
+  background-color: transparent;
+  padding: 0.25rem;
   width: 100%;
+  font-size: ${({ theme }) => theme.sizes.fonts.md};
 
-  ${({ $error }) => $error && `padding-right: 2rem;`}
+  ${({ $error, theme }) => $error && `padding-right: 2rem; border-bottom-color: ${theme.colors.error};`}
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.primary};
+    ${({ theme, $error }) => !$error && `border-bottom-color: ${theme.colors.textInputBorderFocus};`}
     outline: none;
   }
 
+  &:focus + ${Label}, &:not(:placeholder-shown) + ${Label} {
+    top: -0.75rem;
+    font-size: ${({ theme }) => theme.sizes.fonts.xs};
+    color: ${({ theme }) => theme.colors.textInputLabel};
+  }
+
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.textInputDisabledBackground};
+    background-color: transparent;
+    border-bottom-color: ${({ theme }) => theme.colors.textInputDisabledBackground};
     cursor: not-allowed;
   }
 `;
@@ -55,6 +68,7 @@ const Icon = styled(FaExclamationCircle)`
 
 const Container = styled.div`
   margin-bottom: 1.5rem;
+  position: relative;
 `;
 
 interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
@@ -62,28 +76,27 @@ interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement
   label: string;
   value: string;
   onChange: (value: string) => void;
-  placeholder?: string;
   type?: string;
   error?: string;
 }
 
-export const TextInput = ({ id, label, value, onChange, placeholder, type = 'text', error, disabled, ...props }: TextInputProps) => {
+export const TextInput = ({ id, label, value, onChange, type = 'text', error, disabled, ...props }: TextInputProps) => {
   return (
     <Container>
-      <Label htmlFor={id}>{label}</Label>
       <InputWrapper>
         <Input
           id={id}
           type={type}
-          placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
           aria-invalid={!!error}
+          placeholder=" "
           aria-describedby={error ? `${id}-error` : undefined}
           $error={!!error}
           {...props}
         />
+        <Label htmlFor={id}>{label}</Label>
         {error && <Icon />}
       </InputWrapper>
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}

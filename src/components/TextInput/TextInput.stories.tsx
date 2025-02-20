@@ -24,14 +24,16 @@ export const WithLabel: Story = {
   },
 };
 
-export const WithPlaceholder: Story = {
+export const TypeNumber: Story = {
   args: {
-    placeholder: 'Placeholder',
+    label: 'Number',
+    type: 'number',
   },
 };
 
 export const WithError: Story = {
   args: {
+    label: 'Error',
     error: 'Error message',
   },
 };

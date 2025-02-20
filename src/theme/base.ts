@@ -1,7 +1,9 @@
 export const base = {
   sizes: {
     borderRadius: '1rem',
+    formControl: '1.5rem',
     fonts: {
+      xxs: '0.625rem',
       xs: '0.75rem',
       sm: '0.875rem',
       md: '1rem',
