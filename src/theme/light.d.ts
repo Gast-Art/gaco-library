@@ -11,6 +11,7 @@ export declare const lightTheme: {
         };
     };
     shadows: {
+        default: string;
         card: string;
     };
     colors: {
@@ -20,6 +21,8 @@ export declare const lightTheme: {
         navBg: string;
         navColor: string;
         primary: string;
+        primaryForeground: string;
+        primaryHover: string;
         textInputBorder: string;
         textInputBorderFocus: string;
         textInputLabel: string;
