@@ -1,7 +1,7 @@
 export const base = {
   sizes: {
-    borderRadius: '1rem',
-    formControl: '1.5rem',
+    borderRadius: '0.5rem',
+    formControl: '2rem',
     fonts: {
       xxs: '0.625rem',
       xs: '0.75rem',
@@ -11,6 +11,7 @@ export const base = {
     },
   },
   shadows: {
+    default: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     card: '0px 4px 6px rgba(0, 0, 0, 0.1)',
   },
 };
