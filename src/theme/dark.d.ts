@@ -1,7 +1,9 @@
 export declare const darkTheme: {
     sizes: {
         borderRadius: string;
+        formControl: string;
         fonts: {
+            xxs: string;
             xs: string;
             sm: string;
             md: string;
@@ -19,6 +21,8 @@ export declare const darkTheme: {
         navColor: string;
         primary: string;
         textInputBorder: string;
+        textInputBorderFocus: string;
+        textInputLabel: string;
         textInputDisabledBackground: string;
         error: string;
         success: string;
