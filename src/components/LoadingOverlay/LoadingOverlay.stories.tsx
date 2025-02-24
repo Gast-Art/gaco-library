@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { LoadingOverlay } from './LoadingOverlay';
 
 const meta: Meta<typeof LoadingOverlay> = {
+  title: 'Molecules/LoadingOverlay',
   component: LoadingOverlay,
   decorators: [
     (Story) => (

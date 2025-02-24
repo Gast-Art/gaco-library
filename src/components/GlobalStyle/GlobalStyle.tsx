@@ -8,6 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.background};
   }
 
+  a {
+    color: ${({ theme }) => theme.colors.anchorColor};
+    &:hover {
+      color: ${({ theme }) => theme.colors.anchorColorHover};
+    }
+  }
+
   * {
     box-sizing: border-box;
   }
