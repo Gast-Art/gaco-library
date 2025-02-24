@@ -17,6 +17,7 @@ import{j as s}from"./jsx-runtime-CLpGMVip.js";import{R as l}from"./index-B-SYruC
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 `,H=c.div`
   position: relative;
   display: flex;

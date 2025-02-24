@@ -6,10 +6,10 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-B-SYruC
     }
   `,outline:r`
     border: 1px solid ${({theme:o})=>o.colors.primary};
-    background-color: ${({theme:o})=>o.colors.bg};
     color: ${({theme:o})=>o.colors.primary};
     &:hover {
       border-color: ${({theme:o})=>o.colors.primaryHover};
+      color: ${({theme:o})=>o.colors.primaryHover};
     }
   `,ghost:r`
     background-color: 'transparent';

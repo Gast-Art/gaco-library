@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-CLpGMVip.js";import{B as n}from"./Button-B6q3QIzD.js";import{d}from"./styled-components.browser.esm-BfDsmhIA.js";import"./index-B-SYruCi.js";import"./Spinner-BjL8QhrX.js";const B=d.div`
+import{j as t}from"./jsx-runtime-CLpGMVip.js";import{B as n}from"./Button-B6Qx8I5J.js";import{d}from"./styled-components.browser.esm-BfDsmhIA.js";import"./index-B-SYruCi.js";import"./Spinner-BjL8QhrX.js";const B=d.div`
   display: flex;
   gap: 0.5rem;
 `,g={component:B,title:"Molecules/ButtonGroup"},o={args:{children:t.jsxs(t.Fragment,{children:[t.jsx(n,{children:"Button One"}),t.jsx(n,{children:"Button Two"})]})}},e={args:{children:t.jsxs(t.Fragment,{children:[t.jsx(n,{children:"Button One"}),t.jsx(n,{children:"Button Two"}),t.jsx(n,{variant:"outline",children:"Button Three"})]})}};var r,s,a;o.parameters={...o.parameters,docs:{...(r=o.parameters)==null?void 0:r.docs,source:{originalSource:`{
