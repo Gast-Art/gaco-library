@@ -15,6 +15,21 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  h1 {
+    font-size: ${({ theme }) => theme.sizes.fonts.xxl};
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: ${({ theme }) => theme.sizes.fonts.xl};
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: ${({ theme }) => theme.sizes.fonts.lg};
+    font-weight: bold;
+  }
+
   * {
     box-sizing: border-box;
   }

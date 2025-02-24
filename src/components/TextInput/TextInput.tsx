@@ -22,6 +22,7 @@ const Label = styled.label`
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const InputWrapper = styled.div`
