@@ -8,6 +8,9 @@ export const base = {
       sm: '0.875rem',
       md: '1rem',
       lg: '1.125rem',
+      xl: '1.25rem',
+      xxl: '1.5rem',
+      xxxl: '2rem',
     },
   },
   shadows: {
@@ -20,5 +23,7 @@ export const base = {
     errorForeground: '#ffffff',
     success: '#00ff00',
     warning: '#ffcc00',
+    anchorColor: '#0070f3',
+    anchorColorHover: '#0366d6',
   },
 };
