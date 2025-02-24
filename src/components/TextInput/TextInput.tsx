@@ -73,7 +73,7 @@ const Container = styled.div`
 
 interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   id: string;
-  label: string;
+  label?: string;
   value: string;
   onChange: (value: string) => void;
   type?: string;
@@ -96,7 +96,7 @@ export const TextInput = ({ id, label, value, onChange, type = 'text', error, di
           $error={!!error}
           {...props}
         />
-        <Label htmlFor={id}>{label}</Label>
+        {label && <Label htmlFor={id}>{label}</Label>}
         {error && <Icon />}
       </InputWrapper>
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}

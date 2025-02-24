@@ -26,6 +26,13 @@ const buttonVariants = {
       color: ${({ theme }) => theme.colors.primaryHover};
     }
   `,
+  destructive: css`
+    background-color: ${({ theme }) => theme.colors.error};
+    color: ${({ theme }) => theme.colors.errorForeground};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.errorHover};
+    }
+  `,
 };
 
 const buttonSizes = {

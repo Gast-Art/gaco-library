@@ -42,3 +42,10 @@ export const Large: Story = {
     size: 'lg',
   },
 };
+
+export const Destructive: Story = {
+  args: {
+    children: 'Destructive',
+    variant: 'destructive',
+  },
+};

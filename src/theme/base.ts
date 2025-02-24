@@ -14,4 +14,11 @@ export const base = {
     default: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     card: '0px 4px 6px rgba(0, 0, 0, 0.1)',
   },
+  colors: {
+    error: '#ff0000',
+    errorHover: '#ff6666',
+    errorForeground: '#ffffff',
+    success: '#00ff00',
+    warning: '#ffcc00',
+  },
 };
