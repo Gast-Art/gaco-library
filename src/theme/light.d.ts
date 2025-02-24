@@ -5,6 +5,8 @@ export declare const lightTheme: {
         errorForeground: string;
         success: string;
         warning: string;
+        anchorColor: string;
+        anchorColorHover: string;
         bg: string;
         text: string;
         contentBg: string;
@@ -27,6 +29,9 @@ export declare const lightTheme: {
             sm: string;
             md: string;
             lg: string;
+            xl: string;
+            xxl: string;
+            xxxl: string;
         };
     };
     shadows: {

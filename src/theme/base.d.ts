@@ -8,6 +8,9 @@ export declare const base: {
             sm: string;
             md: string;
             lg: string;
+            xl: string;
+            xxl: string;
+            xxxl: string;
         };
     };
     shadows: {
@@ -20,6 +23,8 @@ export declare const base: {
         errorForeground: string;
         success: string;
         warning: string;
+        anchorColor: string;
+        anchorColorHover: string;
     };
 };
 //# sourceMappingURL=base.d.ts.map
