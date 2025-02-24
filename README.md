@@ -15,6 +15,12 @@
 
 ### Publishing
 
-Publish the component library to npm with npm command:
+1. Bump verison in `package.json`
+2. Create a git tag `git tag [version]`
+3. Push to remote `git push orogin --tags`
 
-`npm run publish:pkg`
+#### Manual
+
+1. Bump verison number in `package.json`
+2. Publish the component library to npm with npm command:
+   `npm run publish:pkg`

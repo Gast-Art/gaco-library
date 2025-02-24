@@ -1,6 +1,6 @@
 {
   "name": "@gaco/gaco-library",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Gaco Component library, for use in Gaco projects.",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "check:types": "tsc --noEmit",
     "check:size": "npm run build && size-limit",
     "prepare-publish": "cp package.json dist/ && cp README.md dist/",
-    "publish:pkg": "npm run prepare-publish && npm publish dist/",
+    "publish:pkg": "npm run prepare-publish && npm publish dist/ --access public",
     "release:major": "standard-version --release-as major && git push --follow-tags",
     "release:minor": "standard-version --release-as minor && git push --follow-tags",
     "release:patch": "standard-version --release-as patch && git push --follow-tags",
