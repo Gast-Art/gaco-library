@@ -14,16 +14,20 @@ const Label = styled.label`
   position: absolute;
   top: 0.5rem;
   left: 0.25rem;
+  right: 0.25rem;
   color: ${({ theme }) => theme.colors.textInputLabel};
   pointer-events: none;
   transition: all 0.2s ease;
+
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 const InputWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 1.5rem;
 `;
 
 interface InputProps {
