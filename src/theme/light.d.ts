@@ -1,4 +1,23 @@
 export declare const lightTheme: {
+    colors: {
+        error: string;
+        errorHover: string;
+        errorForeground: string;
+        success: string;
+        warning: string;
+        bg: string;
+        text: string;
+        contentBg: string;
+        navBg: string;
+        navColor: string;
+        primary: string;
+        primaryForeground: string;
+        primaryHover: string;
+        textInputBorder: string;
+        textInputBorderFocus: string;
+        textInputLabel: string;
+        textInputDisabledBackground: string;
+    };
     sizes: {
         borderRadius: string;
         formControl: string;
@@ -13,23 +32,6 @@ export declare const lightTheme: {
     shadows: {
         default: string;
         card: string;
-    };
-    colors: {
-        bg: string;
-        text: string;
-        contentBg: string;
-        navBg: string;
-        navColor: string;
-        primary: string;
-        primaryForeground: string;
-        primaryHover: string;
-        textInputBorder: string;
-        textInputBorderFocus: string;
-        textInputLabel: string;
-        textInputDisabledBackground: string;
-        error: string;
-        success: string;
-        warning: string;
     };
 };
 //# sourceMappingURL=light.d.ts.map

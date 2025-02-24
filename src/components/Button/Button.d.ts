@@ -3,6 +3,7 @@ declare const buttonVariants: {
     default: import('styled-components').RuleSet<object>;
     outline: import('styled-components').RuleSet<object>;
     ghost: import('styled-components').RuleSet<object>;
+    destructive: import('styled-components').RuleSet<object>;
 };
 declare const buttonSizes: {
     default: import('styled-components').RuleSet<object>;

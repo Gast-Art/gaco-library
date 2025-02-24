@@ -14,5 +14,12 @@ export declare const base: {
         default: string;
         card: string;
     };
+    colors: {
+        error: string;
+        errorHover: string;
+        errorForeground: string;
+        success: string;
+        warning: string;
+    };
 };
 //# sourceMappingURL=base.d.ts.map

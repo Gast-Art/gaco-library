@@ -7,4 +7,5 @@ export declare const Default: Story;
 export declare const Outline: Story;
 export declare const Ghost: Story;
 export declare const Large: Story;
+export declare const Destructive: Story;
 //# sourceMappingURL=Button.stories.d.ts.map

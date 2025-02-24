@@ -1,6 +1,6 @@
 interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
     id: string;
-    label: string;
+    label?: string;
     value: string;
     onChange: (value: string) => void;
     type?: string;
