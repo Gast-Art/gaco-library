@@ -1,12 +1,30 @@
-import { Tabs, TabsContent, TabsList as TabsListRoot, TabsTriggerProps, TabsTrigger as TabsTriggerRoot } from '@radix-ui/react-tabs';
-import { ComponentPropsWithoutRef, ComponentRef, forwardRef } from 'react';
+import {
+  Tabs,
+  TabsContent,
+  TabsListProps as TabsListPropsRoot,
+  TabsList as TabsListRoot,
+  TabsTriggerProps as TabsTriggerPropsRoot,
+  TabsTrigger as TabsTriggerRoot,
+} from '@radix-ui/react-tabs';
+import { ComponentRef, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledTabsList = styled(TabsListRoot)`
+const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+  background-color: ${({ theme }) => theme.colors.mutedBg};
+  border-radius: ${({ theme }) => theme.sizes.borderRadius};
+
+  ${({ inline }) =>
+    !inline &&
+    css`
+      width: 100%;
+      > * {
+        flex: 1;
+      }
+    `}
 `;
 
 const triggerSizes = {
@@ -31,6 +49,7 @@ const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: key
   cursor: pointer;
   transition: all 0.2s;
   outline: none;
+  background-color: transparent;
 
   &:disabled {
     pointer-events: none;
@@ -47,16 +66,18 @@ const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: key
   ${({ size = 'default' }) => triggerSizes[size]}
 `;
 
-const TabsList = forwardRef<ComponentRef<typeof TabsListRoot>, ComponentPropsWithoutRef<typeof TabsListRoot>>((props, ref) => (
-  <StyledTabsList ref={ref} {...props} />
-));
+interface TabsProps extends TabsListPropsRoot {
+  inline?: boolean;
+}
 
-interface ExtendedTabsTriggerProps extends TabsTriggerProps {
+const TabsList = forwardRef<ComponentRef<typeof TabsListRoot>, TabsProps>((props, ref) => <StyledTabsList ref={ref} {...props} />);
+
+interface TabsTriggerProps extends TabsTriggerPropsRoot {
   'data-state'?: string;
   size?: keyof typeof triggerSizes;
 }
 
-const TabsTrigger = forwardRef<ComponentRef<typeof TabsTriggerRoot>, ExtendedTabsTriggerProps>(({ children, ...props }, ref) => (
+const TabsTrigger = forwardRef<ComponentRef<typeof TabsTriggerRoot>, TabsTriggerProps>(({ children, ...props }, ref) => (
   <StyledTabsTrigger ref={ref} {...props}>
     {children}
   </StyledTabsTrigger>

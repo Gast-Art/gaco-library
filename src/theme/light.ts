@@ -4,6 +4,7 @@ export const lightTheme = {
   ...base,
   colors: {
     bg: '#eeeeee',
+    mutedBg: '#f5f5f5',
     text: '#000',
     contentBg: '#ffffff',
     navBg: '#1f1f1f',

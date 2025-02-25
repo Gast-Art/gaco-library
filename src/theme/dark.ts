@@ -4,6 +4,7 @@ export const darkTheme = {
   ...base,
   colors: {
     bg: '#000',
+    mutedBg: '#111',
     text: '#fff',
     contentBg: '#ffffff',
     navBg: '#1f1f1f',

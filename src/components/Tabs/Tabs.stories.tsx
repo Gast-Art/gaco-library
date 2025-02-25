@@ -38,3 +38,18 @@ export const Large: Story = {
     </Tabs>
   ),
 };
+
+export const Inline: Story = {
+  render: () => (
+    <Tabs defaultValue="overview">
+      <TabsList inline>
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="sales">Sales</TabsTrigger>
+        <TabsTrigger value="products">Products</TabsTrigger>
+        <TabsTrigger value="artists">Artists</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">This is the tabs content for overview</TabsContent>
+      <TabsContent value="sales">This is the tab content for sales</TabsContent>
+    </Tabs>
+  ),
+};
