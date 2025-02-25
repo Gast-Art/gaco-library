@@ -11,6 +11,9 @@ export declare const lightTheme: {
         infoHover: string;
         anchorColor: string;
         anchorColorHover: string;
+        grayDarker: string;
+        gray: string;
+        grayLighter: string;
         bg: string;
         mutedBg: string;
         text: string;

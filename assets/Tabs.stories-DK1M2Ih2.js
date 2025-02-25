@@ -3,7 +3,7 @@ import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as s,R as I,b as _e}from"
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  background-color: ${({theme:e})=>e.colors.mutedBg};
+  background-color: ${({theme:e})=>e.colors.grayLighter};
   border-radius: ${({theme:e})=>e.sizes.borderRadius};
 
   ${({inline:e})=>!e&&G`

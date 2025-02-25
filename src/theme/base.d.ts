@@ -32,6 +32,9 @@ export declare const base: {
         infoHover: string;
         anchorColor: string;
         anchorColorHover: string;
+        grayDarker: string;
+        gray: string;
+        grayLighter: string;
     };
 };
 //# sourceMappingURL=base.d.ts.map
