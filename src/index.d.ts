@@ -1,6 +1,7 @@
 export * from './components/Alert';
 export * from './components/Button';
 export * from './components/ButtonGroup';
+export * from './components/Form';
 export * from './components/GlobalStyle';
 export * from './components/LoadingOverlay';
 export * from './components/Spinner';
