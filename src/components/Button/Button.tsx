@@ -59,9 +59,7 @@ const StyledButton = styled.button<ButtonProps>`
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
   box-shadow: ${({ theme }) => theme.shadows.default};
   font-size: ${({ theme }) => theme.sizes.fonts.sm};
-  transition:
-    color 0.2s,
-    background-color 0.2s;
+  transition: all 0.2s;
   outline: none;
   cursor: pointer;
   &:disabled {

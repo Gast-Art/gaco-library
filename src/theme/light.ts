@@ -3,7 +3,7 @@ import { base } from './base';
 export const lightTheme = {
   ...base,
   colors: {
-    bg: '#fff',
+    bg: '#eeeeee',
     text: '#000',
     contentBg: '#ffffff',
     navBg: '#1f1f1f',

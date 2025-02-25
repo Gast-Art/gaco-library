@@ -17,6 +17,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-storysource',
     '@storybook/addon-themes',
+    '@storybook/addon-backgrounds',
   ],
   async viteFinal(config, { configType }) {
     config.plugins = config.plugins.filter((plugin) => !(Array.isArray(plugin) && plugin[0]?.name.includes('vite:react')));

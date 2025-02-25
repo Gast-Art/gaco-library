@@ -13,6 +13,9 @@ export const base = {
       xxxl: '2rem',
     },
   },
+  zIndicies: {
+    loadingOverlay: 9000,
+  },
   shadows: {
     default: '0px 2px 4px rgba(0, 0, 0, 0.1)',
     card: '0px 4px 6px rgba(0, 0, 0, 0.1)',
