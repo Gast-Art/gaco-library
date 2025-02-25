@@ -22,7 +22,11 @@ export declare const base: {
         errorHover: string;
         errorForeground: string;
         success: string;
+        successHover: string;
         warning: string;
+        warningHover: string;
+        info: string;
+        infoHover: string;
         anchorColor: string;
         anchorColorHover: string;
     };
