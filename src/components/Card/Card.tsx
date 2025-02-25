@@ -15,9 +15,15 @@ const CardContainer = styled.div`
   overflow: hidden;
 
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
 
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
+`;
+
+const CardInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 const Content = styled.div`
@@ -34,17 +40,25 @@ const Title = styled(H2)`
   margin-top: 0;
 `;
 
+const LeftColumn = styled.div``;
+
+const RightColumn = styled.div``;
+
 export const CardSections = Object.assign(
   {},
   {
     Title,
     Content,
+    LeftColumn,
+    RightColumn,
   },
 );
 
 export const Card = ({ children, ...props }: PropsWithChildren) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
+  let slotLeftColumn: ReactNode;
+  let slotRightColumn: ReactNode;
 
   const nonSlotChildren = Children.toArray(children).filter((child) => {
     if (typeof child === 'string') {
@@ -61,6 +75,12 @@ export const Card = ({ children, ...props }: PropsWithChildren) => {
     } else if (child.type === CardSections.Content) {
       slotContent = child;
       return false;
+    } else if (child.type === CardSections.LeftColumn) {
+      slotLeftColumn = child;
+      return false;
+    } else if (child.type === CardSections.RightColumn) {
+      slotRightColumn = child;
+      return false;
     } else {
       return true;
     }
@@ -68,11 +88,15 @@ export const Card = ({ children, ...props }: PropsWithChildren) => {
 
   return (
     <CardContainer {...props}>
-      {slotTitle}
+      {slotLeftColumn}
 
-      {nonSlotChildren}
+      <CardInner>
+        {slotTitle}
+        {slotContent}
+        {nonSlotChildren}
+      </CardInner>
 
-      {slotContent}
+      {slotRightColumn}
     </CardContainer>
   );
 };

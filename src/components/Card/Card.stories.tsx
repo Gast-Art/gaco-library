@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Button } from '../Button';
 import { Card, CardSections } from './Card';
 
 const meta: Meta<typeof Card> = {
@@ -13,7 +14,7 @@ const meta: Meta<typeof Card> = {
   ),
   decorators: [
     (Story) => (
-      <div style={{ width: '320px' }}>
+      <div style={{ width: '480px' }}>
         <Story />
       </div>
     ),
@@ -27,4 +28,36 @@ export const Default: Story = {
   args: {
     children: 'This is the children of the card',
   },
+};
+
+export const AvatarInLeftColumn: Story = {
+  render: ({ children }) => (
+    <Card>
+      <CardSections.LeftColumn>
+        <img src="https://picsum.photos/72" alt="placeholder" />
+      </CardSections.LeftColumn>
+      <CardSections.Title>This is a title</CardSections.Title>
+      <CardSections.Content>This is content for a card. Lorum fucking ipsum bitches.</CardSections.Content>
+      {children}
+    </Card>
+  ),
+  args: {
+    children: 'This is the children of the card',
+  },
+};
+
+export const ButtonsInRightColumn: Story = {
+  render: ({ children }) => (
+    <Card>
+      <CardSections.Title>This is a title</CardSections.Title>
+      <CardSections.Content>This is content for a card. Lorum fucking ipsum bitches.</CardSections.Content>
+      <CardSections.RightColumn>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <Button variant="default">Button 1</Button>
+          <Button variant="outline">Button 2</Button>
+        </div>
+      </CardSections.RightColumn>
+      {children}
+    </Card>
+  ),
 };
