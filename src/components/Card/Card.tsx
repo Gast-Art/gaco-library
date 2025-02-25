@@ -1,7 +1,7 @@
 import { Children, isValidElement, PropsWithChildren, ReactNode } from 'react';
 import styled from 'styled-components';
 import { media } from '../../theme';
-import { H2 } from '../Typography';
+import { H3 } from '../Typography';
 
 const CardContainer = styled.div`
   position: relative;
@@ -36,7 +36,7 @@ const Content = styled.div`
   `}
 `;
 
-const Title = styled(H2)`
+const Title = styled(H3)`
   margin-top: 0;
 `;
 
