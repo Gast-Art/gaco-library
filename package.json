@@ -1,6 +1,6 @@
 {
   "name": "@gaco/gaco-library",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Gaco Component library, for use in Gaco projects.",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -92,6 +92,7 @@
   },
   "dependencies": {
     "@storybook/theming": "^8.5.3",
+    "lucide-react": "^0.476.0",
     "react-icons": "^5.4.0",
     "styled-components": "^6.1.15"
   },
