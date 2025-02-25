@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { media } from '../../theme';
 import { H3 } from '../Typography';
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.contentBg};
   box-shadow: ${({ theme }) => theme.shadows.card};
@@ -54,7 +54,12 @@ export const CardSections = Object.assign(
   },
 );
 
-export const Card = ({ children, ...props }: PropsWithChildren) => {
+interface CardProps extends PropsWithChildren {
+  className?: string;
+  onClick?: () => void;
+}
+
+export const Card = ({ children, ...props }: CardProps) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
   let slotLeftColumn: ReactNode;

@@ -14,7 +14,7 @@ const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  background-color: ${({ theme }) => theme.colors.mutedBg};
+  background-color: ${({ theme }) => theme.colors.grayLighter};
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
 
   ${({ inline }) =>

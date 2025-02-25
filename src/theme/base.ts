@@ -32,5 +32,8 @@ export const base = {
     infoHover: '#2E86C1',
     anchorColor: '#0070f3',
     anchorColorHover: '#0366d6',
+    grayDarker: '#6c757d',
+    gray: '#c0c3c6',
+    grayLighter: '#e3e3e3',
   },
 };
