@@ -12,6 +12,7 @@ export declare const lightTheme: {
         anchorColor: string;
         anchorColorHover: string;
         bg: string;
+        mutedBg: string;
         text: string;
         contentBg: string;
         navBg: string;
