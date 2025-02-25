@@ -73,7 +73,6 @@ const Icon = styled(FaExclamationCircle)`
 `;
 
 const Container = styled.div`
-  margin-bottom: 1.5rem;
   position: relative;
 `;
 
