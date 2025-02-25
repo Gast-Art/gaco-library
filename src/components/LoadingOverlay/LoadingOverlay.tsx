@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Spinner as SpinnerRoot } from '../Spinner';
 
 const OverlayWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
