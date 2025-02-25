@@ -13,6 +13,9 @@ export declare const base: {
             xxxl: string;
         };
     };
+    zIndicies: {
+        loadingOverlay: number;
+    };
     shadows: {
         default: string;
         card: string;

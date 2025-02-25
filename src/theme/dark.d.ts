@@ -38,6 +38,9 @@ export declare const darkTheme: {
             xxxl: string;
         };
     };
+    zIndicies: {
+        loadingOverlay: number;
+    };
     shadows: {
         default: string;
         card: string;
