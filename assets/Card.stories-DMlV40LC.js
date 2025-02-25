@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-CLpGMVip.js";import{B as f}from"./Button-Bv04RrkI.js";import{r as x}from"./index-CZMpeKRu.js";import{l as r,d as o}from"./styled-components.browser.esm-BT5p091k.js";import"./light-DKji_che.js";import{a as b}from"./PageTitle-DkNJ-TT7.js";import"./Spinner-CTzpbX4O.js";const n={xs:"400px",sm:"600px",md:"900px",lg:"1280px",xl:"1440px",xxl:"1920px"},R={xs:(...e)=>r`
+import{j as t}from"./jsx-runtime-CLpGMVip.js";import{B as f}from"./Button-Bv04RrkI.js";import{r as x}from"./index-CZMpeKRu.js";import{l as r,d as o}from"./styled-components.browser.esm-BT5p091k.js";import"./light-DKji_che.js";import{b}from"./PageTitle-DkNJ-TT7.js";import"./Spinner-CTzpbX4O.js";const n={xs:"400px",sm:"600px",md:"900px",lg:"1280px",xl:"1440px",xxl:"1920px"},R={xs:(...e)=>r`
     @media (min-width: ${n.xs}) {
       ${r(...e)};
     }
