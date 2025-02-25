@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from 'react';
 import { FaExclamationCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -76,7 +77,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   id: string;
   label?: string;
   value: string;

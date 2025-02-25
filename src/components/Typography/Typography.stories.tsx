@@ -1,11 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { H1, H2, H3, H4 } from './Headers';
 import { PageTitle } from './PageTitle';
 
 const HierarchyExample = () => (
   <>
     <PageTitle>PageTitle</PageTitle>
-    <h2>H2 Heading</h2>
-    <h3>H2 Heading</h3>
+    <H1>H1 Heading</H1>
+    <H2>H2 Heading</H2>
+    <H3>H3 Heading</H3>
+    <H4>H4 Heading</H4>
+    <H1 as="p">H1 Heading as P</H1>
+    <p>Lorum ispum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </>
 );
 
