@@ -7,7 +7,7 @@ const meta: Meta<typeof Badge> = {
   component: Badge,
   decorators: [
     (Story) => (
-      <div style={{ width: '320px' }}>
+      <div style={{ width: '320px', padding: '2rem', backgroundColor: '#fff' }}>
         <Story />
       </div>
     ),
@@ -20,6 +20,13 @@ type Story = StoryObj<typeof Badge>;
 export const Default: Story = {
   args: {
     children: 'Badge',
+  },
+};
+
+export const Primary: Story = {
+  args: {
+    children: 'Primary',
+    variant: 'primary',
   },
 };
 

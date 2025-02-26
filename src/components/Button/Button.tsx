@@ -11,10 +11,10 @@ const buttonVariants = {
     }
   `,
   outline: css`
-    background-color: transparent;
     border: 1px solid ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.primary};
     &:hover {
+      background-color: ${({ theme }) => theme.colors.primary}10;
       border-color: ${({ theme }) => theme.colors.primaryHover};
       color: ${({ theme }) => theme.colors.primaryHover};
     }
