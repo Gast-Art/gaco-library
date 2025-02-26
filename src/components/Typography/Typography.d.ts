@@ -2,4 +2,5 @@ export declare const H1: import('styled-components/dist/types').IStyledComponent
 export declare const H2: import('styled-components/dist/types').IStyledComponentBase<"web", import('styled-components').FastOmit<import('../../../node_modules/react').DetailedHTMLProps<import('../../../node_modules/react').HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, never>> & string;
 export declare const H3: import('styled-components/dist/types').IStyledComponentBase<"web", import('styled-components').FastOmit<import('../../../node_modules/react').DetailedHTMLProps<import('../../../node_modules/react').HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, never>> & string;
 export declare const H4: import('styled-components/dist/types').IStyledComponentBase<"web", import('styled-components').FastOmit<import('../../../node_modules/react').DetailedHTMLProps<import('../../../node_modules/react').HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, never>> & string;
-//# sourceMappingURL=Headers.d.ts.map
+export declare const Small: import('styled-components/dist/types').IStyledComponentBase<"web", import('styled-components').FastOmit<import('../../../node_modules/react').DetailedHTMLProps<import('../../../node_modules/react').HTMLAttributes<HTMLElement>, HTMLElement>, never>> & string;
+//# sourceMappingURL=Typography.d.ts.map
