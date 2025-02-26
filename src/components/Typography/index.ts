@@ -1,2 +1,2 @@
-export * from './Headers';
 export * from './PageTitle';
+export * from './Typography';

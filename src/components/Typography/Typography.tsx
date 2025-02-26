@@ -23,3 +23,7 @@ export const H4 = styled.h4`
   font-weight: bold;
   margin-bottom: 0.5rem;
 `;
+
+export const Small = styled.small`
+  font-size: ${({ theme }) => theme.sizes.fonts.xxs};
+`;
