@@ -1,14 +1,14 @@
-import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as s}from"./index-CZMpeKRu.js";import{l as r,d as i}from"./styled-components.browser.esm-BT5p091k.js";import{S as d}from"./Spinner-CTzpbX4O.js";const c={default:r`
+import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CZMpeKRu.js";import{l as r,d as i}from"./styled-components.browser.esm-BT5p091k.js";import{S as c}from"./Spinner-CTzpbX4O.js";const d={default:r`
     background-color: ${({theme:o})=>o.colors.primary};
     color: ${({theme:o})=>o.colors.primaryForeground};
     &:hover {
       background-color: ${({theme:o})=>o.colors.primaryHover};
     }
   `,outline:r`
-    background-color: transparent;
     border: 1px solid ${({theme:o})=>o.colors.primary};
     color: ${({theme:o})=>o.colors.primary};
     &:hover {
+      background-color: ${({theme:o})=>o.colors.primary}10;
       border-color: ${({theme:o})=>o.colors.primaryHover};
       color: ${({theme:o})=>o.colors.primaryHover};
     }
@@ -51,6 +51,6 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as s}from"./index-CZMpeKR
     cursor: not-allowed;
     opacity: 0.5;
   }
-  ${({variant:o="default"})=>c[o]}
+  ${({variant:o="default"})=>d[o]}
   ${({size:o="default"})=>u[o]}
-`,a=s.forwardRef(({loading:o=!1,disabled:l,...e},n)=>t.jsxs(m,{ref:n,disabled:o||l,...e,children:[o&&t.jsx(d,{size:1,className:"mr-2"})," ",e.children]}));a.displayName="Button";a.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""}},composes:["ButtonHTMLAttributes"]};export{a as B};
+`,a=n.forwardRef(({loading:o=!1,disabled:l,...e},s)=>t.jsxs(m,{ref:s,disabled:o||l,...e,children:[o&&t.jsx(c,{size:1,className:"mr-2"})," ",e.children]}));a.displayName="Button";a.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""}},composes:["ButtonHTMLAttributes"]};export{a as B};
