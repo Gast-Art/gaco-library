@@ -26,9 +26,6 @@ const Card = (card: CardProps) => {
 };
 
 const CardListContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-
   > ${CardContainer} {
     border-radius: 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.grayLighter};
@@ -51,7 +48,7 @@ interface CardListProps extends PropsWithChildren {
   columns?: number;
 }
 
-export const CardList = ({ children, cards, columns = 1 }: CardListProps) => {
+export const CardList = ({ children, cards }: CardListProps) => {
   return (
     <CardListContainer>
       {cards?.map((card) => <Card key={card.id} {...card} />)}
