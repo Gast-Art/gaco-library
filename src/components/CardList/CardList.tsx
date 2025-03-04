@@ -46,11 +46,16 @@ const CardListContainer = styled.div`
   }
 `;
 
-interface CardListProps {
-  cards: CardProps[];
+interface CardListProps extends PropsWithChildren {
+  cards?: CardProps[];
   columns?: number;
 }
 
-export const CardList = ({ cards, columns = 1 }: CardListProps) => {
-  return <CardListContainer>{cards?.map((card) => <Card key={card.id} {...card} />)}</CardListContainer>;
+export const CardList = ({ children, cards, columns = 1 }: CardListProps) => {
+  return (
+    <CardListContainer>
+      {cards?.map((card) => <Card key={card.id} {...card} />)}
+      {children}
+    </CardListContainer>
+  );
 };
