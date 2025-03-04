@@ -1,4 +1,4 @@
-import { Children, isValidElement, PropsWithChildren, ReactNode } from 'react';
+import { Children, CSSProperties, FC, isValidElement, PropsWithChildren, ReactNode } from 'react';
 import styled from 'styled-components';
 import { media } from '../../theme';
 import { H3 } from '../Typography';
@@ -56,10 +56,11 @@ export const CardSections = Object.assign(
 
 interface CardProps extends PropsWithChildren {
   className?: string;
+  style?: CSSProperties;
   onClick?: () => void;
 }
 
-export const Card = ({ children, ...props }: CardProps) => {
+export const Card: FC<CardProps> = ({ children, ...props }) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
   let slotLeftColumn: ReactNode;
