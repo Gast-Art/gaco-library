@@ -95,7 +95,7 @@ const StyledBadge = styled.div<{ $variant: variants }>`
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   variant?: variants;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Badge: FC<BadgeProps> = ({ className, variant = 'default', ...props }) => {
