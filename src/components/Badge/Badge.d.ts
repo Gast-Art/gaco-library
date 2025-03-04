@@ -10,7 +10,7 @@ declare const badgeStyles: (hasOnClick: boolean) => {
 type variants = keyof ReturnType<typeof badgeStyles>;
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
     variant?: variants;
-    onClick: () => void;
+    onClick?: () => void;
 }
 export declare const Badge: FC<BadgeProps>;
 export {};
