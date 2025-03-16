@@ -41,6 +41,7 @@ const triggerSizes = {
 };
 
 const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: keyof typeof triggerSizes }>`
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -75,12 +76,22 @@ const TabsList = forwardRef<ComponentRef<typeof TabsListRoot>, TabsProps>((props
 interface TabsTriggerProps extends TabsTriggerPropsRoot {
   'data-state'?: string;
   size?: keyof typeof triggerSizes;
+  href?: string;
 }
 
-const TabsTrigger = forwardRef<ComponentRef<typeof TabsTriggerRoot>, TabsTriggerProps>(({ children, ...props }, ref) => (
-  <StyledTabsTrigger ref={ref} {...props}>
-    {children}
-  </StyledTabsTrigger>
-));
+const TabsTrigger = forwardRef<ComponentRef<typeof TabsTriggerRoot>, TabsTriggerProps>(({ children, href, ...props }, ref) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (href) {
+      event.preventDefault();
+      window.location.href = href;
+    }
+  };
+
+  return (
+    <StyledTabsTrigger ref={ref} {...props} onClick={handleClick}>
+      {children}
+    </StyledTabsTrigger>
+  );
+});
 
 export { Tabs, TabsContent, TabsList, TabsTrigger };
