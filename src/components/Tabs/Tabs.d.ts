@@ -10,6 +10,7 @@ declare const TabsList: import('../../../node_modules/react').ForwardRefExoticCo
 interface TabsTriggerProps extends TabsTriggerPropsRoot {
     'data-state'?: string;
     size?: keyof typeof triggerSizes;
+    href?: string;
 }
 declare const TabsTrigger: import('../../../node_modules/react').ForwardRefExoticComponent<TabsTriggerProps & import('../../../node_modules/react').RefAttributes<HTMLButtonElement>>;
 export { Tabs, TabsContent, TabsList, TabsTrigger };
