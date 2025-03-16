@@ -74,6 +74,7 @@ const Icon = styled(FaExclamationCircle)`
 
 const Container = styled.div`
   position: relative;
+  padding-top: 1rem;
 `;
 
 interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
