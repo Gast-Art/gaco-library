@@ -76,19 +76,11 @@ const TabsList = forwardRef<ComponentRef<typeof TabsListRoot>, TabsProps>((props
 interface TabsTriggerProps extends TabsTriggerPropsRoot {
   'data-state'?: string;
   size?: keyof typeof triggerSizes;
-  href?: string;
 }
 
-const TabsTrigger = forwardRef<ComponentRef<typeof TabsTriggerRoot>, TabsTriggerProps>(({ children, href, ...props }, ref) => {
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (href) {
-      event.preventDefault();
-      window.location.href = href;
-    }
-  };
-
+const TabsTrigger = forwardRef<ComponentRef<typeof TabsTriggerRoot>, TabsTriggerProps>(({ children, ...props }, ref) => {
   return (
-    <StyledTabsTrigger ref={ref} {...props} onClick={handleClick}>
+    <StyledTabsTrigger ref={ref} {...props}>
       {children}
     </StyledTabsTrigger>
   );
