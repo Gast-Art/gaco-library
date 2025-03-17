@@ -9,7 +9,6 @@ export const CardContainer = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.card};
   width: 100%;
 
-  flex: 1;
   padding: 1rem 1.5rem;
   overflow: hidden;
 
