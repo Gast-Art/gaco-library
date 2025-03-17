@@ -1,6 +1,6 @@
 import * as maptilersdk from '@maptiler/sdk';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 interface MapProps {
@@ -15,9 +15,10 @@ const MapContainer = styled.div`
   width: 100%;
 `;
 
-export const Map = ({ apiKey, markersAddresses, center, zoom }: MapProps) => {
+export const Map = ({ apiKey, markersAddresses, center = { lng: 0, lat: 0 }, zoom }: MapProps) => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
+  const [markerLngLats, setMarkerLngLats] = useState<maptilersdk.LngLatLike[] | null>(null);
 
   maptilersdk.config.apiKey = apiKey;
 
@@ -28,34 +29,37 @@ export const Map = ({ apiKey, markersAddresses, center, zoom }: MapProps) => {
   };
 
   useEffect(() => {
-    if (map.current) return;
+    const initializeMap = async () => {
+      if (map.current || !mapContainer.current) return;
 
-    if (mapContainer.current) {
+      let calculatedCenter = center;
+
+      if (!center && markersAddresses) {
+        const lngLats = await Promise.all(markersAddresses.map((address) => geocodeAddress(address)));
+        const bounds = new maptilersdk.LngLatBounds();
+        setMarkerLngLats(lngLats);
+        lngLats.forEach((marker) => bounds.extend(marker));
+        calculatedCenter = bounds.getCenter();
+      }
+
       map.current = new maptilersdk.Map({
         container: mapContainer.current,
         style: maptilersdk.MapStyle.BACKDROP,
-        center: center || { lng: 0, lat: 0 },
+        center: calculatedCenter,
         zoom: zoom || 14,
       });
-    }
-  }, [center, zoom]);
+    };
+
+    initializeMap();
+  }, [center, markerLngLats, zoom]);
 
   useEffect(() => {
-    if (!map.current || !markersAddresses) return;
+    if (!map.current || !markerLngLats) return;
 
-    (async () => {
-      const markerLngLats = await Promise.all(markersAddresses.map((address) => geocodeAddress(address)));
-
-      const bounds = new maptilersdk.LngLatBounds();
-      markerLngLats.forEach((marker) => bounds.extend(marker));
-
-      map.current!.fitBounds(bounds, { padding: 20, zoom: zoom });
-
-      markerLngLats.forEach((markerLngLat) => {
-        const marker = new maptilersdk.Marker().setLngLat(markerLngLat).addTo(map.current!);
-      });
-    })();
-  }, [markersAddresses]);
+    markerLngLats.forEach((markerLngLat) => {
+      new maptilersdk.Marker().setLngLat(markerLngLat).addTo(map.current!);
+    });
+  }, [markerLngLats, zoom]);
 
   return <MapContainer ref={mapContainer} />;
 };
