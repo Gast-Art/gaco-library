@@ -17,8 +17,6 @@ export declare const darkTheme: {
         bg: string;
         text: string;
         contentBg: string;
-        navBg: string;
-        navColor: string;
         primary: string;
         primaryForeground: string;
         primaryHover: string;
