@@ -86,9 +86,9 @@ interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'on
   error?: string;
 }
 
-export const TextInput = ({ id, label, value, onChange, type = 'text', error, disabled, ...props }: TextInputProps) => {
+export const TextInput = ({ className, id, label, value, onChange, type = 'text', error, disabled, ...props }: TextInputProps) => {
   return (
-    <Container>
+    <Container className={className}>
       <InputWrapper>
         <Input
           id={id}
