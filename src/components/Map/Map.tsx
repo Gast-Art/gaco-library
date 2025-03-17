@@ -8,6 +8,7 @@ interface MapProps {
   markersAddresses?: string[];
   center?: maptilersdk.LngLatLike;
   zoom?: number;
+  className?: string;
 }
 
 const MapContainer = styled.div`
@@ -15,7 +16,7 @@ const MapContainer = styled.div`
   width: 100%;
 `;
 
-export const Map = ({ apiKey, markersAddresses, center, zoom }: MapProps) => {
+export const Map = ({ apiKey, markersAddresses, center, zoom, className }: MapProps) => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
   const [markerLngLats, setMarkerLngLats] = useState<maptilersdk.LngLatLike[] | null>(null);
@@ -34,7 +35,7 @@ export const Map = ({ apiKey, markersAddresses, center, zoom }: MapProps) => {
 
       let calculatedCenter = center;
 
-      if (!center && markersAddresses) {
+      if (!center && markersAddresses?.length) {
         const lngLats = await Promise.all(markersAddresses.map((address) => geocodeAddress(address)));
         const bounds = new maptilersdk.LngLatBounds();
         setMarkerLngLats(lngLats);
@@ -61,5 +62,5 @@ export const Map = ({ apiKey, markersAddresses, center, zoom }: MapProps) => {
     });
   }, [markerLngLats, zoom]);
 
-  return <MapContainer ref={mapContainer} />;
+  return <MapContainer className={className} ref={mapContainer} />;
 };
