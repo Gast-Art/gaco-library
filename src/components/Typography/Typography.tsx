@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 export const H1 = styled.h1`
-  font-family: 'Lora', serif;
   font-size: ${({ theme }) => theme.sizes.fonts.xxl};
   font-weight: bold;
   margin-bottom: 1rem;
 `;
 
 export const H2 = styled.h2`
-  font-family: 'Lora', serif;
   font-size: ${({ theme }) => theme.sizes.fonts.xl};
   font-weight: bold;
   margin-bottom: 0.75rem;
