@@ -17,8 +17,8 @@ export const base = {
     loadingOverlay: 9000,
   },
   shadows: {
-    default: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    card: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    default: 'none',
+    card: 'none',
   },
   colors: {
     error: '#E74C3C',

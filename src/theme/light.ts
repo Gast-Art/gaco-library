@@ -7,8 +7,6 @@ export const lightTheme = {
     mutedBg: '#f5f5f5',
     text: '#000',
     contentBg: '#ffffff',
-    navBg: '#1f1f1f',
-    navColor: '#ffffff',
     primary: '#0070f3',
     primaryForeground: '#ffffff',
     primaryHover: '#0056b3',
