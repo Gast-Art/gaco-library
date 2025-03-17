@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Figtree', sans-serif;
     margin: 0;
     padding: 0;
     background-color: ${({ theme }) => theme.colors.background};
@@ -17,16 +17,19 @@ export const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-size: ${({ theme }) => theme.sizes.fonts.xxl};
+    font-family: 'Lora', serif;
     font-weight: bold;
   }
 
   h2 {
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
+    font-family: 'Lora', serif;
     font-weight: bold;
   }
 
   h3 {
     font-size: ${({ theme }) => theme.sizes.fonts.lg};
+    font-family: 'Lora', serif;
     font-weight: bold;
   }
 

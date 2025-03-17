@@ -2,6 +2,7 @@ import { withThemeFromJSXProvider } from '@storybook/addon-themes';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../src/components/GlobalStyle';
 import { darkTheme, lightTheme } from '../src/theme';
+import './fonts.css';
 
 export const parameters = {
   viewMode: 'canvas',
