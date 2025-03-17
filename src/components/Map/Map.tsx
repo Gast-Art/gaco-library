@@ -46,7 +46,10 @@ export const Map = ({ apiKey, markersAddresses, center, zoom, className }: MapPr
       map.current = new maptilersdk.Map({
         container: mapContainer.current,
         style: maptilersdk.MapStyle.BACKDROP,
-        center: calculatedCenter || { lng: 0, lat: 0 },
+        center: calculatedCenter || {
+          lat: 52.3676,
+          lng: 4.9041,
+        },
         zoom: zoom || 14,
       });
     };
