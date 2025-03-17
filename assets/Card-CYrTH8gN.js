@@ -28,7 +28,6 @@ import{j as m}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CZMpeKR
   box-shadow: ${({theme:e})=>e.shadows.card};
   width: 100%;
 
-  flex: 1;
   padding: 1rem 1.5rem;
   overflow: hidden;
 
