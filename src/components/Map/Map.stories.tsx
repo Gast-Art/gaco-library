@@ -19,8 +19,7 @@ type Story = StoryObj<typeof Map>;
 
 export const Default: Story = {
   args: {
-    apiKey: 'td8t8MMaJB3fGJyGiTae',
+    apiKey: import.meta.env.VITE_MAPTILER_SDK_API_KEY,
     markersAddresses: ['Gasthuismolensteeg 3, Amsterdam'],
-    // zoom: 4,
   },
 };
