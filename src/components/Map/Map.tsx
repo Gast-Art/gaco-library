@@ -15,7 +15,7 @@ const MapContainer = styled.div`
   width: 100%;
 `;
 
-export const Map = ({ apiKey, markersAddresses, center = { lng: 0, lat: 0 }, zoom }: MapProps) => {
+export const Map = ({ apiKey, markersAddresses, center, zoom }: MapProps) => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<maptilersdk.Map | null>(null);
   const [markerLngLats, setMarkerLngLats] = useState<maptilersdk.LngLatLike[] | null>(null);
@@ -45,7 +45,7 @@ export const Map = ({ apiKey, markersAddresses, center = { lng: 0, lat: 0 }, zoo
       map.current = new maptilersdk.Map({
         container: mapContainer.current,
         style: maptilersdk.MapStyle.BACKDROP,
-        center: calculatedCenter,
+        center: calculatedCenter || { lng: 0, lat: 0 },
         zoom: zoom || 14,
       });
     };
