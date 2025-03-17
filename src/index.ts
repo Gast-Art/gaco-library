@@ -7,6 +7,7 @@ export * from './components/CardList';
 export * from './components/Form';
 export * from './components/GlobalStyle';
 export * from './components/LoadingOverlay';
+export * from './components/Map';
 export * from './components/Spinner';
 export * from './components/Tabs';
 export * from './components/TextInput';
