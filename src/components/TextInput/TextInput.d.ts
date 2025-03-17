@@ -7,6 +7,6 @@ interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'on
     type?: string;
     error?: string;
 }
-export declare const TextInput: ({ id, label, value, onChange, type, error, disabled, ...props }: TextInputProps) => import("react/jsx-runtime").JSX.Element;
+export declare const TextInput: ({ className, id, label, value, onChange, type, error, disabled, ...props }: TextInputProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=TextInput.d.ts.map
