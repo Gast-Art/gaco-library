@@ -2,6 +2,8 @@ import{d as t}from"./styled-components.browser.esm-BT5p091k.js";const i=t.h1`
   font-size: ${({theme:o})=>o.sizes.fonts.xxxl};
   font-family: 'Lora', serif;
   font-weight: bold;
+
+  margin-bottom: 1rem;
 `,n=t.h1`
   font-family: 'Lora', serif;
   font-size: ${({theme:o})=>o.sizes.fonts.xxl};
@@ -16,10 +18,10 @@ import{d as t}from"./styled-components.browser.esm-BT5p091k.js";const i=t.h1`
   font-size: ${({theme:o})=>o.sizes.fonts.lg};
   font-weight: bold;
   margin-bottom: 0.5rem;
-`,a=t.h4`
+`,m=t.h4`
   font-size: ${({theme:o})=>o.sizes.fonts.md};
   font-weight: bold;
   margin-bottom: 0.5rem;
 `;t.small`
   font-size: ${({theme:o})=>o.sizes.fonts.xxs};
-`;export{n as H,i as P,e as a,f as b,a as c};
+`;export{n as H,i as P,e as a,f as b,m as c};
