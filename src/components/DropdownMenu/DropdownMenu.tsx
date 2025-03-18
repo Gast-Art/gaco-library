@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface DropdownMenuProps {
-  trigger: React.ReactNode;
+  trigger: ReactNode;
   items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
 }
 
@@ -32,7 +32,7 @@ const StyledItem = styled(RadixDropdownMenu.Item)`
   align-items: center;
 
   &:hover {
-    background-color: #f5f5f5;
+    background-color: ${({ theme }) => theme.colors.mutedBg};
   }
 
   &:focus {
@@ -48,7 +48,7 @@ const StyledItem = styled(RadixDropdownMenu.Item)`
 `;
 
 interface DropdownMenuProps {
-  trigger: React.ReactNode;
+  trigger: ReactNode;
   items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
