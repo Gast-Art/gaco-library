@@ -38,3 +38,11 @@ export const Default: Story = {
     ],
   },
 };
+
+export const AlignStart: Story = {
+  args: {
+    ...Default.args,
+    align: 'start',
+    sideOffset: 8,
+  },
+};

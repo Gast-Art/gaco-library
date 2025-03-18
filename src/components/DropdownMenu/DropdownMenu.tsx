@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 interface DropdownMenuProps {
   trigger: React.ReactNode;
-  items: ({ content: ReactNode; onSelect: () => void } | 'seperator')[];
+  items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
 }
 
 const StyledContent = styled(RadixDropdownMenu.Content)`
@@ -46,11 +46,20 @@ const StyledItem = styled(RadixDropdownMenu.Item)`
   }
 `;
 
-const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items }) => {
+interface DropdownMenuProps {
+  trigger: React.ReactNode;
+  items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
+  align?: 'start' | 'center' | 'end';
+  alignOffset?: number;
+  side?: 'left' | 'right';
+  sideOffset?: number;
+}
+
+const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffset, side, sideOffset }) => {
   return (
     <RadixDropdownMenu.Root>
       <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>
-      <StyledContent>
+      <StyledContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
         {items.map((item, index) =>
           item === 'seperator' ? (
             <StyledSeparator key={index} />
