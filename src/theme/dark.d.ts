@@ -44,6 +44,7 @@ export declare const darkTheme: {
     };
     zIndicies: {
         loadingOverlay: number;
+        DropdownMenu: number;
     };
     shadows: {
         default: string;

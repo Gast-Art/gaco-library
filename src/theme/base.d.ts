@@ -15,6 +15,7 @@ export declare const base: {
     };
     zIndicies: {
         loadingOverlay: number;
+        DropdownMenu: number;
     };
     shadows: {
         default: string;
