@@ -42,7 +42,6 @@ const triggerSizes = {
 
 const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: keyof typeof triggerSizes }>`
   flex-shrink: 0;
-  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
