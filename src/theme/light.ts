@@ -7,6 +7,8 @@ export const lightTheme = {
     mutedBg: '#f5f5f5',
     text: '#000',
     contentBg: '#ffffff',
+    separator: '#e0e0e0',
+    border: '#e0e0e0',
     primary: '#0070f3',
     primaryForeground: '#ffffff',
     primaryHover: '#0056b3',
