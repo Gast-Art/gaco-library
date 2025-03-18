@@ -14,6 +14,7 @@ const StyledContent = styled(RadixDropdownMenu.Content)`
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   min-width: 10rem;
   overflow: hidden;
+  z-index: ${({ theme }) => theme.zIndicies.DropdownMenu};
 `;
 
 const StyledSeparator = styled(RadixDropdownMenu.Separator)`
