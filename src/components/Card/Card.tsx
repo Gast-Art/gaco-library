@@ -10,13 +10,17 @@ export const CardContainer = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.card};
   width: 100%;
 
-  padding: 1rem 1.5rem;
+  padding: 0.75rem;
   overflow: hidden;
 
   display: flex;
   gap: 1rem;
 
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
+
+  ${media.md`
+      padding: 1rem;
+  `}
 `;
 
 const CardInner = styled.div`
@@ -37,6 +41,11 @@ const Content = styled.div`
 
 const Title = styled(H3)`
   margin-top: 0;
+  font-size: ${({ theme }) => theme.sizes.fonts.md};
+
+  ${media.md`
+      font-size: ${({ theme }) => theme.sizes.fonts.lg};
+  `};
 `;
 
 const LeftColumn = styled.div``;
