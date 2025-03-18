@@ -3,8 +3,19 @@ interface DropdownMenuProps {
     trigger: React.ReactNode;
     items: ({
         content: ReactNode;
-        onSelect: () => void;
+        onSelect?: () => void;
     } | 'seperator')[];
+}
+interface DropdownMenuProps {
+    trigger: React.ReactNode;
+    items: ({
+        content: ReactNode;
+        onSelect?: () => void;
+    } | 'seperator')[];
+    align?: 'start' | 'center' | 'end';
+    alignOffset?: number;
+    side?: 'left' | 'right';
+    sideOffset?: number;
 }
 declare const DropdownMenu: FC<DropdownMenuProps>;
 export { DropdownMenu };
