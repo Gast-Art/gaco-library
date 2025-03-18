@@ -22,6 +22,7 @@ import{j as s}from"./jsx-runtime-CLpGMVip.js";import{r as v}from"./index-CZMpeKR
     padding: 0 2rem;
   `},ae=M(G)`
   flex-shrink: 0;
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
