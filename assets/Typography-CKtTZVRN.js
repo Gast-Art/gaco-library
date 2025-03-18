@@ -2,6 +2,7 @@ import{d as t}from"./styled-components.browser.esm-BT5p091k.js";const n=t.h1`
   font-size: ${({theme:o})=>o.sizes.fonts.xxxl};
   font-family: 'Lora', serif;
   font-weight: bold;
+  color: ${({theme:o})=>o.colors.text};
 
   margin-bottom: 1rem;
 `,e=t.h1`
