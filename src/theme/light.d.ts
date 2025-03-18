@@ -18,6 +18,8 @@ export declare const lightTheme: {
         mutedBg: string;
         text: string;
         contentBg: string;
+        separator: string;
+        border: string;
         primary: string;
         primaryForeground: string;
         primaryHover: string;

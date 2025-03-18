@@ -1,4 +1,4 @@
-import{j as m}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CZMpeKRu.js";import{l as t,d as i}from"./styled-components.browser.esm-BT5p091k.js";import"./light-qRU9wrqb.js";import{b as u}from"./Typography-ThQ2eIx8.js";const s={xs:"400px",sm:"600px",md:"900px",lg:"1280px",xl:"1440px",xxl:"1920px"},c={xs:(...e)=>t`
+import{j as m}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CZMpeKRu.js";import{l as t,d as i}from"./styled-components.browser.esm-BT5p091k.js";import"./light-4jK9e_LT.js";import{b as u}from"./Typography-ThQ2eIx8.js";const s={xs:"400px",sm:"600px",md:"900px",lg:"1280px",xl:"1440px",xxl:"1920px"},c={xs:(...e)=>t`
     @media (min-width: ${s.xs}) {
       ${t(...e)};
     }

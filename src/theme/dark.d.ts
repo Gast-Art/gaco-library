@@ -15,8 +15,11 @@ export declare const darkTheme: {
         gray: string;
         grayLighter: string;
         bg: string;
+        mutedBg: string;
         text: string;
         contentBg: string;
+        separator: string;
+        border: string;
         primary: string;
         primaryForeground: string;
         primaryHover: string;
