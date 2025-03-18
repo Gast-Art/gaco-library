@@ -17,19 +17,16 @@ export const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-size: ${({ theme }) => theme.sizes.fonts.xxl};
-    font-family: 'Lora', serif;
     font-weight: bold;
   }
 
   h2 {
     font-size: ${({ theme }) => theme.sizes.fonts.xl};
-    font-family: 'Lora', serif;
     font-weight: bold;
   }
 
   h3 {
     font-size: ${({ theme }) => theme.sizes.fonts.lg};
-    font-family: 'Lora', serif;
     font-weight: bold;
   }
 
