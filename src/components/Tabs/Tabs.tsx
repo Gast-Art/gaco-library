@@ -12,15 +12,15 @@ import styled, { css } from 'styled-components';
 const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 1rem;
   background-color: ${({ theme }) => theme.colors.grayLighter};
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
+  overflow-x: auto;
 
   ${({ inline }) =>
     !inline &&
     css`
-      width: 100%;
+      display: flex;
       > * {
         flex: 1;
       }
@@ -41,7 +41,7 @@ const triggerSizes = {
 };
 
 const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: keyof typeof triggerSizes }>`
-  width: 100%;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
