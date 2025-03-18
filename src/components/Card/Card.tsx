@@ -57,7 +57,7 @@ interface CardProps extends PropsWithChildren {
   className?: string;
   style?: CSSProperties;
   onClick?: () => void;
-  loading?: string;
+  loading?: string | boolean;
 }
 
 export const Card: FC<CardProps> = ({ children, loading, ...props }) => {
@@ -94,7 +94,7 @@ export const Card: FC<CardProps> = ({ children, loading, ...props }) => {
 
   return (
     <CardContainer {...props}>
-      {loading && <LoadingOverlay>{loading}</LoadingOverlay>}
+      {loading && <LoadingOverlay>{typeof loading === 'string' ? loading : undefined}</LoadingOverlay>}
 
       {slotLeftColumn}
 
