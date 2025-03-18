@@ -10,7 +10,7 @@ interface CardProps extends PropsWithChildren {
     className?: string;
     style?: CSSProperties;
     onClick?: () => void;
-    loading?: string;
+    loading?: string | boolean;
 }
 export declare const Card: FC<CardProps>;
 export {};
