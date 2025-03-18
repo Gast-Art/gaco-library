@@ -51,6 +51,7 @@ const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: key
   transition: all 0.2s;
   outline: none;
   background-color: transparent;
+  color: ${({ theme }) => theme.colors.text};
 
   &:disabled {
     pointer-events: none;
@@ -59,7 +60,6 @@ const StyledTabsTrigger = styled(TabsTriggerRoot)<{ active?: boolean; size?: key
   &[data-state='active'] {
     cursor: default;
     background-color: ${({ theme }) => theme.colors.contentBg};
-    color: var(--color-foreground);
     box-shadow: ${({ theme }) => theme.shadows.default};
     border-radius: ${({ theme }) => theme.sizes.borderRadius};
   }
