@@ -1,6 +1,7 @@
 import { Children, CSSProperties, FC, isValidElement, PropsWithChildren, ReactNode } from 'react';
 import styled from 'styled-components';
 import { media } from '../../theme';
+import { LoadingOverlay } from '../LoadingOverlay';
 import { H3 } from '../Typography';
 
 export const CardContainer = styled.div`
@@ -56,9 +57,10 @@ interface CardProps extends PropsWithChildren {
   className?: string;
   style?: CSSProperties;
   onClick?: () => void;
+  loading?: string;
 }
 
-export const Card: FC<CardProps> = ({ children, ...props }) => {
+export const Card: FC<CardProps> = ({ children, loading, ...props }) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
   let slotLeftColumn: ReactNode;
@@ -92,6 +94,8 @@ export const Card: FC<CardProps> = ({ children, ...props }) => {
 
   return (
     <CardContainer {...props}>
+      {loading && <LoadingOverlay>{loading}</LoadingOverlay>}
+
       {slotLeftColumn}
 
       <CardInner>
