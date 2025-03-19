@@ -6,7 +6,7 @@ declare const buttonVariants: {
     destructive: import('styled-components').RuleSet<object>;
 };
 declare const buttonSizes: {
-    small: import('styled-components').RuleSet<object>;
+    sm: import('styled-components').RuleSet<object>;
     default: import('styled-components').RuleSet<object>;
     lg: import('styled-components').RuleSet<object>;
     icon: import('styled-components').RuleSet<object>;
