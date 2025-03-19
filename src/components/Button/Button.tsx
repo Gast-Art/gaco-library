@@ -37,7 +37,7 @@ const buttonVariants = {
 };
 
 const buttonSizes = {
-  small: css`
+  sm: css`
     height: 1.5rem;
     padding: 0 0.75rem;
   `,
