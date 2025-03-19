@@ -37,6 +37,10 @@ const buttonVariants = {
 };
 
 const buttonSizes = {
+  small: css`
+    height: 1.5rem;
+    padding: 0 0.75rem;
+  `,
   default: css`
     height: ${({ theme }) => theme.sizes.formControl};
     padding: 0 1rem;
