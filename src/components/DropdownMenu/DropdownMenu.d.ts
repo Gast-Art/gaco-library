@@ -1,13 +1,13 @@
 import { FC, ReactNode } from '../../../node_modules/react';
 interface DropdownMenuProps {
-    trigger: React.ReactNode;
+    trigger: ReactNode;
     items: ({
         content: ReactNode;
         onSelect?: () => void;
     } | 'seperator')[];
 }
 interface DropdownMenuProps {
-    trigger: React.ReactNode;
+    trigger: ReactNode;
     items: ({
         content: ReactNode;
         onSelect?: () => void;

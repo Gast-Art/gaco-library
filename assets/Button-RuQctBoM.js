@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CZMpeKRu.js";import{l as r,d as i}from"./styled-components.browser.esm-BT5p091k.js";import{S as c}from"./Spinner-CTzpbX4O.js";const d={default:r`
+import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CZMpeKRu.js";import{l as r,d as i}from"./styled-components.browser.esm-BT5p091k.js";import{S as d}from"./Spinner-CTzpbX4O.js";const c={default:r`
     background-color: ${({theme:o})=>o.colors.primary};
     color: ${({theme:o})=>o.colors.primaryForeground};
     &:hover {
@@ -25,7 +25,10 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CZMpeKR
     &:hover {
       background-color: ${({theme:o})=>o.colors.errorHover};
     }
-  `},u={default:r`
+  `},u={small:r`
+    height: 1.5rem;
+    padding: 0 0.75rem;
+  `,default:r`
     height: ${({theme:o})=>o.sizes.formControl};
     padding: 0 1rem;
   `,lg:r`
@@ -51,6 +54,6 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CZMpeKR
     cursor: not-allowed;
     opacity: 0.5;
   }
-  ${({variant:o="default"})=>d[o]}
+  ${({variant:o="default"})=>c[o]}
   ${({size:o="default"})=>u[o]}
-`,a=n.forwardRef(({loading:o=!1,disabled:l,...e},s)=>t.jsxs(m,{ref:s,disabled:o||l,...e,children:[o&&t.jsx(c,{size:1,className:"mr-2"})," ",e.children]}));a.displayName="Button";a.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""}},composes:["ButtonHTMLAttributes"]};export{a as B};
+`,a=n.forwardRef(({loading:o=!1,disabled:l,...e},s)=>t.jsxs(m,{ref:s,disabled:o||l,...e,children:[o&&t.jsx(d,{size:1,className:"mr-2"})," ",e.children]}));a.displayName="Button";a.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"small"},{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""}},composes:["ButtonHTMLAttributes"]};export{a as B};
