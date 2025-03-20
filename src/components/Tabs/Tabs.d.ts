@@ -1,4 +1,5 @@
-import { Tabs, TabsContent, TabsListProps as TabsListPropsRoot, TabsTriggerProps as TabsTriggerPropsRoot } from '@radix-ui/react-tabs';
+import { TabsContent, TabsListProps as TabsListPropsRoot, TabsTriggerProps as TabsTriggerPropsRoot } from '@radix-ui/react-tabs';
+declare const Tabs: import('styled-components/dist/types').IStyledComponentBase<"web", import('styled-components').FastOmit<import('@radix-ui/react-tabs').TabsProps & import('../../../node_modules/react').RefAttributes<HTMLDivElement>, never>> & string & Omit<import('../../../node_modules/react').ForwardRefExoticComponent<import('@radix-ui/react-tabs').TabsProps & import('../../../node_modules/react').RefAttributes<HTMLDivElement>>, keyof import('../../../node_modules/react').Component<any, {}, any>>;
 declare const triggerSizes: {
     default: import('styled-components').RuleSet<object>;
     lg: import('styled-components').RuleSet<object>;
