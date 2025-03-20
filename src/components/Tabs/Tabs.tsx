@@ -24,13 +24,16 @@ const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
   overflow-x: auto;
 
   ${({ inline }) =>
-    !inline &&
-    css`
-      display: flex;
-      > * {
-        flex: 1;
-      }
-    `}
+    inline
+      ? css`
+          align-items: flex-start;
+        `
+      : css`
+          display: flex;
+          > * {
+            flex: 1;
+          }
+        `}
 `;
 
 const triggerSizes = {
