@@ -1,15 +1,21 @@
 import {
-  Tabs,
   TabsContent,
   TabsListProps as TabsListPropsRoot,
   TabsList as TabsListRoot,
+  Tabs as TabsRoot,
   TabsTriggerProps as TabsTriggerPropsRoot,
   TabsTrigger as TabsTriggerRoot,
 } from '@radix-ui/react-tabs';
 import { ComponentRef, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
+const Tabs = styled(TabsRoot)`
+  display: flex;
+  flex-direction: column;
+`;
+
 const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   margin-bottom: 1rem;
