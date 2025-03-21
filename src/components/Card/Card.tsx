@@ -151,8 +151,6 @@ export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...
     }
   });
 
-  console.log({ size });
-
   return (
     <CardContainer $size={size} {...props}>
       {loading && <LoadingOverlay>{typeof loading === 'string' ? loading : undefined}</LoadingOverlay>}

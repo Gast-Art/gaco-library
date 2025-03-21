@@ -1,6 +1,5 @@
 import { Bar, BarChart as BarChartRoot, CartesianGrid, Legend, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
-import { useTheme } from 'styled-components';
 import { Card, CardSections, CardSize } from '../Card';
 
 interface BarChartTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -27,14 +26,12 @@ const BarChartTooltip = ({ active, payload, label, tooltipValueFormatter = (labe
 interface BarChartProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any }[];
+  labels: { dataKey: string; color: string }[];
   tooltipValueFormatter: (value: any) => string;
   showLegend?: boolean;
 }
 
-export const BarChart = ({ data, showLegend, tooltipValueFormatter }: BarChartProps) => {
-  const theme = useTheme();
-  const dataKeys = Object.keys(data[0]).filter((key) => key !== 'name');
-
+export const BarChart = ({ data, labels, showLegend, tooltipValueFormatter }: BarChartProps) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChartRoot data={data} width={500} height={300}>
@@ -44,8 +41,8 @@ export const BarChart = ({ data, showLegend, tooltipValueFormatter }: BarChartPr
         <Tooltip content={(props) => <BarChartTooltip {...props} tooltipValueFormatter={tooltipValueFormatter} />} />
         {showLegend && <Legend />}
 
-        {dataKeys.map((key) => (
-          <Bar key={key} dataKey={key} fill={theme.colors.primary} />
+        {labels.map(({ dataKey, color }) => (
+          <Bar key={dataKey} dataKey={dataKey} fill={color} />
         ))}
       </BarChartRoot>
     </ResponsiveContainer>

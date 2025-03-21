@@ -20,6 +20,12 @@ type Story = StoryObj<typeof BarChart>;
 export const Default: Story = {
   args: {
     tooltipValueFormatter: (value: any) => `$${value}`,
+    labels: [
+      {
+        dataKey: 'sales',
+        color: 'red',
+      },
+    ],
     data: [
       {
         name: 'Jan',
