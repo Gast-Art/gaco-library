@@ -1,26 +1,72 @@
 import { Children, CSSProperties, FC, isValidElement, PropsWithChildren, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from '../../theme';
 import { LoadingOverlay } from '../LoadingOverlay';
 import { H3 } from '../Typography';
 
-export const CardContainer = styled.div`
+export enum CardSize {
+  sm = 'sm',
+  md = 'md',
+  lg = 'lg',
+}
+
+export const CardContainer = styled.div<{ $size?: CardSize }>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.contentBg};
   box-shadow: ${({ theme }) => theme.shadows.card};
   width: 100%;
-
-  padding: 0.75rem;
   overflow: hidden;
-
   display: flex;
   gap: 1rem;
-
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
 
-  ${media.md`
-      padding: 1rem;
-  `}
+  ${({ $size, theme }) => {
+    switch ($size) {
+      case CardSize.sm:
+        return css`
+          font-size: ${theme.sizes.fonts.sm};
+          padding: 0.5rem;
+          h3 {
+            font-size: ${theme.sizes.fonts.sm};
+          }
+          ${media.md`
+            padding: 0.75rem;
+            h3 {
+              font-size: ${theme.sizes.fonts.md};
+            }
+          `}
+        `;
+      case CardSize.md:
+      default:
+        return css`
+          padding: 0.75rem;
+          font-size: ${theme.sizes.fonts.md};
+          h3 {
+            font-size: ${theme.sizes.fonts.md};
+          }
+          ${media.md`
+            padding: 1rem;
+            h3 {
+              font-size: ${theme.sizes.fonts.lg};
+            }
+          `}
+        `;
+      case CardSize.lg:
+        return css`
+          padding: 1.5rem;
+          font-size: ${theme.sizes.fonts.md};
+          h3 {
+            font-size: ${theme.sizes.fonts.xl};
+          }
+          ${media.md`
+            padding: 2rem;
+            h3 {
+             font-size: ${theme.sizes.fonts.xxl};
+            }
+          `}
+        `;
+    }
+  }}
 `;
 
 const CardInner = styled.div`
@@ -35,22 +81,25 @@ const Content = styled.div`
   max-height: 480px;
 
   ${media.md`
-      max-height: none;
-  `}
+    max-height: none;
+`}
 `;
 
 const Title = styled(H3)`
   margin-top: 0;
-  font-size: ${({ theme }) => theme.sizes.fonts.md};
-
-  ${media.md`
-      font-size: ${({ theme }) => theme.sizes.fonts.lg};
-  `};
 `;
 
 const LeftColumn = styled.div``;
 
 const RightColumn = styled.div``;
+
+interface CardProps extends PropsWithChildren {
+  className?: string;
+  style?: CSSProperties;
+  onClick?: () => void;
+  loading?: string | boolean;
+  size?: CardSize;
+}
 
 export const CardSections = Object.assign(
   {},
@@ -67,9 +116,10 @@ interface CardProps extends PropsWithChildren {
   style?: CSSProperties;
   onClick?: () => void;
   loading?: string | boolean;
+  size?: CardSize;
 }
 
-export const Card: FC<CardProps> = ({ children, loading, ...props }) => {
+export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...props }) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
   let slotLeftColumn: ReactNode;
@@ -101,8 +151,10 @@ export const Card: FC<CardProps> = ({ children, loading, ...props }) => {
     }
   });
 
+  console.log({ size });
+
   return (
-    <CardContainer {...props}>
+    <CardContainer $size={size} {...props}>
       {loading && <LoadingOverlay>{typeof loading === 'string' ? loading : undefined}</LoadingOverlay>}
 
       {slotLeftColumn}

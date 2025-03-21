@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../Button';
-import { Card, CardSections } from './Card';
+import { Card, CardSections, CardSize } from './Card';
 
 const meta: Meta<typeof Card> = {
   title: 'Molecules/Card',
-  render: ({ children }) => (
-    <Card>
+  render: ({ children, ...props }) => (
+    <Card {...props}>
       <CardSections.Title>This is a title</CardSections.Title>
       <CardSections.Content>This is content for a card. Lorum fucking ipsum bitches.</CardSections.Content>
       {children}
@@ -27,6 +27,12 @@ type Story = StoryObj<typeof Card>;
 export const Default: Story = {
   args: {
     children: 'This is the children of the card',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: CardSize.sm,
   },
 };
 
