@@ -26,7 +26,7 @@ const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
   ${({ inline }) =>
     inline
       ? css`
-          align-items: flex-start;
+          align-self: flex-start;
         `
       : css`
           display: flex;

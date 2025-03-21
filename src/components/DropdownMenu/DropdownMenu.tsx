@@ -1,13 +1,8 @@
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
 import { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-interface DropdownMenuProps {
-  trigger: ReactNode;
-  items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
-}
-
-const StyledContent = styled(RadixDropdownMenu.Content)`
+export const DropdownMenuContentStyling = css`
   background-color: #ffffff;
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
@@ -17,14 +12,18 @@ const StyledContent = styled(RadixDropdownMenu.Content)`
   z-index: ${({ theme }) => theme.zIndicies.DropdownMenu};
 `;
 
-const StyledSeparator = styled(RadixDropdownMenu.Separator)`
+const DropdownMenuContent = styled(RadixDropdownMenu.Content)`
+  ${DropdownMenuContentStyling}
+`;
+
+const Separator = styled(RadixDropdownMenu.Separator)`
   height: 1px;
   background-color: ${({ theme }) => theme.colors.separator};
 `;
 
-const StyledItem = styled(RadixDropdownMenu.Item)`
+export const DropdownMenuItemStyling = css`
   padding: 0.5rem 1rem;
-  color: #333333;
+  color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   transition: background-color 0.2s ease;
 
@@ -37,7 +36,7 @@ const StyledItem = styled(RadixDropdownMenu.Item)`
 
   &:focus {
     outline: none;
-    background-color: #e0e0e0;
+    background-color: ${({ theme }) => theme.colors.mutedBg};
   }
 
   svg {
@@ -47,9 +46,13 @@ const StyledItem = styled(RadixDropdownMenu.Item)`
   }
 `;
 
+const DropdownMenuItem = styled(RadixDropdownMenu.Item)`
+  ${DropdownMenuItemStyling}
+`;
+
 interface DropdownMenuProps {
-  trigger: ReactNode;
   items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
+  trigger?: ReactNode;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
   side?: 'left' | 'right';
@@ -59,18 +62,18 @@ interface DropdownMenuProps {
 const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffset, side, sideOffset }) => {
   return (
     <RadixDropdownMenu.Root>
-      <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>
-      <StyledContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
+      {trigger && <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>}
+      <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
         {items.map((item, index) =>
           item === 'seperator' ? (
-            <StyledSeparator key={index} />
+            <Separator key={index} />
           ) : (
-            <StyledItem key={index} onSelect={item.onSelect}>
+            <DropdownMenuItem key={index} onSelect={item.onSelect}>
               {item.content}
-            </StyledItem>
+            </DropdownMenuItem>
           ),
         )}
-      </StyledContent>
+      </DropdownMenuContent>
     </RadixDropdownMenu.Root>
   );
 };

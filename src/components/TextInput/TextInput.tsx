@@ -2,6 +2,11 @@ import { InputHTMLAttributes } from 'react';
 import { FaExclamationCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  position: relative;
+  padding-top: 0.75rem;
+`;
+
 const ErrorMessage = styled.span`
   color: ${({ theme }) => theme.colors.error};
   font-size: ${({ theme }) => theme.sizes.fonts.xxs};
@@ -70,11 +75,6 @@ const Icon = styled(FaExclamationCircle)`
   right: 0.75rem;
   color: ${({ theme }) => theme.colors.error};
   pointer-events: none;
-`;
-
-const Container = styled.div`
-  position: relative;
-  padding-top: 1rem;
 `;
 
 interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
