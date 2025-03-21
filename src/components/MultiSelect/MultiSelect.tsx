@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import Select, { ActionMeta, MultiValue } from 'react-select';
+import Select, { ActionMeta } from 'react-select';
 import styled from 'styled-components';
 import { DropdownMenuContentStyling, DropdownMenuItemStyling } from '../DropdownMenu';
 
@@ -11,7 +11,7 @@ export interface MultiSelectOption {
 interface MultiSelectProps {
   options: MultiSelectOption[];
   value: MultiSelectOption[];
-  onChange: (selected: MultiValue<MultiSelectOption>, actionMeta: ActionMeta<MultiSelectOption>) => void;
+  onChange: (selected: MultiSelectOption[], actionMeta: ActionMeta<MultiSelectOption>) => void;
   label?: string;
 }
 
@@ -97,7 +97,7 @@ export const MultiSelect: FC<MultiSelectProps> = ({ options, value, onChange, la
         isMulti
         options={options}
         value={value}
-        onChange={onChange}
+        onChange={(values, actionMeta) => onChange([...values], actionMeta)}
         placeholder=" "
         classNamePrefix="react-select"
         onFocus={() => setIsFocused(true)}
