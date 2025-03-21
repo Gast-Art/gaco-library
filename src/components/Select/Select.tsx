@@ -1,18 +1,18 @@
 import { FC, useState } from 'react';
-import Select, { ActionMeta } from 'react-select';
-import styled from 'styled-components';
+import SelectRoot, { ActionMeta, SingleValue } from 'react-select';
+import styled, { css } from 'styled-components';
 import { DropdownMenuContentStyling, DropdownMenuItemStyling } from '../DropdownMenu';
 
-export interface MultiSelectOption {
+export interface SelectOption {
   value: string;
   label: string;
 }
 
 interface MultiSelectProps {
   className?: string;
-  options: MultiSelectOption[];
-  value: MultiSelectOption[];
-  onChange: (selected: MultiSelectOption[], actionMeta: ActionMeta<MultiSelectOption>) => void;
+  options: SelectOption[];
+  value: SelectOption[];
+  onChange: (selected: SelectOption[], actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;
 }
 
@@ -40,7 +40,7 @@ const Label = styled.label<{ $active?: boolean }>`
   `}
 `;
 
-const StyledSelect = styled(Select<MultiSelectOption, true>)`
+const SelectStyling = css`
   .react-select__control {
     min-height: ${({ theme }) => theme.sizes.formControl};
     border: none;
@@ -89,12 +89,16 @@ const StyledSelect = styled(Select<MultiSelectOption, true>)`
   }
 `;
 
+const StyledMultiSelect = styled(SelectRoot<SelectOption, true>)`
+  ${SelectStyling}
+`;
+
 export const MultiSelect: FC<MultiSelectProps> = ({ className, options, value, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <Container className={className}>
-      <StyledSelect
+      <StyledMultiSelect
         isMulti
         options={options}
         value={value}
@@ -105,6 +109,37 @@ export const MultiSelect: FC<MultiSelectProps> = ({ className, options, value, o
         onBlur={() => setIsFocused(false)}
       />
       {label && <Label $active={!!value.length || isFocused}>{label}</Label>}
+    </Container>
+  );
+};
+
+interface SelectProps {
+  className?: string;
+  options: SelectOption[];
+  value?: SingleValue<SelectOption>;
+  onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
+  label?: string;
+}
+
+const StyledSelect = styled(SelectRoot<SelectOption>)`
+  ${SelectStyling}
+`;
+
+export const Select: FC<SelectProps> = ({ className, options, value, onChange, label }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <Container className={className}>
+      <StyledSelect
+        options={options}
+        value={value}
+        onChange={(value, actionMeta) => onChange(value, actionMeta)}
+        placeholder=" "
+        classNamePrefix="react-select"
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+      />
+      {label && <Label $active={!!value?.value.length || isFocused}>{label}</Label>}
     </Container>
   );
 };

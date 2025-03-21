@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ComponentProps, useState } from 'react';
-import { MultiSelect, MultiSelectOption } from './MultiSelect';
+import { Select, SelectOption } from './Select';
 
-const meta: Meta<typeof MultiSelect> = {
-  title: 'Atoms/MultiSelect',
-  component: MultiSelect,
+const meta: Meta<typeof Select> = {
+  title: 'Atoms/Select',
+  component: Select,
   decorators: [
     (Story) => (
       <div style={{ width: '320px' }}>
@@ -16,12 +16,12 @@ const meta: Meta<typeof MultiSelect> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof MultiSelect>;
+type Story = StoryObj<typeof Select>;
 
-const Template = (args: ComponentProps<typeof MultiSelect>) => {
-  const [value, setValue] = useState<MultiSelectOption[]>([]);
+const Template = (args: ComponentProps<typeof Select>) => {
+  const [value, setValue] = useState<SelectOption | null>();
 
-  return <MultiSelect {...args} value={value} onChange={(newValue) => setValue(newValue)} />;
+  return <Select {...args} value={value} onChange={(newValue) => setValue(newValue)} />;
 };
 
 export const Default: Story = {

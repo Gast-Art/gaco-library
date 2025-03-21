@@ -10,7 +10,7 @@ export * from './components/GlobalStyle';
 export * from './components/LineChart';
 export * from './components/LoadingOverlay';
 export * from './components/Map';
-export * from './components/MultiSelect';
+export * from './components/Select';
 export * from './components/Spinner';
 export * from './components/Tabs';
 export * from './components/TextInput';
