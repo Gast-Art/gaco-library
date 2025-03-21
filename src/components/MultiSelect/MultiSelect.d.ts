@@ -5,6 +5,7 @@ export interface MultiSelectOption {
     label: string;
 }
 interface MultiSelectProps {
+    className?: string;
     options: MultiSelectOption[];
     value: MultiSelectOption[];
     onChange: (selected: MultiSelectOption[], actionMeta: ActionMeta<MultiSelectOption>) => void;
