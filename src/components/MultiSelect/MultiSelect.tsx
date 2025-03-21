@@ -1,7 +1,19 @@
 import { FC, useState } from 'react';
-import Select from 'react-select';
+import Select, { ActionMeta, MultiValue } from 'react-select';
 import styled from 'styled-components';
 import { DropdownMenuContentStyling, DropdownMenuItemStyling } from '../DropdownMenu';
+
+export interface MultiSelectOption {
+  value: string;
+  label: string;
+}
+
+interface MultiSelectProps {
+  options: MultiSelectOption[];
+  value: MultiSelectOption[];
+  onChange: (selected: MultiValue<MultiSelectOption>, actionMeta: ActionMeta<MultiSelectOption>) => void;
+  label?: string;
+}
 
 const Container = styled.div`
   position: relative;
@@ -27,7 +39,7 @@ const Label = styled.label<{ $active?: boolean }>`
   `}
 `;
 
-const StyledSelect = styled(Select)`
+const StyledSelect = styled(Select<MultiSelectOption, true>)`
   .react-select__control {
     min-height: ${({ theme }) => theme.sizes.formControl};
     border: none;
@@ -75,18 +87,6 @@ const StyledSelect = styled(Select)`
     padding: 2px 4px;
   }
 `;
-
-export interface MultiSelectOption {
-  value: string;
-  label: string;
-}
-
-interface MultiSelectProps {
-  options: MultiSelectOption[];
-  value: MultiSelectOption[];
-  onChange: (selected: any) => void;
-  label?: string;
-}
 
 export const MultiSelect: FC<MultiSelectProps> = ({ options, value, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
