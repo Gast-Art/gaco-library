@@ -1,4 +1,4 @@
-import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as x}from"./index-CR__hKHy.js";import{l as s,d as r}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-DNsJRV0f.js";import{L as $}from"./LoadingOverlay-C_HCXSLF.js";import{b as C}from"./Typography-CjiBmtaC.js";const i={xs:"400px",sm:"600px",md:"900px",lg:"1280px",xl:"1440px",xxl:"1920px"},d={xs:(...e)=>s`
+import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as u}from"./index-CR__hKHy.js";import{l as s,d as r}from"./styled-components.browser.esm-BuGJ70dT.js";import"./light-DNsJRV0f.js";import{L as $}from"./LoadingOverlay-By8rFo9W.js";import{b as z}from"./Typography-BRpeQ2wu.js";const i={xs:"400px",sm:"600px",md:"900px",lg:"1280px",xl:"1440px",xxl:"1920px"},d={xs:(...e)=>s`
     @media (min-width: ${i.xs}) {
       ${s(...e)};
     }
@@ -22,7 +22,7 @@ import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as x}from"./index-CR__hKH
     @media (min-width: ${i.xxl}) {
       ${s(...e)};
     }
-  `};var z=(e=>(e.sm="sm",e.md="md",e.lg="lg",e))(z||{});const y=r.div`
+  `};var C=(e=>(e.sm="sm",e.md="md",e.lg="lg",e))(C||{});const y=r.div`
   position: relative;
   background-color: ${({theme:e})=>e.colors.contentBg};
   box-shadow: ${({theme:e})=>e.shadows.card};
@@ -81,6 +81,6 @@ import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as x}from"./index-CR__hKH
   ${d.md`
     max-height: none;
 `}
-`,w=r(C)`
+`,w=r(z)`
   margin-top: 0;
-`,b=r.div``,T=r.div``,o=Object.assign({},{Title:w,Content:v,LeftColumn:b,RightColumn:T}),j=({children:e,loading:t,size:l="md",...c})=>{let m,f,p,u;const g=x.Children.toArray(e).filter(n=>typeof n=="string"?!0:x.isValidElement(n)?n.type===o.Title?(m=n,!1):n.type===o.Content?(f=n,!1):n.type===o.LeftColumn?(p=n,!1):n.type===o.RightColumn?(u=n,!1):!0:!1);return console.log({size:l}),a.jsxs(y,{$size:l,...c,children:[t&&a.jsx($,{children:typeof t=="string"?t:void 0}),p,a.jsxs(h,{children:[m,f,g]}),u]})};j.__docgenInfo={description:"",methods:[],displayName:"Card",props:{className:{required:!1,tsType:{name:"string"},description:""},style:{required:!1,tsType:{name:"CSSProperties"},description:""},onClick:{required:!1,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},loading:{required:!1,tsType:{name:"union",raw:"string | boolean",elements:[{name:"string"},{name:"boolean"}]},description:""},size:{required:!1,tsType:{name:"CardSize"},description:"",defaultValue:{value:"CardSize.md",computed:!0}}},composes:["PropsWithChildren"]};export{j as C,o as a,z as b,y as c};
+`,b=r.div``,T=r.div``,o=Object.assign({},{Title:w,Content:v,LeftColumn:b,RightColumn:T}),j=({children:e,loading:t,size:x="md",...c})=>{let m,l,f,p;const g=u.Children.toArray(e).filter(n=>typeof n=="string"?!0:u.isValidElement(n)?n.type===o.Title?(m=n,!1):n.type===o.Content?(l=n,!1):n.type===o.LeftColumn?(f=n,!1):n.type===o.RightColumn?(p=n,!1):!0:!1);return a.jsxs(y,{$size:x,...c,children:[t&&a.jsx($,{children:typeof t=="string"?t:void 0}),f,a.jsxs(h,{children:[m,l,g]}),p]})};j.__docgenInfo={description:"",methods:[],displayName:"Card",props:{className:{required:!1,tsType:{name:"string"},description:""},style:{required:!1,tsType:{name:"CSSProperties"},description:""},onClick:{required:!1,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},loading:{required:!1,tsType:{name:"union",raw:"string | boolean",elements:[{name:"string"},{name:"boolean"}]},description:""},size:{required:!1,tsType:{name:"CardSize"},description:"",defaultValue:{value:"CardSize.md",computed:!0}}},composes:["PropsWithChildren"]};export{j as C,o as a,C as b,y as c};

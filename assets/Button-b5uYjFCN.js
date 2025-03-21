@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CR__hKHy.js";import{l as r,d as i}from"./styled-components.browser.esm-DnH8uv-2.js";import{S as d}from"./Spinner-xLrCEoRn.js";const c={default:r`
+import{j as t}from"./jsx-runtime-CLpGMVip.js";import{r as n}from"./index-CR__hKHy.js";import{l as r,d as i}from"./styled-components.browser.esm-BuGJ70dT.js";import{S as d}from"./Spinner-ClvM1fzh.js";const c={default:r`
     background-color: ${({theme:o})=>o.colors.primary};
     color: ${({theme:o})=>o.colors.primaryForeground};
     &:hover {

@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-CLpGMVip.js";import{d as s,l as e}from"./styled-components.browser.esm-DnH8uv-2.js";const a=o=>({default:e`
+import{j as n}from"./jsx-runtime-CLpGMVip.js";import{d as s,l as e}from"./styled-components.browser.esm-BuGJ70dT.js";const a=o=>({default:e`
     border: transparent;
     background-color: ${({theme:r})=>r.colors.bg};
     color: ${({theme:r})=>r.colors.text};

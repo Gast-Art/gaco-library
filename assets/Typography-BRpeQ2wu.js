@@ -1,4 +1,4 @@
-import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";const n=t.h1`
+import{d as t}from"./styled-components.browser.esm-BuGJ70dT.js";const n=t.h1`
   font-size: ${({theme:o})=>o.sizes.fonts.xxxl};
   font-family: 'Lora', serif;
   font-weight: bold;
