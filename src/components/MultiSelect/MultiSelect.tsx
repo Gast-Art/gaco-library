@@ -9,6 +9,7 @@ export interface MultiSelectOption {
 }
 
 interface MultiSelectProps {
+  className?: string;
   options: MultiSelectOption[];
   value: MultiSelectOption[];
   onChange: (selected: MultiSelectOption[], actionMeta: ActionMeta<MultiSelectOption>) => void;
@@ -88,11 +89,11 @@ const StyledSelect = styled(Select<MultiSelectOption, true>)`
   }
 `;
 
-export const MultiSelect: FC<MultiSelectProps> = ({ options, value, onChange, label }) => {
+export const MultiSelect: FC<MultiSelectProps> = ({ className, options, value, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <Container>
+    <Container className={className}>
       <StyledSelect
         isMulti
         options={options}
