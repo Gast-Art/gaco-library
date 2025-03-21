@@ -11,7 +11,7 @@ import{j as s}from"./jsx-runtime-CLpGMVip.js";import{r as v}from"./index-CR__hKH
   overflow-x: auto;
 
   ${({inline:e})=>e?x`
-          align-items: flex-start;
+          align-self: flex-start;
         `:x`
           display: flex;
           > * {
