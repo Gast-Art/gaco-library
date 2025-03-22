@@ -6,50 +6,29 @@ import {
   ResponsiveContainer,
   ResponsiveContainerProps,
   Tooltip,
-  TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
-import { Card, CardSections, CardSize } from '../Card';
-
-interface BarChartTooltipProps extends TooltipProps<ValueType, NameType> {
-  tooltipValueFormatter: (value: any) => string;
-}
-
-const BarChartTooltip = ({ active, payload, label, tooltipValueFormatter = (label) => label.toString() }: BarChartTooltipProps) => {
-  if (active && payload && payload.length) {
-    return (
-      <Card size={CardSize.sm}>
-        <CardSections.Title>{label}</CardSections.Title>
-        <CardSections.Content>
-          {payload.map((entry: any, index: number) => (
-            <div key={`item-${index}`}>{`${entry.name}: ${tooltipValueFormatter(entry.value)}`}</div>
-          ))}
-        </CardSections.Content>
-      </Card>
-    );
-  }
-
-  return null;
-};
+import { ContentType } from 'recharts/types/component/Tooltip';
+import { TooltipChart } from '../TooltipChart';
 
 interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any }[];
   labels: { dataKey: string; color: string }[];
-  tooltipValueFormatter: (value: any) => string;
+  tooltipContent?: ContentType<ValueType, NameType>;
   showLegend?: boolean;
 }
 
-export const BarChart = ({ data, labels, height = 400, showLegend, tooltipValueFormatter }: BarChartProps) => {
+export const BarChart = ({ data, labels, height = 400, showLegend, tooltipContent = TooltipChart }: BarChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <BarChartRoot data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip content={(props) => <BarChartTooltip {...props} tooltipValueFormatter={tooltipValueFormatter} />} />
+        <Tooltip content={tooltipContent} />
         {showLegend && <Legend />}
 
         {labels.map(({ dataKey, color }) => (

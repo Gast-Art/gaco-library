@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Card } from '../Card';
+import { TooltipChart } from '../TooltipChart';
 import { BarChart } from './BarChart';
 
 const meta: Meta<typeof BarChart> = {
@@ -20,17 +21,22 @@ type Story = StoryObj<typeof BarChart>;
 
 export const Default: Story = {
   args: {
-    tooltipValueFormatter: (value: any) => `$${value}`,
+    tooltipContent: (props) => <TooltipChart {...props} tooltipValueFormatter={(val) => `€${val}`} />,
     labels: [
       {
         dataKey: 'sales',
         color: 'red',
+      },
+      {
+        dataKey: 'sales2',
+        color: 'blue',
       },
     ],
     data: [
       {
         name: 'Jan',
         sales: 4000,
+        sales2: 2400,
       },
       {
         name: 'Feb',
