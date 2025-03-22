@@ -33,7 +33,7 @@ import{j as s}from"./jsx-runtime-CLpGMVip.js";import{d as I}from"./styled-compon
     color: white;
     text-decoration: underline;
 
-    hover: {
+    hover {
       color: white;
     }
   }
