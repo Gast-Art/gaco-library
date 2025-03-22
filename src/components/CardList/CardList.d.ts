@@ -1,7 +1,9 @@
 import { PropsWithChildren, ReactNode } from '../../../node_modules/react';
+import { CardSize } from '../Card';
 export interface CardProps extends PropsWithChildren {
     className?: string;
     id: string | number;
+    size?: CardSize;
     title?: ReactNode;
     content?: ReactNode;
     rightColumn?: ReactNode;
