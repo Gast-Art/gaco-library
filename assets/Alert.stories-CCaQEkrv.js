@@ -28,18 +28,23 @@ import{j as s}from"./jsx-runtime-CLpGMVip.js";import{d as I}from"./styled-compon
   background-color: ${({type:e,theme:r})=>{switch(e){case"error":return r.colors.error;case"warning":return r.colors.warning;case"success":return r.colors.success;case"info":return r.colors.info;default:return r.colors.info}}};
   border-bottom: 4px solid
     ${({type:e,theme:r})=>{switch(e){case"error":return r.colors.errorHover;case"warning":return r.colors.warningHover;case"success":return r.colors.successHover;case"info":return r.colors.infoHover;default:return r.colors.infoHover}}};
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
 `,q=I.span`
   margin-right: 1rem;
-`,S=({type:e,children:r})=>{const A=()=>{switch(e){case"error":return s.jsx($,{});case"warning":return s.jsx(E,{});case"success":return s.jsx(N,{});case"info":return s.jsx(l,{});default:return s.jsx(l,{})}};return s.jsxs(W,{type:e,children:[s.jsx(q,{children:A()}),r]})};S.__docgenInfo={description:"",methods:[],displayName:"Alert",props:{type:{required:!0,tsType:{name:"union",raw:"'error' | 'warning' | 'success' | 'info'",elements:[{name:"literal",value:"'error'"},{name:"literal",value:"'warning'"},{name:"literal",value:"'success'"},{name:"literal",value:"'info'"}]},description:""}},composes:["PropsWithChildren"]};const R={title:"Atoms/Alert",component:S,decorators:[e=>s.jsx("div",{style:{width:"320px"},children:s.jsx(e,{})})]},o={args:{children:'This is a default alert. It defaults to "info"'}},n={args:{children:"This is an error alert. Something went wrong!",type:"error"}},c={args:{children:"This is a success alert. Everything went right!",type:"success"}},a={args:{children:"This is a warning alert. Be careful!",type:"warning"}},t={args:{children:"This is an info alert. Just so you know.",type:"info"}};var u,d,p;o.parameters={...o.parameters,docs:{...(u=o.parameters)==null?void 0:u.docs,source:{originalSource:`{
+`,S=({type:e,children:r})=>{const A=()=>{switch(e){case"error":return s.jsx($,{});case"warning":return s.jsx(E,{});case"success":return s.jsx(N,{});case"info":return s.jsx(l,{});default:return s.jsx(l,{})}};return s.jsxs(W,{type:e,children:[s.jsx(q,{children:A()}),r]})};S.__docgenInfo={description:"",methods:[],displayName:"Alert",props:{type:{required:!0,tsType:{name:"union",raw:"'error' | 'warning' | 'success' | 'info'",elements:[{name:"literal",value:"'error'"},{name:"literal",value:"'warning'"},{name:"literal",value:"'success'"},{name:"literal",value:"'info'"}]},description:""}},composes:["PropsWithChildren"]};const R={title:"Atoms/Alert",component:S,decorators:[e=>s.jsx("div",{style:{width:"320px"},children:s.jsx(e,{})})]},o={args:{children:'This is a default alert. It defaults to "info"'}},n={args:{children:"This is an error alert. Something went wrong!",type:"error"}},c={args:{children:"This is a success alert. Everything went right!",type:"success"}},a={args:{children:"This is a warning alert. Be careful!",type:"warning"}},t={args:{children:"This is an info alert. Just so you know.",type:"info"}};var d,u,p;o.parameters={...o.parameters,docs:{...(d=o.parameters)==null?void 0:d.docs,source:{originalSource:`{
   args: {
     children: 'This is a default alert. It defaults to "info"'
   }
-}`,...(p=(d=o.parameters)==null?void 0:d.docs)==null?void 0:p.source}}};var m,g,f;n.parameters={...n.parameters,docs:{...(m=n.parameters)==null?void 0:m.docs,source:{originalSource:`{
+}`,...(p=(u=o.parameters)==null?void 0:u.docs)==null?void 0:p.source}}};var m,g,h;n.parameters={...n.parameters,docs:{...(m=n.parameters)==null?void 0:m.docs,source:{originalSource:`{
   args: {
     children: 'This is an error alert. Something went wrong!',
     type: 'error'
   }
-}`,...(f=(g=n.parameters)==null?void 0:g.docs)==null?void 0:f.source}}};var h,y,w;c.parameters={...c.parameters,docs:{...(h=c.parameters)==null?void 0:h.docs,source:{originalSource:`{
+}`,...(h=(g=n.parameters)==null?void 0:g.docs)==null?void 0:h.source}}};var f,y,w;c.parameters={...c.parameters,docs:{...(f=c.parameters)==null?void 0:f.docs,source:{originalSource:`{
   args: {
     children: 'This is a success alert. Everything went right!',
     type: 'success'
