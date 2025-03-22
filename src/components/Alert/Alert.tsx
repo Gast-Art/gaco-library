@@ -38,6 +38,11 @@ const AlertWrapper = styled.div<{ type: AlertType }>`
           return theme.colors.infoHover;
       }
     }};
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
 `;
 
 const Icon = styled.span`
