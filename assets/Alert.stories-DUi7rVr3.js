@@ -32,6 +32,10 @@ import{j as s}from"./jsx-runtime-CLpGMVip.js";import{d as I}from"./styled-compon
   a {
     color: white;
     text-decoration: underline;
+
+    hover: {
+      color: white;
+    }
   }
 `,q=I.span`
   margin-right: 1rem;
