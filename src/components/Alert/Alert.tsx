@@ -57,9 +57,10 @@ type AlertType = 'error' | 'warning' | 'success' | 'info';
 
 interface AlertProps extends PropsWithChildren {
   type: AlertType;
+  className?: string;
 }
 
-export const Alert: FC<AlertProps> = ({ type, children }) => {
+export const Alert: FC<AlertProps> = ({ type, className, children }) => {
   const renderIcon = () => {
     switch (type) {
       case 'error':
@@ -76,7 +77,7 @@ export const Alert: FC<AlertProps> = ({ type, children }) => {
   };
 
   return (
-    <AlertWrapper type={type}>
+    <AlertWrapper type={type} className={className}>
       <Icon>{renderIcon()}</Icon>
       {children}
     </AlertWrapper>
