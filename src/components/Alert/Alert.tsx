@@ -43,7 +43,7 @@ const AlertWrapper = styled.div<{ type: AlertType }>`
     color: white;
     text-decoration: underline;
 
-    hover: {
+    hover {
       color: white;
     }
   }
