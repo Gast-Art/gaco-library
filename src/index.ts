@@ -15,6 +15,7 @@ export * from './components/Select';
 export * from './components/Spinner';
 export * from './components/Tabs';
 export * from './components/TextInput';
+export * from './components/TextOverflow';
 export * from './components/ThemeProvider';
 export * from './components/TooltipChart';
 export * from './components/Typography';
