@@ -1,4 +1,6 @@
 import { ResponsiveContainerProps } from 'recharts';
+import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
+import { ContentType } from 'recharts/types/component/Tooltip';
 interface LineChartProps extends Omit<ResponsiveContainerProps, 'children'> {
     data: {
         [key: string]: any;
@@ -7,7 +9,8 @@ interface LineChartProps extends Omit<ResponsiveContainerProps, 'children'> {
         dataKey: string;
         stroke: string;
     }[];
+    tooltipContent?: ContentType<ValueType, NameType>;
 }
-export declare const LineChart: ({ data, labels, height, ...props }: LineChartProps) => import("react/jsx-runtime").JSX.Element;
+export declare const LineChart: ({ data, labels, height, tooltipContent, ...props }: LineChartProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=LineChart.d.ts.map

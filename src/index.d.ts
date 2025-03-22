@@ -16,6 +16,7 @@ export * from './components/Spinner';
 export * from './components/Tabs';
 export * from './components/TextInput';
 export * from './components/ThemeProvider';
+export * from './components/TooltipChart';
 export * from './components/Typography';
 export * from './theme';
 //# sourceMappingURL=index.d.ts.map

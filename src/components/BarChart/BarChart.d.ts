@@ -1,4 +1,6 @@
 import { ResponsiveContainerProps } from 'recharts';
+import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
+import { ContentType } from 'recharts/types/component/Tooltip';
 interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
     data: {
         [key: string]: any;
@@ -7,9 +9,9 @@ interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
         dataKey: string;
         color: string;
     }[];
-    tooltipValueFormatter: (value: any) => string;
+    tooltipContent?: ContentType<ValueType, NameType>;
     showLegend?: boolean;
 }
-export declare const BarChart: ({ data, labels, height, showLegend, tooltipValueFormatter }: BarChartProps) => import("react/jsx-runtime").JSX.Element;
+export declare const BarChart: ({ data, labels, height, showLegend, tooltipContent }: BarChartProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=BarChart.d.ts.map
