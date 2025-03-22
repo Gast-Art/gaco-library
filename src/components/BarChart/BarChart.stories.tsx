@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Card } from '../Card';
 import { BarChart } from './BarChart';
 
 const meta: Meta<typeof BarChart> = {
@@ -7,9 +8,9 @@ const meta: Meta<typeof BarChart> = {
   component: BarChart,
   decorators: [
     (Story) => (
-      <div style={{ padding: '2rem', backgroundColor: '#fff', height: '480px', width: '480px' }}>
+      <Card>
         <Story />
-      </div>
+      </Card>
     ),
   ],
 };

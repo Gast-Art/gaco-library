@@ -1,4 +1,15 @@
-import { Bar, BarChart as BarChartRoot, CartesianGrid, Legend, ResponsiveContainer, Tooltip, TooltipProps, XAxis, YAxis } from 'recharts';
+import {
+  Bar,
+  BarChart as BarChartRoot,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  ResponsiveContainerProps,
+  Tooltip,
+  TooltipProps,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 import { Card, CardSections, CardSize } from '../Card';
 
@@ -23,7 +34,7 @@ const BarChartTooltip = ({ active, payload, label, tooltipValueFormatter = (labe
   return null;
 };
 
-interface BarChartProps {
+interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any }[];
   labels: { dataKey: string; color: string }[];
@@ -31,10 +42,10 @@ interface BarChartProps {
   showLegend?: boolean;
 }
 
-export const BarChart = ({ data, labels, showLegend, tooltipValueFormatter }: BarChartProps) => {
+export const BarChart = ({ data, labels, height = 400, showLegend, tooltipValueFormatter }: BarChartProps) => {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChartRoot data={data} width={500} height={300}>
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChartRoot data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

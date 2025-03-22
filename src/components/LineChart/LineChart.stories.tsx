@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Card } from '../Card';
 import { LineChart } from './LineChart';
 import { salesData, salesLabels } from './mock-data';
 
@@ -8,9 +9,9 @@ const meta: Meta<typeof LineChart> = {
   component: LineChart,
   decorators: [
     (Story) => (
-      <div style={{ width: '320px' }}>
+      <Card>
         <Story />
-      </div>
+      </Card>
     ),
   ],
 };
