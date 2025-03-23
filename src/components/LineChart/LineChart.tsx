@@ -30,7 +30,7 @@ export const LineChart = ({ data, labels, height = 400, tooltipContent = Tooltip
         <Tooltip content={tooltipContent} />
         <Legend />
         {labels.map((label) => (
-          <Line key={label.dataKey} type="monotone" dataKey={label.dataKey} stroke={label.stroke} />
+          <Line key={label.dataKey} type="monotone" dataKey={label.dataKey} stroke={label.stroke} strokeWidth={2} />
         ))}
       </LineChartRoot>
     </ResponsiveContainer>
