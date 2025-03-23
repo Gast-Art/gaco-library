@@ -41,7 +41,7 @@ interface InputProps {
   $error?: boolean;
 }
 
-const Input = styled.input<InputProps & { value: string }>`
+const Input = styled.input<InputProps>`
   height: ${({ theme }) => theme.sizes.formControl};
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.textInputBorder};
@@ -77,24 +77,20 @@ const Icon = styled(FaExclamationCircle)`
   pointer-events: none;
 `;
 
-interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label?: string;
-  value: string;
-  onChange: (value: string) => void;
   type?: string;
   error?: string;
 }
 
-export const TextInput = ({ className, id, label, value, onChange, type = 'text', error, disabled, ...props }: TextInputProps) => {
+export const TextInput = ({ className, id, label, type = 'text', error, disabled, ...props }: TextInputProps) => {
   return (
     <Container className={className}>
       <InputWrapper>
         <Input
           id={id}
           type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
           aria-invalid={!!error}
           placeholder=" "

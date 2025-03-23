@@ -1,5 +1,5 @@
-import { FC, useState } from 'react';
-import SelectRoot, { ActionMeta, SingleValue } from 'react-select';
+import { ChangeEventHandler, FC, useState } from 'react';
+import SelectRoot, { ActionMeta } from 'react-select';
 import styled, { css } from 'styled-components';
 import { DropdownMenuContentStyling, DropdownMenuItemStyling } from '../DropdownMenu';
 
@@ -9,6 +9,7 @@ export interface SelectOption {
 }
 
 interface MultiSelectProps {
+  id: string;
   className?: string;
   options: SelectOption[];
   value: SelectOption[];
@@ -93,12 +94,13 @@ const StyledMultiSelect = styled(SelectRoot<SelectOption, true>)`
   ${SelectStyling}
 `;
 
-export const MultiSelect: FC<MultiSelectProps> = ({ className, options, value, onChange, label }) => {
+export const MultiSelect: FC<MultiSelectProps> = ({ id, className, options, value, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <Container className={className}>
       <StyledMultiSelect
+        id={id}
         isMulti
         options={options}
         value={value}
@@ -113,11 +115,13 @@ export const MultiSelect: FC<MultiSelectProps> = ({ className, options, value, o
   );
 };
 
-interface SelectProps {
+export interface SelectProps {
+  id: string;
   className?: string;
   options: SelectOption[];
-  value?: SingleValue<SelectOption>;
-  onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
+  value?: string;
+  onChange: ChangeEventHandler<HTMLSelectElement>;
+  // onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;
 }
 
@@ -128,18 +132,20 @@ const StyledSelect = styled(SelectRoot<SelectOption>)`
 export const Select: FC<SelectProps> = ({ className, options, value, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
 
+  const optionValue = options.find((option) => option.value === value);
+
   return (
     <Container className={className}>
       <StyledSelect
         options={options}
-        value={value}
+        value={optionValue}
         onChange={(value, actionMeta) => onChange(value, actionMeta)}
         placeholder=" "
         classNamePrefix="react-select"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
-      {label && <Label $active={!!value?.value.length || isFocused}>{label}</Label>}
+      {label && <Label $active={!!optionValue?.value.length || isFocused}>{label}</Label>}
     </Container>
   );
 };
