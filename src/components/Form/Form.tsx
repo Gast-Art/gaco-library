@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ComponentProps } from 'react';
+import { ComponentProps, useEffect } from 'react';
 import { Controller, DefaultValues, FieldValues, Path, SubmitHandler, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import * as yup from 'yup';
@@ -58,12 +58,15 @@ const Form = <T extends FieldValues = FieldValues>({
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors, isValid },
   } = useForm<T>({
     mode: 'onChange',
     resolver: schema ? yupResolver(schema) : undefined,
     defaultValues: initialValues,
   });
+
+  useEffect(() => reset(initialValues), [reset, initialValues]);
 
   return (
     <FormElement onSubmit={handleSubmit(onSubmit)}>
