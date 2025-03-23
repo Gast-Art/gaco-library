@@ -3,7 +3,7 @@ import { ComponentProps, useEffect } from 'react';
 import { Controller, DefaultValues, FieldValues, Path, SubmitHandler, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import * as yup from 'yup';
-import { Button } from '../Button';
+import { Button as ButtonRoot } from '../Button';
 import { MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
 import { TextArea } from '../TextArea';
@@ -45,6 +45,10 @@ const FormElement = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`;
+
+const SubmitButton = styled(ButtonRoot)`
+  align-self: flex-start;
 `;
 
 const Form = <T extends FieldValues = FieldValues>({
@@ -150,9 +154,9 @@ const Form = <T extends FieldValues = FieldValues>({
         }
       })}
 
-      <Button type="submit" disabled={!isValid || isLoading || Object.keys(errors).length > 0} loading={isLoading}>
+      <SubmitButton type="submit" disabled={!isValid || isLoading || Object.keys(errors).length > 0} loading={isLoading}>
         {labelSubmit}
-      </Button>
+      </SubmitButton>
     </FormElement>
   );
 };
