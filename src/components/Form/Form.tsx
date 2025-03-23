@@ -6,11 +6,13 @@ import * as yup from 'yup';
 import { Button } from '../Button';
 import { MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
+import { TextArea } from '../TextArea';
 
 export enum FormFieldComponents {
   TEXT = 'text',
   SELECT = 'select',
   MULTI_SELECT = 'multiSelect',
+  TEXT_AREA = 'textArea',
 }
 
 interface FormProps<T extends FieldValues = FieldValues> {
@@ -30,6 +32,10 @@ interface FormProps<T extends FieldValues = FieldValues> {
         name: Path<T>;
         component: FormFieldComponents.MULTI_SELECT;
       } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>)
+    | ({
+        name: Path<T>;
+        component: FormFieldComponents.TEXT_AREA;
+      } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>)
   >;
   isLoading?: boolean;
   initialValues?: DefaultValues<T>;
@@ -70,6 +76,26 @@ const Form = <T extends FieldValues = FieldValues>({
               control={control}
               render={({ field: fieldController }) => (
                 <TextInput
+                  id={field.name.toString()}
+                  error={errors[field.name]?.message?.toString()}
+                  {...field}
+                  onChange={fieldController.onChange}
+                  onBlur={fieldController.onBlur}
+                  value={fieldController.value}
+                />
+              )}
+            />
+          );
+        }
+
+        if (field.component === FormFieldComponents.TEXT_AREA) {
+          return (
+            <Controller
+              key={String(field.name)}
+              name={field.name}
+              control={control}
+              render={({ field: fieldController }) => (
+                <TextArea
                   id={field.name.toString()}
                   error={errors[field.name]?.message?.toString()}
                   {...field}

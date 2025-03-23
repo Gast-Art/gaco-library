@@ -60,12 +60,18 @@ export const Default: Story = {
           { value: '3', label: 'Option 3' },
         ],
       },
+      {
+        name: 'textArea',
+        label: 'Text Area',
+        component: FormFieldComponents.TEXT_AREA,
+      },
     ],
     schema: yup.object().shape({
       email: yup.string().email().required(),
       password: yup.string().required(),
       select: yup.string().required(),
       multiSelect: yup.array().min(1).required(),
+      textArea: yup.string().required(),
     }),
     initialValues: {
       email: 'email@email.com',
