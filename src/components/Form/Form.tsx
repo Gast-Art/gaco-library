@@ -93,7 +93,7 @@ const Form = <T extends FieldValues = FieldValues>({
                   error={errors[field.name]?.message?.toString()}
                   {...field}
                   onChange={(value) => fieldController.onChange(value?.value)}
-                  value={fieldController.value}
+                  value={field.options.find((option) => option.value === fieldController.value)}
                 />
               )}
             />

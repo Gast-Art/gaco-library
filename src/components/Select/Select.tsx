@@ -165,7 +165,7 @@ export interface SelectProps {
   id: string;
   className?: string;
   options: SelectOption[];
-  value?: string;
+  value?: SingleValue<SelectOption>;
   onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;
   error?: string;
@@ -186,8 +186,6 @@ const SelectDropdownIndicator = (props: SelectIndicatorProps) => {
 export const Select: FC<SelectProps> = ({ id, className, options, value, error, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
 
-  const optionValue = options.find((option) => option.value === value);
-
   return (
     <div className={className}>
       <Container $error={!!error}>
@@ -195,7 +193,7 @@ export const Select: FC<SelectProps> = ({ id, className, options, value, error, 
           id={id}
           options={options}
           menuPortalTarget={document.body}
-          value={optionValue}
+          value={value}
           onChange={(value, actionMeta) => onChange(value, actionMeta)}
           placeholder=" "
           classNamePrefix="react-select"
@@ -206,7 +204,7 @@ export const Select: FC<SelectProps> = ({ id, className, options, value, error, 
           }}
         />
 
-        {label && <Label $active={!!optionValue?.value.length || isFocused}>{label}</Label>}
+        {label && <Label $active={!!value?.value.length || isFocused}>{label}</Label>}
       </Container>
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
     </div>
