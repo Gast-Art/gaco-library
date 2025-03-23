@@ -5,19 +5,23 @@ export interface SelectOption {
     label: string;
 }
 interface MultiSelectProps {
+    id: string;
     className?: string;
     options: SelectOption[];
-    value: SelectOption[];
+    value?: SelectOption[];
     onChange: (selected: SelectOption[], actionMeta: ActionMeta<SelectOption>) => void;
     label?: string;
+    error?: string;
 }
 export declare const MultiSelect: FC<MultiSelectProps>;
-interface SelectProps {
+export interface SelectProps {
+    id: string;
     className?: string;
     options: SelectOption[];
     value?: SingleValue<SelectOption>;
     onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
     label?: string;
+    error?: string;
 }
 export declare const Select: FC<SelectProps>;
 export {};
