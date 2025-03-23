@@ -1,26 +1,36 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createElement } from 'react';
-import { DefaultValues, FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { ComponentProps } from 'react';
+import { Controller, DefaultValues, FieldValues, Path, SubmitHandler, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import * as yup from 'yup';
 import { Button } from '../Button';
-import { getField } from './utils';
+import { MultiSelect, Select } from '../Select';
+import { TextInput } from '../TextInput';
 
 export enum FormFieldComponents {
   TEXT = 'text',
   SELECT = 'select',
+  MULTI_SELECT = 'multiSelect',
 }
 
 interface FormProps<T extends FieldValues = FieldValues> {
   schema?: yup.ObjectSchema<any>;
   onSubmit: SubmitHandler<T>;
   labelSubmit?: string;
-  fields: Array<{
-    name: keyof T;
-    label: string;
-    component?: FormFieldComponents;
-    type?: string;
-  }>;
+  fields: Array<
+    | ({
+        name: Path<T>;
+        component: FormFieldComponents.TEXT;
+      } & Omit<ComponentProps<typeof TextInput>, 'id' | 'error'>)
+    | ({
+        name: Path<T>;
+        component: FormFieldComponents.SELECT;
+      } & Omit<ComponentProps<typeof Select>, 'id' | 'error' | 'onChange'>)
+    | ({
+        name: Path<T>;
+        component: FormFieldComponents.MULTI_SELECT;
+      } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>)
+  >;
   isLoading?: boolean;
   initialValues?: DefaultValues<T>;
 }
@@ -40,8 +50,8 @@ const Form = <T extends FieldValues = FieldValues>({
   initialValues,
 }: FormProps<T>) => {
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<T>({
     resolver: schema ? yupResolver(schema) : undefined,
@@ -49,25 +59,71 @@ const Form = <T extends FieldValues = FieldValues>({
   });
 
   return (
-    <>
-      <FormElement onSubmit={handleSubmit(onSubmit)}>
-        {fields.map((field) => (
-          <div key={String(field.name)}>
-            {createElement(getField(field.component), {
-              id: field.name.toString(),
-              label: field.label,
-              type: field.type,
-              error: errors[field.name]?.message?.toString(),
-              ...register(field.name as any),
-            })}
-          </div>
-        ))}
+    <FormElement onSubmit={handleSubmit(onSubmit)}>
+      {fields.map((field) => {
+        if (field.component === FormFieldComponents.TEXT) {
+          return (
+            <Controller
+              key={String(field.name)}
+              name={field.name}
+              control={control}
+              render={({ field: fieldController }) => (
+                <TextInput
+                  id={field.name.toString()}
+                  error={errors[field.name]?.message?.toString()}
+                  {...field}
+                  onChange={fieldController.onChange}
+                  onBlur={fieldController.onBlur}
+                  value={fieldController.value}
+                />
+              )}
+            />
+          );
+        }
 
-        <Button type="submit" disabled={isLoading} loading={isLoading}>
-          {labelSubmit}
-        </Button>
-      </FormElement>
-    </>
+        if (field.component === FormFieldComponents.SELECT) {
+          return (
+            <Controller
+              key={String(field.name)}
+              name={field.name}
+              control={control}
+              render={({ field: fieldController }) => (
+                <Select
+                  id={field.name.toString()}
+                  error={errors[field.name]?.message?.toString()}
+                  {...field}
+                  onChange={(value) => fieldController.onChange(value?.value)}
+                  value={fieldController.value}
+                />
+              )}
+            />
+          );
+        }
+
+        if (field.component === FormFieldComponents.MULTI_SELECT) {
+          return (
+            <Controller
+              key={String(field.name)}
+              name={field.name}
+              control={control}
+              render={({ field: fieldController }) => (
+                <MultiSelect
+                  id={field.name.toString()}
+                  error={errors[field.name]?.message?.toString()}
+                  {...field}
+                  onChange={(value) => fieldController.onChange(value)}
+                  value={fieldController.value}
+                />
+              )}
+            />
+          );
+        }
+      })}
+
+      <Button type="submit" disabled={isLoading} loading={isLoading}>
+        {labelSubmit}
+      </Button>
+    </FormElement>
   );
 };
 

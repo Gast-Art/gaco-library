@@ -1,5 +1,5 @@
+import { CircleAlert } from 'lucide-react';
 import { InputHTMLAttributes } from 'react';
-import { FaExclamationCircle } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -70,9 +70,9 @@ const Input = styled.input<InputProps>`
   }
 `;
 
-const Icon = styled(FaExclamationCircle)`
+const ErrorIcon = styled(CircleAlert)`
   position: absolute;
-  right: 0.75rem;
+  right: 0.5rem;
   color: ${({ theme }) => theme.colors.error};
   pointer-events: none;
 `;
@@ -99,7 +99,7 @@ export const TextInput = ({ className, id, label, type = 'text', error, disabled
           {...props}
         />
         {label && <Label htmlFor={id}>{label}</Label>}
-        {error && <Icon />}
+        {error && <ErrorIcon />}
       </InputWrapper>
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
     </Container>

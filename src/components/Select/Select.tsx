@@ -1,5 +1,6 @@
-import { ChangeEventHandler, FC, useState } from 'react';
-import SelectRoot, { ActionMeta } from 'react-select';
+import { ChevronDown, CircleAlert } from 'lucide-react';
+import { FC, useState } from 'react';
+import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, SingleValue } from 'react-select';
 import styled, { css } from 'styled-components';
 import { DropdownMenuContentStyling, DropdownMenuItemStyling } from '../DropdownMenu';
 
@@ -12,14 +13,43 @@ interface MultiSelectProps {
   id: string;
   className?: string;
   options: SelectOption[];
-  value: SelectOption[];
+  value?: SelectOption[];
   onChange: (selected: SelectOption[], actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;
+  error?: string;
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $error?: boolean }>`
   position: relative;
   padding-top: 0.75rem;
+
+  && {
+    .react-select__control {
+      ${({ $error, theme }) =>
+        $error &&
+        `
+      border-bottom-color: ${theme.colors.error};
+      svg {
+        color: ${theme.colors.error};
+      }
+      &:hover, .react-select__control--is-focused {
+        border-bottom-color: ${theme.colors.error};
+      }
+      .react-select__indicator-separator {
+        background-color: ${theme.colors.error};
+      }
+      `}
+    }
+  }
+`;
+
+const ErrorMessage = styled.span`
+  color: ${({ theme }) => theme.colors.error};
+  font-size: ${({ theme }) => theme.sizes.fonts.xxs};
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
 `;
 
 const Label = styled.label<{ $active?: boolean }>`
@@ -94,24 +124,40 @@ const StyledMultiSelect = styled(SelectRoot<SelectOption, true>)`
   ${SelectStyling}
 `;
 
-export const MultiSelect: FC<MultiSelectProps> = ({ id, className, options, value, onChange, label }) => {
+interface MultiSelectIndicatorProps extends DropdownIndicatorProps<SelectOption, true> {
+  error?: string;
+}
+
+const MultiSelectDropdownIndicator = (props: MultiSelectIndicatorProps) => {
+  return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
+};
+
+export const MultiSelect: FC<MultiSelectProps> = ({ id, className, options, value, onChange, label, error }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <Container className={className}>
-      <StyledMultiSelect
-        id={id}
-        isMulti
-        options={options}
-        value={value}
-        onChange={(values, actionMeta) => onChange([...values], actionMeta)}
-        placeholder=" "
-        classNamePrefix="react-select"
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-      />
-      {label && <Label $active={!!value.length || isFocused}>{label}</Label>}
-    </Container>
+    <div className={className}>
+      <Container $error={!!error}>
+        <StyledMultiSelect
+          id={id}
+          isMulti
+          menuPortalTarget={document.body}
+          options={options}
+          value={value}
+          onChange={(values, actionMeta) => onChange([...values], actionMeta)}
+          placeholder=" "
+          classNamePrefix="react-select"
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          components={{
+            DropdownIndicator: (props) => <MultiSelectDropdownIndicator {...props} error={error} />,
+          }}
+        />
+
+        {label && <Label $active={!!value?.length || isFocused}>{label}</Label>}
+      </Container>
+      {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
+    </div>
   );
 };
 
@@ -120,32 +166,49 @@ export interface SelectProps {
   className?: string;
   options: SelectOption[];
   value?: string;
-  onChange: ChangeEventHandler<HTMLSelectElement>;
-  // onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
+  onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;
+  error?: string;
 }
 
 const StyledSelect = styled(SelectRoot<SelectOption>)`
   ${SelectStyling}
 `;
 
-export const Select: FC<SelectProps> = ({ className, options, value, onChange, label }) => {
+interface SelectIndicatorProps extends DropdownIndicatorProps<SelectOption, false> {
+  error?: string;
+}
+
+const SelectDropdownIndicator = (props: SelectIndicatorProps) => {
+  return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
+};
+
+export const Select: FC<SelectProps> = ({ id, className, options, value, error, onChange, label }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const optionValue = options.find((option) => option.value === value);
 
   return (
-    <Container className={className}>
-      <StyledSelect
-        options={options}
-        value={optionValue}
-        onChange={(value, actionMeta) => onChange(value, actionMeta)}
-        placeholder=" "
-        classNamePrefix="react-select"
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-      />
-      {label && <Label $active={!!optionValue?.value.length || isFocused}>{label}</Label>}
-    </Container>
+    <div className={className}>
+      <Container $error={!!error}>
+        <StyledSelect
+          id={id}
+          options={options}
+          menuPortalTarget={document.body}
+          value={optionValue}
+          onChange={(value, actionMeta) => onChange(value, actionMeta)}
+          placeholder=" "
+          classNamePrefix="react-select"
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          components={{
+            DropdownIndicator: (props) => <SelectDropdownIndicator {...props} error={error} />,
+          }}
+        />
+
+        {label && <Label $active={!!optionValue?.value.length || isFocused}>{label}</Label>}
+      </Container>
+      {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
+    </div>
   );
 };

@@ -40,10 +40,32 @@ export const Default: Story = {
         component: FormFieldComponents.TEXT,
         type: 'password',
       },
+      {
+        name: 'select',
+        label: 'Select',
+        component: FormFieldComponents.SELECT,
+        options: [
+          { value: '1', label: 'Option 1' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ],
+      },
+      {
+        name: 'multiSelect',
+        label: 'Multi Select',
+        component: FormFieldComponents.MULTI_SELECT,
+        options: [
+          { value: '1', label: 'Option 1' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ],
+      },
     ],
     schema: yup.object().shape({
       email: yup.string().email().required(),
       password: yup.string().required(),
+      select: yup.string().required(),
+      multiSelect: yup.array().min(1).required(),
     }),
     initialValues: {
       email: 'email@email.com',
