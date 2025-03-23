@@ -2,11 +2,13 @@ import { ComponentProps } from '../../../node_modules/react';
 import { DefaultValues, FieldValues, Path, SubmitHandler } from 'react-hook-form';
 import { MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
+import { TextArea } from '../TextArea';
 import * as yup from 'yup';
 export declare enum FormFieldComponents {
     TEXT = "text",
     SELECT = "select",
-    MULTI_SELECT = "multiSelect"
+    MULTI_SELECT = "multiSelect",
+    TEXT_AREA = "textArea"
 }
 interface FormProps<T extends FieldValues = FieldValues> {
     schema?: yup.ObjectSchema<any>;
@@ -21,7 +23,10 @@ interface FormProps<T extends FieldValues = FieldValues> {
     } & Omit<ComponentProps<typeof Select>, 'id' | 'error' | 'onChange'>) | ({
         name: Path<T>;
         component: FormFieldComponents.MULTI_SELECT;
-    } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>)>;
+    } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>) | ({
+        name: Path<T>;
+        component: FormFieldComponents.TEXT_AREA;
+    } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>)>;
     isLoading?: boolean;
     initialValues?: DefaultValues<T>;
 }

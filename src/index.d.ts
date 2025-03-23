@@ -14,6 +14,7 @@ export * from './components/Map';
 export * from './components/Select';
 export * from './components/Spinner';
 export * from './components/Tabs';
+export * from './components/TextArea';
 export * from './components/TextInput';
 export * from './components/TextOverflow';
 export * from './components/ThemeProvider';
