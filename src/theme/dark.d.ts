@@ -42,6 +42,10 @@ export declare const darkTheme: {
             xxxl: string;
         };
     };
+    fonts: {
+        body: string;
+        title: string;
+    };
     zIndicies: {
         loadingOverlay: number;
         DropdownMenu: number;

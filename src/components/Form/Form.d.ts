@@ -3,12 +3,14 @@ import { DefaultValues, FieldValues, Path, SubmitHandler } from 'react-hook-form
 import { MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
 import { TextArea } from '../TextArea';
+import { DatePicker } from '../DatePicker';
 import * as yup from 'yup';
 export declare enum FormFieldComponents {
     TEXT = "text",
     SELECT = "select",
     MULTI_SELECT = "multiSelect",
-    TEXT_AREA = "textArea"
+    TEXT_AREA = "textArea",
+    DATE_PICKER = "datePicker"
 }
 interface FormProps<T extends FieldValues = FieldValues> {
     schema?: yup.ObjectSchema<any>;
@@ -26,7 +28,10 @@ interface FormProps<T extends FieldValues = FieldValues> {
     } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>) | ({
         name: Path<T>;
         component: FormFieldComponents.TEXT_AREA;
-    } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>)>;
+    } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>) | ({
+        name: Path<T>;
+        component: FormFieldComponents.DATE_PICKER;
+    } & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>)>;
     isLoading?: boolean;
     initialValues?: DefaultValues<T>;
 }

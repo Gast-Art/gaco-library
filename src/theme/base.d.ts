@@ -13,6 +13,10 @@ export declare const base: {
             xxxl: string;
         };
     };
+    fonts: {
+        body: string;
+        title: string;
+    };
     zIndicies: {
         loadingOverlay: number;
         DropdownMenu: number;

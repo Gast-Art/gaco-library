@@ -32,7 +32,7 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-compon
   padding: 0.25rem;
   width: 100%;
   font-size: ${({theme:e})=>e.sizes.fonts.md};
-  font-family: 'Figtree', sans-serif;
+  font-family: ${({theme:e})=>e.fonts.body};
   resize: vertical;
 
   ${({$error:e,theme:o})=>e&&`padding-right: 2rem; border-bottom-color: ${o.colors.error};`}
@@ -58,4 +58,4 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-compon
   right: 0.5rem;
   color: ${({theme:e})=>e.colors.error};
   pointer-events: none;
-`,u=({className:e,id:o,label:i,error:r,disabled:a,...l})=>t.jsxs(c,{className:e,children:[t.jsxs(m,{children:[t.jsx(x,{id:o,disabled:a,"aria-invalid":!!r,placeholder:" ","aria-describedby":r?`${o}-error`:void 0,$error:!!r,...l}),i&&t.jsx(n,{htmlFor:o,children:i}),r&&t.jsx(f,{})]}),r&&t.jsx(p,{id:`${o}-error`,children:r})]});u.__docgenInfo={description:"",methods:[],displayName:"TextArea",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},error:{required:!1,tsType:{name:"string"},description:""}},composes:["TextareaHTMLAttributes"]};export{u as T};
+`,b=({className:e,id:o,label:i,error:r,disabled:a,...l})=>t.jsxs(c,{className:e,children:[t.jsxs(m,{children:[t.jsx(x,{id:o,disabled:a,"aria-invalid":!!r,placeholder:" ","aria-describedby":r?`${o}-error`:void 0,$error:!!r,...l}),i&&t.jsx(n,{htmlFor:o,children:i}),r&&t.jsx(f,{})]}),r&&t.jsx(p,{id:`${o}-error`,children:r})]});b.__docgenInfo={description:"",methods:[],displayName:"TextArea",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},error:{required:!1,tsType:{name:"string"},description:""}},composes:["TextareaHTMLAttributes"]};export{b as T};
