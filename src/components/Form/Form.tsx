@@ -45,6 +45,7 @@ interface FormProps<T extends FieldValues = FieldValues> {
   >;
   isLoading?: boolean;
   initialValues?: DefaultValues<T>;
+  className?: string;
 }
 
 const FormElement = styled.form`
@@ -64,6 +65,7 @@ const Form = <T extends FieldValues = FieldValues>({
   fields,
   isLoading = false,
   initialValues,
+  className,
 }: FormProps<T>) => {
   const {
     handleSubmit,
@@ -79,7 +81,7 @@ const Form = <T extends FieldValues = FieldValues>({
   useEffect(() => reset(initialValues), [reset, initialValues]);
 
   return (
-    <FormElement onSubmit={handleSubmit(onSubmit)}>
+    <FormElement onSubmit={handleSubmit(onSubmit)} className={className}>
       {fields.map((field) => {
         if (field.component === FormFieldComponents.TEXT) {
           return (
