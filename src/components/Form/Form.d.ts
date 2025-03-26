@@ -34,7 +34,8 @@ interface FormProps<T extends FieldValues = FieldValues> {
     } & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>)>;
     isLoading?: boolean;
     initialValues?: DefaultValues<T>;
+    className?: string;
 }
-declare const Form: <T extends FieldValues = FieldValues>({ schema, onSubmit, labelSubmit, fields, isLoading, initialValues, }: FormProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const Form: <T extends FieldValues = FieldValues>({ schema, onSubmit, labelSubmit, fields, isLoading, initialValues, className, }: FormProps<T>) => import("react/jsx-runtime").JSX.Element;
 export { Form };
 //# sourceMappingURL=Form.d.ts.map
