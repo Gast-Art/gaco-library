@@ -7,12 +7,14 @@ import { Button as ButtonRoot } from '../Button';
 import { MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
 import { TextArea } from '../TextArea';
+import { DatePicker } from '../DatePicker';
 
 export enum FormFieldComponents {
   TEXT = 'text',
   SELECT = 'select',
   MULTI_SELECT = 'multiSelect',
   TEXT_AREA = 'textArea',
+  DATE_PICKER = 'datePicker',
 }
 
 interface FormProps<T extends FieldValues = FieldValues> {
@@ -36,6 +38,10 @@ interface FormProps<T extends FieldValues = FieldValues> {
         name: Path<T>;
         component: FormFieldComponents.TEXT_AREA;
       } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>)
+    | ({
+        name: Path<T>;
+        component: FormFieldComponents.DATE_PICKER;
+      } & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>)
   >;
   isLoading?: boolean;
   initialValues?: DefaultValues<T>;
@@ -82,14 +88,7 @@ const Form = <T extends FieldValues = FieldValues>({
               name={field.name}
               control={control}
               render={({ field: fieldController }) => (
-                <TextInput
-                  id={field.name.toString()}
-                  error={errors[field.name]?.message?.toString()}
-                  {...field}
-                  onChange={fieldController.onChange}
-                  onBlur={fieldController.onBlur}
-                  value={fieldController.value}
-                />
+                <TextInput id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
               )}
             />
           );
@@ -102,14 +101,7 @@ const Form = <T extends FieldValues = FieldValues>({
               name={field.name}
               control={control}
               render={({ field: fieldController }) => (
-                <TextArea
-                  id={field.name.toString()}
-                  error={errors[field.name]?.message?.toString()}
-                  {...field}
-                  onChange={fieldController.onChange}
-                  onBlur={fieldController.onBlur}
-                  value={fieldController.value}
-                />
+                <TextArea id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
               )}
             />
           );
@@ -147,6 +139,26 @@ const Form = <T extends FieldValues = FieldValues>({
                   {...field}
                   onChange={(value) => fieldController.onChange(value)}
                   value={fieldController.value}
+                />
+              )}
+            />
+          );
+        }
+
+        if (field.component === FormFieldComponents.DATE_PICKER) {
+          return (
+            <Controller
+              key={String(field.name)}
+              name={field.name}
+              control={control}
+              render={({ field: fieldController }) => (
+                <DatePicker
+                  id={field.name.toString()}
+                  error={errors[field.name]?.message?.toString()}
+                  min="2021-01-01"
+                  max="2021-12-31"
+                  {...field}
+                  {...fieldController}
                 />
               )}
             />

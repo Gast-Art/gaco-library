@@ -13,6 +13,10 @@ export const base = {
       xxxl: '2rem',
     },
   },
+  fonts: {
+    body: "'Figtree', sans-serif",
+    title: "'Lora', serif",
+  },
   zIndicies: {
     loadingOverlay: 9000,
     DropdownMenu: 1000,

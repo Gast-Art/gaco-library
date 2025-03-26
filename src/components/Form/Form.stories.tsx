@@ -65,6 +65,11 @@ export const Default: Story = {
         label: 'Text Area',
         component: FormFieldComponents.TEXT_AREA,
       },
+      {
+        name: 'date',
+        label: 'Date',
+        component: FormFieldComponents.DATE_PICKER,
+      },
     ],
     schema: yup.object().shape({
       email: yup.string().email().required(),
@@ -72,6 +77,7 @@ export const Default: Story = {
       select: yup.string().required(),
       multiSelect: yup.array().min(1).required(),
       textArea: yup.string().required(),
+      date: yup.date().required(),
     }),
     initialValues: {
       email: 'email@email.com',

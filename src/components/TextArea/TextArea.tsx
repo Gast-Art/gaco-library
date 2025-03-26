@@ -48,7 +48,7 @@ const StyledTextarea = styled.textarea<TextareaProps>`
   padding: 0.25rem;
   width: 100%;
   font-size: ${({ theme }) => theme.sizes.fonts.md};
-  font-family: 'Figtree', sans-serif;
+  font-family: ${({ theme }) => theme.fonts.body};
   resize: vertical;
 
   ${({ $error, theme }) => $error && `padding-right: 2rem; border-bottom-color: ${theme.colors.error};`}
