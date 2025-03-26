@@ -154,14 +154,7 @@ const Form = <T extends FieldValues = FieldValues>({
               name={field.name}
               control={control}
               render={({ field: fieldController }) => (
-                <DatePicker
-                  id={field.name.toString()}
-                  error={errors[field.name]?.message?.toString()}
-                  min="2021-01-01"
-                  max="2021-12-31"
-                  {...field}
-                  {...fieldController}
-                />
+                <DatePicker id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
               )}
             />
           );
