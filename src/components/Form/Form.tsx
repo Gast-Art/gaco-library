@@ -96,12 +96,17 @@ const Form = <T extends FieldValues = FieldValues>({
   return (
     <FormElement onSubmit={handleSubmit(onSubmit)} className={className} $inline={inline}>
       {fields.map((field) => {
+        const controllerProps = {
+          key: String(field.name),
+          name: field.name,
+          control,
+          disabled: isLoading,
+        };
+
         if (field.component === FormFieldComponents.TEXT) {
           return (
             <Controller
-              key={String(field.name)}
-              name={field.name}
-              control={control}
+              {...controllerProps}
               render={({ field: fieldController }) => (
                 <TextInput id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
               )}
@@ -112,9 +117,7 @@ const Form = <T extends FieldValues = FieldValues>({
         if (field.component === FormFieldComponents.TEXT_AREA) {
           return (
             <Controller
-              key={String(field.name)}
-              name={field.name}
-              control={control}
+              {...controllerProps}
               render={({ field: fieldController }) => (
                 <TextArea id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
               )}
@@ -125,9 +128,7 @@ const Form = <T extends FieldValues = FieldValues>({
         if (field.component === FormFieldComponents.SELECT) {
           return (
             <Controller
-              key={String(field.name)}
-              name={field.name}
-              control={control}
+              {...controllerProps}
               render={({ field: fieldController }) => (
                 <Select
                   id={field.name.toString()}
@@ -144,9 +145,7 @@ const Form = <T extends FieldValues = FieldValues>({
         if (field.component === FormFieldComponents.MULTI_SELECT) {
           return (
             <Controller
-              key={String(field.name)}
-              name={field.name}
-              control={control}
+              {...controllerProps}
               render={({ field: fieldController }) => (
                 <MultiSelect
                   id={field.name.toString()}
@@ -163,9 +162,7 @@ const Form = <T extends FieldValues = FieldValues>({
         if (field.component === FormFieldComponents.DATE_PICKER) {
           return (
             <Controller
-              key={String(field.name)}
-              name={field.name}
-              control={control}
+              {...controllerProps}
               render={({ field: fieldController }) => (
                 <DatePicker id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
               )}
