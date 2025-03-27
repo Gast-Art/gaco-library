@@ -14,7 +14,7 @@ const Tabs = styled(TabsRoot)`
   flex-direction: column;
 `;
 
-const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
+const StyledTabsList = styled(TabsListRoot)<{ $inline?: boolean }>`
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -23,8 +23,8 @@ const StyledTabsList = styled(TabsListRoot)<{ inline?: boolean }>`
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
   overflow-x: auto;
 
-  ${({ inline }) =>
-    inline
+  ${({ $inline }) =>
+    $inline
       ? css`
           align-self: flex-start;
         `
@@ -80,7 +80,9 @@ interface TabsProps extends TabsListPropsRoot {
   inline?: boolean;
 }
 
-const TabsList = forwardRef<ComponentRef<typeof TabsListRoot>, TabsProps>((props, ref) => <StyledTabsList ref={ref} {...props} />);
+const TabsList = forwardRef<ComponentRef<typeof TabsListRoot>, TabsProps>(({ inline, ...props }, ref) => (
+  <StyledTabsList ref={ref} $inline={inline} {...props} />
+));
 
 interface TabsTriggerProps extends TabsTriggerPropsRoot {
   'data-state'?: string;
