@@ -46,16 +46,28 @@ interface FormProps<T extends FieldValues = FieldValues> {
   isLoading?: boolean;
   initialValues?: DefaultValues<T>;
   className?: string;
+  inline?: boolean;
 }
-
-const FormElement = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
 
 const SubmitButton = styled(ButtonRoot)`
   align-self: flex-start;
+`;
+
+const FormElement = styled.form<{ $inline?: boolean }>`
+  display: flex;
+  flex-direction: ${({ $inline }) => ($inline ? 'row' : 'column')};
+  gap: 1rem;
+
+  ${({ $inline }) =>
+    $inline &&
+    `
+    & > div {
+      flex: 1;
+    }
+    & > ${SubmitButton} {
+      align-self: flex-end;
+    }
+  `}
 `;
 
 const Form = <T extends FieldValues = FieldValues>({
@@ -63,6 +75,7 @@ const Form = <T extends FieldValues = FieldValues>({
   onSubmit,
   labelSubmit = 'Submit',
   fields,
+  inline,
   isLoading = false,
   initialValues,
   className,
@@ -81,7 +94,7 @@ const Form = <T extends FieldValues = FieldValues>({
   useEffect(() => reset(initialValues), [reset, initialValues]);
 
   return (
-    <FormElement onSubmit={handleSubmit(onSubmit)} className={className}>
+    <FormElement onSubmit={handleSubmit(onSubmit)} className={className} $inline={inline}>
       {fields.map((field) => {
         if (field.component === FormFieldComponents.TEXT) {
           return (

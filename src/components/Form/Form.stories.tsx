@@ -87,6 +87,27 @@ export const Default: Story = {
   },
 };
 
-export const Small: Story = {
-  args: {},
+export const Inline: Story = {
+  args: {
+    fields: [
+      {
+        name: 'email',
+        label: 'Email',
+        component: FormFieldComponents.TEXT,
+        type: 'email',
+      },
+      {
+        name: 'password',
+        label: 'Password',
+        component: FormFieldComponents.TEXT,
+        type: 'password',
+      },
+    ],
+    schema: yup.object().shape({
+      email: yup.string().email().required(),
+      password: yup.string().required(),
+    }),
+    onSubmit: (data) => console.log(data),
+    inline: true,
+  },
 };
