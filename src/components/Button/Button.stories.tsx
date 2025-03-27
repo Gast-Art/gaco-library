@@ -50,3 +50,10 @@ export const Destructive: Story = {
     variant: 'destructive',
   },
 };
+
+export const Loading: Story = {
+  args: {
+    children: 'Loading',
+    loading: true,
+  },
+};

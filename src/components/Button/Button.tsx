@@ -1,6 +1,10 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
-import { Spinner } from '../Spinner';
+import { Spinner as SpinnerRoot } from '../Spinner';
+
+const Spinner = styled(SpinnerRoot)`
+  margin-right: 0.5rem;
+`;
 
 const buttonVariants = {
   default: css`
@@ -8,6 +12,10 @@ const buttonVariants = {
     color: ${({ theme }) => theme.colors.primaryForeground};
     &:hover {
       background-color: ${({ theme }) => theme.colors.primaryHover};
+    }
+    ${Spinner} {
+      border-color: ${({ theme }) => theme.colors.primaryForeground};
+      border-right-color: transparent;
     }
   `,
   outline: css`
@@ -18,6 +26,10 @@ const buttonVariants = {
       border-color: ${({ theme }) => theme.colors.primaryHover};
       color: ${({ theme }) => theme.colors.primaryHover};
     }
+    ${Spinner} {
+      border-color: ${({ theme }) => theme.colors.primary};
+      border-right-color: transparent;
+    }
   `,
   ghost: css`
     background-color: 'transparent';
@@ -26,12 +38,20 @@ const buttonVariants = {
     &:hover {
       color: ${({ theme }) => theme.colors.primaryHover};
     }
+    ${Spinner} {
+      border-color: ${({ theme }) => theme.colors.primary};
+      border-right-color: transparent;
+    }
   `,
   destructive: css`
     background-color: ${({ theme }) => theme.colors.error};
     color: ${({ theme }) => theme.colors.errorForeground};
     &:hover {
       background-color: ${({ theme }) => theme.colors.errorHover};
+    }
+    ${Spinner} {
+      border-color: ${({ theme }) => theme.colors.errorForeground};
+      border-right-color: transparent;
     }
   `,
 };

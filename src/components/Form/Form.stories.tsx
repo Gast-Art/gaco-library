@@ -111,3 +111,10 @@ export const Inline: Story = {
     inline: true,
   },
 };
+
+export const Loading: Story = {
+  args: {
+    ...Default.args,
+    isLoading: true,
+  },
+};
