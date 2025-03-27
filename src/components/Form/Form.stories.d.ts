@@ -4,5 +4,5 @@ declare const meta: Meta<typeof Form>;
 export default meta;
 type Story = StoryObj<typeof Form>;
 export declare const Default: Story;
-export declare const Small: Story;
+export declare const Inline: Story;
 //# sourceMappingURL=Form.stories.d.ts.map

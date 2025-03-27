@@ -35,7 +35,8 @@ interface FormProps<T extends FieldValues = FieldValues> {
     isLoading?: boolean;
     initialValues?: DefaultValues<T>;
     className?: string;
+    inline?: boolean;
 }
-declare const Form: <T extends FieldValues = FieldValues>({ schema, onSubmit, labelSubmit, fields, isLoading, initialValues, className, }: FormProps<T>) => import("react/jsx-runtime").JSX.Element;
+declare const Form: <T extends FieldValues = FieldValues>({ schema, onSubmit, labelSubmit, fields, inline, isLoading, initialValues, className, }: FormProps<T>) => import("react/jsx-runtime").JSX.Element;
 export { Form };
 //# sourceMappingURL=Form.d.ts.map
