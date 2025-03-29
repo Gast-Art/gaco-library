@@ -61,6 +61,20 @@ export const Default: Story = {
         ],
       },
       {
+        name: 'creatableSelect',
+        label: 'Creatable Select',
+        component: FormFieldComponents.CREATABLE_SELECT,
+        options: [
+          { value: '1', label: 'Option 1' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ],
+        onCreateOption: (inputValue) => {
+          console.log('Create option:', inputValue);
+          return { value: inputValue, label: inputValue };
+        },
+      },
+      {
         name: 'textArea',
         label: 'Text Area',
         component: FormFieldComponents.TEXT_AREA,
@@ -76,6 +90,7 @@ export const Default: Story = {
       password: yup.string().required(),
       select: yup.string().required(),
       multiSelect: yup.array().min(1).required(),
+      creatableSelect: yup.string().required(),
       textArea: yup.string().required(),
       date: yup.date().required(),
     }),

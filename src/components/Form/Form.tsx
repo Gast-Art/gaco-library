@@ -4,7 +4,7 @@ import { Controller, DefaultValues, FieldValues, Path, SubmitHandler, useForm } 
 import styled from 'styled-components';
 import * as yup from 'yup';
 import { Button as ButtonRoot } from '../Button';
-import { MultiSelect, Select } from '../Select';
+import { CreatableSelect, MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
 import { TextArea } from '../TextArea';
 import { DatePicker } from '../DatePicker';
@@ -13,6 +13,7 @@ export enum FormFieldComponents {
   TEXT = 'text',
   SELECT = 'select',
   MULTI_SELECT = 'multiSelect',
+  CREATABLE_SELECT = 'creatableSelect',
   TEXT_AREA = 'textArea',
   DATE_PICKER = 'datePicker',
 }
@@ -34,6 +35,10 @@ interface FormProps<T extends FieldValues = FieldValues> {
         name: Path<T>;
         component: FormFieldComponents.MULTI_SELECT;
       } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>)
+    | ({
+        name: Path<T>;
+        component: FormFieldComponents.CREATABLE_SELECT;
+      } & Omit<ComponentProps<typeof CreatableSelect>, 'id' | 'error' | 'onChange'>)
     | ({
         name: Path<T>;
         component: FormFieldComponents.TEXT_AREA;
@@ -153,6 +158,23 @@ const Form = <T extends FieldValues = FieldValues>({
                   {...field}
                   onChange={(value) => fieldController.onChange(value)}
                   value={fieldController.value}
+                />
+              )}
+            />
+          );
+        }
+
+        if (field.component === FormFieldComponents.CREATABLE_SELECT) {
+          return (
+            <Controller
+              {...controllerProps}
+              render={({ field: fieldController }) => (
+                <CreatableSelect
+                  id={field.name.toString()}
+                  error={errors[field.name]?.message?.toString()}
+                  {...field}
+                  onChange={(value) => fieldController.onChange(value?.value)}
+                  value={field.options.find((option) => option.value === fieldController.value)}
                 />
               )}
             />

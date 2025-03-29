@@ -19,16 +19,24 @@ const meta: Meta<typeof CreatableSelect> = {
 export default meta;
 type Story = StoryObj<typeof CreatableSelect>;
 
+const initialOptions = [
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' },
+];
+
 const Template = (args: ComponentProps<typeof CreatableSelect>) => {
   const [value, setValue] = useState<SelectOption | null>();
+  const [options, setOptions] = useState<SelectOption[]>(initialOptions);
+
+  const handleCreateOption = (inputValue: string) => {
+    const newOption = { value: inputValue, label: inputValue };
+    setOptions((prev) => [...prev, newOption]);
+    setValue(newOption);
+  };
 
   return (
-    <CreatableSelect
-      {...args}
-      value={value}
-      onChange={(value) => setValue(value)}
-      onCreateOption={(option) => console.log('creating option', option)}
-    />
+    <CreatableSelect {...args} value={value} onChange={(value) => setValue(value)} onCreateOption={handleCreateOption} options={options} />
   );
 };
 
