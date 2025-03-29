@@ -1,6 +1,6 @@
 import { ComponentProps } from '../../../node_modules/react';
 import { DefaultValues, FieldValues, Path, SubmitHandler } from 'react-hook-form';
-import { MultiSelect, Select } from '../Select';
+import { CreatableSelect, MultiSelect, Select } from '../Select';
 import { TextInput } from '../TextInput';
 import { TextArea } from '../TextArea';
 import { DatePicker } from '../DatePicker';
@@ -9,6 +9,7 @@ export declare enum FormFieldComponents {
     TEXT = "text",
     SELECT = "select",
     MULTI_SELECT = "multiSelect",
+    CREATABLE_SELECT = "creatableSelect",
     TEXT_AREA = "textArea",
     DATE_PICKER = "datePicker"
 }
@@ -26,6 +27,9 @@ interface FormProps<T extends FieldValues = FieldValues> {
         name: Path<T>;
         component: FormFieldComponents.MULTI_SELECT;
     } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>) | ({
+        name: Path<T>;
+        component: FormFieldComponents.CREATABLE_SELECT;
+    } & Omit<ComponentProps<typeof CreatableSelect>, 'id' | 'error' | 'onChange'>) | ({
         name: Path<T>;
         component: FormFieldComponents.TEXT_AREA;
     } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>) | ({
