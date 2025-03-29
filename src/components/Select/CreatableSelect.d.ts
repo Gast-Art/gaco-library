@@ -6,8 +6,10 @@ interface CreatableSelectProps {
     className?: string;
     options: SelectOption[];
     value?: SingleValue<SelectOption>;
+    defaultInputValue?: string;
     onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
     onCreateOption?: (inputValue: string) => void;
+    filterOption?: (option: SelectOption, inputValue: string) => boolean;
     label?: string;
     error?: string;
 }
