@@ -11,8 +11,10 @@ interface CreatableSelectProps {
   className?: string;
   options: SelectOption[];
   value?: SingleValue<SelectOption>;
+  defaultInputValue?: string;
   onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
   onCreateOption?: (inputValue: string) => void;
+  filterOption?: (option: SelectOption, inputValue: string) => boolean;
   label?: string;
   error?: string;
 }
@@ -29,8 +31,21 @@ const CreatableSelectDropdownIndicator = (props: CreatableSelectIndicatorProps) 
   return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
-export const CreatableSelect: FC<CreatableSelectProps> = ({ id, className, options, value, error, onChange, onCreateOption, label }) => {
+export const CreatableSelect: FC<CreatableSelectProps> = ({
+  id,
+  className,
+  options,
+  value,
+  defaultInputValue,
+  error,
+  onChange,
+  onCreateOption,
+  filterOption,
+  label,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
+
+  const hasValue = !!value?.value.length || !!defaultInputValue;
 
   return (
     <div className={className}>
@@ -41,18 +56,20 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({ id, className, optio
           menuPortalTarget={document.body}
           isClearable
           value={value}
+          defaultInputValue={defaultInputValue}
           onChange={(value, actionMeta) => onChange(value, actionMeta)}
           onCreateOption={onCreateOption}
           placeholder=" "
           classNamePrefix="react-select"
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          filterOption={filterOption}
           components={{
             DropdownIndicator: (props) => <CreatableSelectDropdownIndicator {...props} error={error} />,
           }}
         />
 
-        {label && <Label $active={!!value?.value.length || isFocused}>{label}</Label>}
+        {label && <Label $active={hasValue || isFocused}>{label}</Label>}
       </Container>
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
     </div>

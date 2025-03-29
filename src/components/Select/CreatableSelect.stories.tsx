@@ -36,7 +36,14 @@ const Template = (args: ComponentProps<typeof CreatableSelect>) => {
   };
 
   return (
-    <CreatableSelect {...args} value={value} onChange={(value) => setValue(value)} onCreateOption={handleCreateOption} options={options} />
+    <CreatableSelect
+      {...args}
+      value={value}
+      defaultInputValue={'test'}
+      onChange={(value) => setValue(value)}
+      onCreateOption={handleCreateOption}
+      options={options}
+    />
   );
 };
 
