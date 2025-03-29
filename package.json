@@ -1,6 +1,6 @@
 {
   "name": "@gaco/gaco-library",
-  "version": "0.21.6",
+  "version": "0.22.0",
   "description": "GACO components library, for use in GACO projects.",
   "type": "module",
   "types": "dist/index.d.ts",

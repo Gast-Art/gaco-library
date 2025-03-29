@@ -35,3 +35,16 @@ export const Default: Story = {
     label: 'Select an option',
   },
 };
+
+export const WithAOnClickOption: Story = {
+  render: Template,
+  args: {
+    options: [
+      { value: '1', label: 'Option 1' },
+      { value: '2', label: 'Option 2' },
+      { value: '3', label: 'Option 3' },
+      { value: '4', label: 'Click me', onClick: () => alert('Clicked!') },
+    ],
+    label: 'Select an option',
+  },
+};

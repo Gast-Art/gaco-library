@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ComponentProps, useState } from 'react';
-import { MultiSelect, SelectOption } from './Select';
+import { SelectOption } from './Select';
+import { MultiSelect } from './MultiSelect';
 
 const meta: Meta<typeof MultiSelect> = {
   title: 'Atoms/MultiSelect',
