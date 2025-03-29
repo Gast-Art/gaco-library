@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactNode } from '../../../node_modules/react';
 interface DialogProps extends PropsWithChildren {
-    trigger: ReactNode;
     open: boolean;
     onOpenChange: (open: boolean) => void;
+    trigger?: ReactNode;
     title?: string;
     content?: string;
 }
