@@ -1,6 +1,6 @@
 {
   "name": "@gaco/gaco-library",
-  "version": "0.22.2",
+  "version": "0.23.0",
   "description": "GACO components library, for use in GACO projects.",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -93,6 +93,7 @@
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
     "@maptiler/sdk": "^3.0.1",
+    "@radix-ui/react-dialog": "^1.1.6",
     "@storybook/addon-backgrounds": "^8.6.0",
     "@storybook/theming": "^8.5.3",
     "lucide-react": "^0.476.0",
