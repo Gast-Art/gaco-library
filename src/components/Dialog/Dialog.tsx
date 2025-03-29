@@ -40,9 +40,9 @@ const CloseButton = styled.button`
 `;
 
 interface DialogProps extends PropsWithChildren {
-  trigger: ReactNode;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  trigger?: ReactNode;
   title?: string;
   content?: string;
 }
@@ -50,7 +50,7 @@ interface DialogProps extends PropsWithChildren {
 export const Dialog = ({ trigger, open, onOpenChange, title, content, children }: DialogProps) => {
   return (
     <DialogRoot.Root open={open} onOpenChange={onOpenChange}>
-      <DialogRoot.Trigger asChild>{trigger}</DialogRoot.Trigger>
+      {trigger && <DialogRoot.Trigger asChild>{trigger}</DialogRoot.Trigger>}
       <DialogRoot.Portal>
         <DialogOverlay />
         <DialogContent>
