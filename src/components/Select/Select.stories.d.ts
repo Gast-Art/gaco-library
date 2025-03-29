@@ -4,4 +4,5 @@ declare const meta: Meta<typeof Select>;
 export default meta;
 type Story = StoryObj<typeof Select>;
 export declare const Default: Story;
+export declare const WithAOnClickOption: Story;
 //# sourceMappingURL=Select.stories.d.ts.map
