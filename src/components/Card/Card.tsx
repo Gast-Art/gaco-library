@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { media } from '../../theme';
 import { LoadingOverlay } from '../LoadingOverlay';
 import { H3 } from '../Typography';
+import { ButtonGroup } from '../ButtonGroup';
 
 export enum CardSize {
   sm = 'sm',
@@ -93,6 +94,11 @@ const LeftColumn = styled.div``;
 
 const RightColumn = styled.div``;
 
+const Actions = styled(ButtonGroup)`
+  justify-content: space-between;
+  margin-top: 1rem;
+`;
+
 interface CardProps extends PropsWithChildren {
   className?: string;
   style?: CSSProperties;
@@ -108,6 +114,7 @@ export const CardSections = Object.assign(
     Content,
     LeftColumn,
     RightColumn,
+    Actions,
   },
 );
 
@@ -122,6 +129,7 @@ interface CardProps extends PropsWithChildren {
 export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...props }) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
+  let slotActions: ReactNode;
   let slotLeftColumn: ReactNode;
   let slotRightColumn: ReactNode;
 
@@ -146,6 +154,9 @@ export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...
     } else if (child.type === CardSections.RightColumn) {
       slotRightColumn = child;
       return false;
+    } else if (child.type === CardSections.Actions) {
+      slotActions = child;
+      return false;
     } else {
       return true;
     }
@@ -160,6 +171,7 @@ export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...
       <CardInner>
         {slotTitle}
         {slotContent}
+        {slotActions}
         {nonSlotChildren}
       </CardInner>
 

@@ -67,3 +67,17 @@ export const ButtonsInRightColumn: Story = {
     </Card>
   ),
 };
+
+export const WithActions: Story = {
+  render: ({ children }) => (
+    <Card>
+      <CardSections.Title>This is a title</CardSections.Title>
+      <CardSections.Content>This is content for a card. Lorum fucking ipsum bitches.</CardSections.Content>
+      <CardSections.Actions>
+        <Button>Save</Button>
+        <Button variant="outline">Cancel</Button>
+      </CardSections.Actions>
+      {children}
+    </Card>
+  ),
+};
