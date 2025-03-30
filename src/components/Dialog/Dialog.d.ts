@@ -5,7 +5,8 @@ interface DialogProps extends PropsWithChildren {
     trigger?: ReactNode;
     title?: string;
     content?: ReactNode;
+    actions?: ReactNode;
 }
-export declare const Dialog: ({ trigger, open, onOpenChange, title, content, children }: DialogProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Dialog: ({ trigger, open, onOpenChange, title, content, actions, children }: DialogProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Dialog.d.ts.map
