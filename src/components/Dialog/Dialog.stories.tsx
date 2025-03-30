@@ -31,3 +31,12 @@ export const Default: Story = {
     children: <p>This is the content of the dialog.</p>,
   },
 };
+
+export const NoOutideState: Story = {
+  render: (args) => {
+    return <Dialog {...args} trigger={<Button>Open dialog</Button>} />;
+  },
+  args: {
+    ...Default.args,
+  },
+};

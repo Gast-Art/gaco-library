@@ -1,5 +1,5 @@
 import { Dialog as DialogRoot } from 'radix-ui';
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { Card, CardSections } from '../Card';
 import { X } from 'lucide-react';
@@ -40,22 +40,29 @@ const CloseButton = styled.button`
 `;
 
 interface DialogProps extends PropsWithChildren {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   trigger?: ReactNode;
   title?: string;
   content?: ReactNode;
 }
 
 export const Dialog = ({ trigger, open, onOpenChange, title, content, children }: DialogProps) => {
+  const [isOpen, setIsOpen] = useState(open);
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    onOpenChange?.(open);
+  };
+
   return (
-    <DialogRoot.Root open={open} onOpenChange={onOpenChange}>
+    <DialogRoot.Root open={typeof open !== undefined ? open : isOpen} onOpenChange={handleOpenChange}>
       {trigger && <DialogRoot.Trigger asChild>{trigger}</DialogRoot.Trigger>}
       <DialogRoot.Portal>
         <DialogOverlay />
         <DialogContent>
           <Card>
-            <CloseButton onClick={() => onOpenChange(false)}>
+            <CloseButton onClick={() => handleOpenChange(false)}>
               <X />
             </CloseButton>
             {title && <CardSections.Title>{title}</CardSections.Title>}
