@@ -50,13 +50,13 @@ interface DialogProps extends PropsWithChildren {
 export const Dialog = ({ trigger, open, onOpenChange, title, content, children }: DialogProps) => {
   const [isOpen, setIsOpen] = useState(open);
 
-  const handleOpenChange = (open: boolean) => {
-    setIsOpen(open);
-    onOpenChange?.(open);
+  const handleOpenChange = (_open: boolean) => {
+    setIsOpen(_open);
+    onOpenChange?.(_open);
   };
 
   return (
-    <DialogRoot.Root open={typeof open !== undefined ? open : isOpen} onOpenChange={handleOpenChange}>
+    <DialogRoot.Root open={open !== undefined ? open : isOpen} onOpenChange={handleOpenChange}>
       {trigger && <DialogRoot.Trigger asChild>{trigger}</DialogRoot.Trigger>}
       <DialogRoot.Portal>
         <DialogOverlay />
