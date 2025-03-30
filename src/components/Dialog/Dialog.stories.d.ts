@@ -4,4 +4,5 @@ declare const meta: Meta<typeof Dialog>;
 export default meta;
 type Story = StoryObj<typeof Dialog>;
 export declare const Default: Story;
+export declare const NoOutideState: Story;
 //# sourceMappingURL=Dialog.stories.d.ts.map
