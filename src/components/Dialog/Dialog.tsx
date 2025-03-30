@@ -45,9 +45,10 @@ interface DialogProps extends PropsWithChildren {
   trigger?: ReactNode;
   title?: string;
   content?: ReactNode;
+  actions?: ReactNode;
 }
 
-export const Dialog = ({ trigger, open, onOpenChange, title, content, children }: DialogProps) => {
+export const Dialog = ({ trigger, open, onOpenChange, title, content, actions, children }: DialogProps) => {
   const [isOpen, setIsOpen] = useState(open);
 
   const handleOpenChange = (_open: boolean) => {
@@ -67,6 +68,7 @@ export const Dialog = ({ trigger, open, onOpenChange, title, content, children }
             </CloseButton>
             {title && <CardSections.Title>{title}</CardSections.Title>}
             {content && <CardSections.Content>{content}</CardSections.Content>}
+            {actions && <CardSections.Actions>{actions}</CardSections.Actions>}
             {children}
           </Card>
         </DialogContent>
