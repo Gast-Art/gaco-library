@@ -44,7 +44,7 @@ interface DialogProps extends PropsWithChildren {
   onOpenChange: (open: boolean) => void;
   trigger?: ReactNode;
   title?: string;
-  content?: string;
+  content?: ReactNode;
 }
 
 export const Dialog = ({ trigger, open, onOpenChange, title, content, children }: DialogProps) => {
