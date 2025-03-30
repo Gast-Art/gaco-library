@@ -7,4 +7,5 @@ export declare const Default: Story;
 export declare const Small: Story;
 export declare const AvatarInLeftColumn: Story;
 export declare const ButtonsInRightColumn: Story;
+export declare const WithActions: Story;
 //# sourceMappingURL=Card.stories.d.ts.map
