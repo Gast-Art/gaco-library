@@ -1,8 +1,8 @@
+import { X } from 'lucide-react';
 import { Dialog as DialogRoot } from 'radix-ui';
 import { PropsWithChildren, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { Card, CardSections } from '../Card';
-import { X } from 'lucide-react';
 
 const DialogOverlay = styled(DialogRoot.Overlay)`
   position: fixed;
@@ -60,31 +60,32 @@ export const Dialog = ({ trigger, open, onOpenChange, title, content, actions, c
     <DialogRoot.Root open={open !== undefined ? open : isOpen} onOpenChange={handleOpenChange}>
       {trigger && <DialogRoot.Trigger asChild>{trigger}</DialogRoot.Trigger>}
       <DialogRoot.Portal>
-        <DialogOverlay />
-        <DialogContent>
-          <Card>
-            <DialogRoot.Close asChild>
-              <CloseButton>
-                <X />
-              </CloseButton>
-            </DialogRoot.Close>
+        <DialogOverlay>
+          <DialogContent>
+            <Card>
+              <DialogRoot.Close asChild>
+                <CloseButton>
+                  <X />
+                </CloseButton>
+              </DialogRoot.Close>
 
-            {title && (
-              <DialogRoot.Title asChild>
-                <CardSections.Title>{title}</CardSections.Title>
-              </DialogRoot.Title>
-            )}
-            {content && (
-              <DialogRoot.Description asChild>
-                <>
-                  <CardSections.Content>{content}</CardSections.Content>
-                  {children}
-                  {actions && <CardSections.Actions>{actions}</CardSections.Actions>}
-                </>
-              </DialogRoot.Description>
-            )}
-          </Card>
-        </DialogContent>
+              {title && (
+                <DialogRoot.Title asChild>
+                  <CardSections.Title>{title}</CardSections.Title>
+                </DialogRoot.Title>
+              )}
+              {content && (
+                <DialogRoot.Description asChild>
+                  <>
+                    <CardSections.Content>{content}</CardSections.Content>
+                    {children}
+                    {actions && <CardSections.Actions>{actions}</CardSections.Actions>}
+                  </>
+                </DialogRoot.Description>
+              )}
+            </Card>
+          </DialogContent>
+        </DialogOverlay>
       </DialogRoot.Portal>
     </DialogRoot.Root>
   );
