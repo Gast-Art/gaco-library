@@ -63,17 +63,20 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffse
   return (
     <RadixDropdownMenu.Root>
       {trigger && <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>}
-      <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
-        {items.map((item, index) =>
-          item === 'seperator' ? (
-            <Separator key={index} />
-          ) : (
-            <DropdownMenuItem key={index} onSelect={item.onSelect}>
-              {item.content}
-            </DropdownMenuItem>
-          ),
-        )}
-      </DropdownMenuContent>
+
+      <RadixDropdownMenu.Portal>
+        <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
+          {items.map((item, index) =>
+            item === 'seperator' ? (
+              <Separator key={index} />
+            ) : (
+              <DropdownMenuItem key={index} onSelect={item.onSelect}>
+                {item.content}
+              </DropdownMenuItem>
+            ),
+          )}
+        </DropdownMenuContent>
+      </RadixDropdownMenu.Portal>
     </RadixDropdownMenu.Root>
   );
 };
