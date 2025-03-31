@@ -27,8 +27,14 @@ type Story = StoryObj<typeof Dialog>;
 export const Default: Story = {
   args: {
     title: 'Dialog Title',
-    content: 'This is a dialog description.',
-    children: <p>This is the content of the dialog.</p>,
+    content: 'This is dialog content.',
+    children: <p>This is the children of the dialog.</p>,
+    actions: (
+      <>
+        <Button>Confirm</Button>
+        <Button variant="outline">Cancel</Button>
+      </>
+    ),
   },
 };
 

@@ -63,13 +63,26 @@ export const Dialog = ({ trigger, open, onOpenChange, title, content, actions, c
         <DialogOverlay />
         <DialogContent>
           <Card>
-            <CloseButton onClick={() => handleOpenChange(false)}>
-              <X />
-            </CloseButton>
-            {title && <CardSections.Title>{title}</CardSections.Title>}
-            {content && <CardSections.Content>{content}</CardSections.Content>}
-            {actions && <CardSections.Actions>{actions}</CardSections.Actions>}
-            {children}
+            <DialogRoot.Close asChild>
+              <CloseButton>
+                <X />
+              </CloseButton>
+            </DialogRoot.Close>
+
+            {title && (
+              <DialogRoot.Title asChild>
+                <CardSections.Title>{title}</CardSections.Title>
+              </DialogRoot.Title>
+            )}
+            {content && (
+              <DialogRoot.Description asChild>
+                <>
+                  <CardSections.Content>{content}</CardSections.Content>
+                  {children}
+                  {actions && <CardSections.Actions>{actions}</CardSections.Actions>}
+                </>
+              </DialogRoot.Description>
+            )}
           </Card>
         </DialogContent>
       </DialogRoot.Portal>
