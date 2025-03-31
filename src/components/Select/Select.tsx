@@ -2,8 +2,8 @@ import { ChevronDown, CircleAlert } from 'lucide-react';
 import { FC, useState } from 'react';
 import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, SingleValue } from 'react-select';
 
-import styled from 'styled-components';
-import { SelectStyling, Container, Label, ErrorMessage } from './styles';
+import styled, { useTheme } from 'styled-components';
+import { Container, ErrorMessage, Label, SelectStyling } from './styles';
 
 export interface SelectOption {
   value: string;
@@ -16,6 +16,7 @@ export interface SelectProps {
   id: string;
   className?: string;
   options: SelectOption[];
+  menuPortalTarget?: HTMLElement;
   value?: SingleValue<SelectOption>;
   onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;
@@ -34,8 +35,9 @@ const SelectDropdownIndicator = (props: SelectIndicatorProps) => {
   return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
-export const Select: FC<SelectProps> = ({ id, className, options, value, error, onChange, label }) => {
+export const Select: FC<SelectProps> = ({ id, className, options, value, error, onChange, label, menuPortalTarget = document.body }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const theme = useTheme();
 
   return (
     <div className={className}>
@@ -43,11 +45,14 @@ export const Select: FC<SelectProps> = ({ id, className, options, value, error, 
         <StyledSelect
           id={id}
           options={options}
-          menuPortalTarget={document.body}
+          menuPortalTarget={menuPortalTarget}
           value={value}
           onChange={(value, actionMeta) => onChange(value, actionMeta)}
           placeholder=" "
           classNamePrefix="react-select"
+          styles={{
+            menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndicies.dropdownMenu }),
+          }}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           components={{

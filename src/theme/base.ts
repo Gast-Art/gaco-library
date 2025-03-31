@@ -19,8 +19,8 @@ export const base = {
   },
   zIndicies: {
     loadingOverlay: 9000,
-    DropdownMenu: 1000,
-    dialog: 8000,
+    dropdownMenu: 8000,
+    dialog: 7000,
   },
   shadows: {
     default: 'none',

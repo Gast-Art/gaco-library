@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Dialog } from './Dialog';
 import { useState } from 'react';
 import { Button } from '../Button';
+import { Select } from '../Select';
+import { Dialog } from './Dialog';
 
 const meta: Meta<typeof Dialog> = {
   title: 'Molecules/Dialog',
@@ -44,5 +45,21 @@ export const NoOutideState: Story = {
   },
   args: {
     ...Default.args,
+  },
+};
+
+export const WithDropdown: Story = {
+  args: {
+    ...Default.args,
+    children: (
+      <Select
+        options={[
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
+        ]}
+        id="select"
+        onChange={() => {}}
+      />
+    ),
   },
 };

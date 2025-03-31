@@ -9,7 +9,7 @@ export const DropdownMenuContentStyling = css`
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   min-width: 10rem;
   overflow: hidden;
-  z-index: ${({ theme }) => theme.zIndicies.DropdownMenu};
+  z-index: ${({ theme }) => theme.zIndicies.dropdownMenu};
 `;
 
 const DropdownMenuContent = styled(RadixDropdownMenu.Content)`

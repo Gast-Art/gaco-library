@@ -102,4 +102,4 @@ const SelectStyling = css`
   }
 `;
 
-export { SelectStyling, Container, ErrorMessage, Label };
+export { Container, ErrorMessage, Label, SelectStyling };
