@@ -6,5 +6,5 @@ declare const Label: import('styled-components/dist/types').IStyledComponentBase
     $active?: boolean;
 }>> & string;
 declare const SelectStyling: import('styled-components').RuleSet<object>;
-export { SelectStyling, Container, ErrorMessage, Label };
+export { Container, ErrorMessage, Label, SelectStyling };
 //# sourceMappingURL=styles.d.ts.map

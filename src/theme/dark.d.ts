@@ -48,7 +48,7 @@ export declare const darkTheme: {
     };
     zIndicies: {
         loadingOverlay: number;
-        DropdownMenu: number;
+        dropdownMenu: number;
         dialog: number;
     };
     shadows: {

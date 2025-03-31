@@ -10,6 +10,7 @@ export interface SelectProps {
     id: string;
     className?: string;
     options: SelectOption[];
+    menuPortalTarget?: HTMLElement;
     value?: SingleValue<SelectOption>;
     onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
     label?: string;
