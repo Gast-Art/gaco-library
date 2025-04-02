@@ -16,7 +16,7 @@ import { TooltipChart } from '../TooltipChart';
 interface LineChartProps extends Omit<ResponsiveContainerProps, 'children'> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any }[];
-  labels: { dataKey: string; stroke: string }[];
+  labels: { dataKey: string; stroke: string; label: string }[];
   tooltipContent?: ContentType<ValueType, NameType>;
 }
 
@@ -30,7 +30,7 @@ export const LineChart = ({ data, labels, height = 400, tooltipContent = Tooltip
         <Tooltip content={tooltipContent} />
         <Legend />
         {labels.map((label) => (
-          <Line key={label.dataKey} type="monotone" dataKey={label.dataKey} stroke={label.stroke} strokeWidth={2} />
+          <Line key={label.dataKey} type="monotone" dataKey={label.dataKey} name={label.label} stroke={label.stroke} strokeWidth={2} />
         ))}
       </LineChartRoot>
     </ResponsiveContainer>
