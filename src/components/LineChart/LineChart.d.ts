@@ -8,6 +8,7 @@ interface LineChartProps extends Omit<ResponsiveContainerProps, 'children'> {
     labels: {
         dataKey: string;
         stroke: string;
+        label: string;
     }[];
     tooltipContent?: ContentType<ValueType, NameType>;
 }

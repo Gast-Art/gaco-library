@@ -1,10 +1,11 @@
 export declare const salesData: {
     name: string;
-    Laurie: number;
-    taisei: number;
+    abc: number;
+    def: number;
 }[];
 export declare const salesLabels: {
     dataKey: string;
+    label: string;
     stroke: string;
 }[];
 //# sourceMappingURL=mock-data.d.ts.map
