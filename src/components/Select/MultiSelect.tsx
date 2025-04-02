@@ -1,14 +1,14 @@
-import { CircleAlert, ChevronDown } from 'lucide-react';
+import { ChevronDown, CircleAlert } from 'lucide-react';
 import { FC, useState } from 'react';
-import SelectRoot, { ActionMeta, components, DropdownIndicatorProps } from 'react-select';
+import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups } from 'react-select';
 import styled from 'styled-components';
 import { SelectOption } from './Select';
-import { SelectStyling, ErrorMessage, Label, Container } from './styles';
+import { Container, ErrorMessage, Label, SelectStyling } from './styles';
 
 interface MultiSelectProps {
   id: string;
   className?: string;
-  options: SelectOption[];
+  options: OptionsOrGroups<SelectOption, { label: string; options: SelectOption[] }>;
   value?: SelectOption[];
   onChange: (selected: SelectOption[], actionMeta: ActionMeta<SelectOption>) => void;
   label?: string;

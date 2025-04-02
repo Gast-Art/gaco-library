@@ -76,9 +76,20 @@ export const Default: Story = {
         label: 'Multi Select',
         component: FormFieldComponents.MULTI_SELECT,
         options: [
-          { value: '1', label: 'Option 1' },
-          { value: '2', label: 'Option 2' },
-          { value: '3', label: 'Option 3' },
+          {
+            label: 'Group 1',
+            options: [
+              { value: '1', label: 'Option 1' },
+              { value: '2', label: 'Option 2' },
+            ],
+          },
+          {
+            label: 'Group 2',
+            options: [
+              { value: '3', label: 'Option 3' },
+              { value: '4', label: 'Option 4' },
+            ],
+          },
         ],
       },
       {
