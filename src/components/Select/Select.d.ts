@@ -1,15 +1,16 @@
 import { FC } from '../../../node_modules/react';
-import { ActionMeta, SingleValue } from 'react-select';
+import { ActionMeta, OptionsOrGroups, SingleValue } from 'react-select';
 export interface SelectOption {
     value: string;
     label: string;
-    onClick?: () => void;
-    border?: boolean;
 }
 export interface SelectProps {
     id: string;
     className?: string;
-    options: SelectOption[];
+    options: OptionsOrGroups<SelectOption, {
+        label: string;
+        options: SelectOption[];
+    }>;
     menuPortalTarget?: HTMLElement;
     value?: SingleValue<SelectOption>;
     onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
