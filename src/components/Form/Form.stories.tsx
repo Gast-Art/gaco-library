@@ -51,6 +51,27 @@ export const Default: Story = {
         ],
       },
       {
+        name: 'groupedSelect',
+        label: 'Grouped Select',
+        component: FormFieldComponents.SELECT,
+        options: [
+          {
+            label: 'Group 1',
+            options: [
+              { value: '1', label: 'Option 1' },
+              { value: '2', label: 'Option 2' },
+            ],
+          },
+          {
+            label: 'Group 2',
+            options: [
+              { value: '3', label: 'Option 3' },
+              { value: '4', label: 'Option 4' },
+            ],
+          },
+        ],
+      },
+      {
         name: 'multiSelect',
         label: 'Multi Select',
         component: FormFieldComponents.MULTI_SELECT,

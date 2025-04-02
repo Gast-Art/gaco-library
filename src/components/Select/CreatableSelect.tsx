@@ -1,10 +1,10 @@
-import { CircleAlert, ChevronDown } from 'lucide-react';
+import { ChevronDown, CircleAlert } from 'lucide-react';
 import { FC, useState } from 'react';
-import { SingleValue, ActionMeta, DropdownIndicatorProps, components } from 'react-select';
+import { ActionMeta, DropdownIndicatorProps, SingleValue, components } from 'react-select';
+import CreatableSelectRoot from 'react-select/creatable';
 import styled from 'styled-components';
 import { SelectOption } from './Select';
-import CreatableSelectRoot from 'react-select/creatable';
-import { SelectStyling, Container, ErrorMessage, Label } from './styles';
+import { Container, ErrorMessage, Label, SelectStyling } from './styles';
 
 interface CreatableSelectProps {
   id: string;
@@ -12,6 +12,7 @@ interface CreatableSelectProps {
   options: SelectOption[];
   value?: SingleValue<SelectOption>;
   defaultInputValue?: string;
+  createOptionPosition?: 'first' | 'last';
   onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
   onCreateOption?: (inputValue: string) => void;
   filterOption?: (option: SelectOption, inputValue: string) => boolean;
@@ -38,6 +39,7 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({
   value,
   defaultInputValue,
   error,
+  createOptionPosition,
   onChange,
   onCreateOption,
   filterOption,
@@ -57,6 +59,7 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({
           isClearable
           value={value}
           defaultInputValue={defaultInputValue}
+          createOptionPosition={createOptionPosition}
           onChange={(value, actionMeta) => onChange(value, actionMeta)}
           onCreateOption={onCreateOption}
           placeholder=" "

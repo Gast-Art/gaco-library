@@ -1,6 +1,6 @@
 import { ChevronDown, CircleAlert } from 'lucide-react';
 import { FC, useState } from 'react';
-import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, SingleValue } from 'react-select';
+import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups, SingleValue } from 'react-select';
 
 import styled, { useTheme } from 'styled-components';
 import { Container, ErrorMessage, Label, SelectStyling } from './styles';
@@ -8,14 +8,12 @@ import { Container, ErrorMessage, Label, SelectStyling } from './styles';
 export interface SelectOption {
   value: string;
   label: string;
-  onClick?: () => void;
-  border?: boolean;
 }
 
 export interface SelectProps {
   id: string;
   className?: string;
-  options: SelectOption[];
+  options: OptionsOrGroups<SelectOption, { label: string; options: SelectOption[] }>;
   menuPortalTarget?: HTMLElement;
   value?: SingleValue<SelectOption>;
   onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;

@@ -4,10 +4,10 @@ import { Controller, DefaultValues, FieldValues, Path, SubmitHandler, useForm } 
 import styled from 'styled-components';
 import * as yup from 'yup';
 import { Button as ButtonRoot } from '../Button';
-import { CreatableSelect, MultiSelect, Select } from '../Select';
-import { TextInput } from '../TextInput';
-import { TextArea } from '../TextArea';
 import { DatePicker } from '../DatePicker';
+import { CreatableSelect, MultiSelect, Select } from '../Select';
+import { TextArea } from '../TextArea';
+import { TextInput } from '../TextInput';
 
 export enum FormFieldComponents {
   TEXT = 'text',
@@ -131,6 +131,12 @@ const Form = <T extends FieldValues = FieldValues>({
         }
 
         if (field.component === FormFieldComponents.SELECT) {
+          const flatOptions = field.options.flatMap((option) => {
+            if ('options' in option) {
+              return option.options;
+            }
+            return option;
+          });
           return (
             <Controller
               {...controllerProps}
@@ -140,7 +146,7 @@ const Form = <T extends FieldValues = FieldValues>({
                   error={errors[field.name]?.message?.toString()}
                   {...field}
                   onChange={(value) => fieldController.onChange(value?.value)}
-                  value={field.options.find((option) => option.value === fieldController.value)}
+                  value={flatOptions.find((option) => option.value === fieldController.value)}
                 />
               )}
             />

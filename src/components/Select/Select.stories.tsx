@@ -36,14 +36,24 @@ export const Default: Story = {
   },
 };
 
-export const WithAOnClickOption: Story = {
+export const GroupedOptions: Story = {
   render: Template,
   args: {
     options: [
-      { value: '1', label: 'Option 1' },
-      { value: '2', label: 'Option 2' },
-      { value: '3', label: 'Option 3' },
-      { value: '4', label: 'Click me', onClick: () => alert('Clicked!') },
+      {
+        label: 'Group 1',
+        options: [
+          { value: '1', label: 'Option 1' },
+          { value: '2', label: 'Option 2' },
+        ],
+      },
+      {
+        label: 'Group 2',
+        options: [
+          { value: '3', label: 'Option 3' },
+          { value: '4', label: 'Option 4' },
+        ],
+      },
     ],
     label: 'Select an option',
   },
