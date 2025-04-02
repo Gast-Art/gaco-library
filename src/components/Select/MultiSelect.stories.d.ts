@@ -4,4 +4,5 @@ declare const meta: Meta<typeof MultiSelect>;
 export default meta;
 type Story = StoryObj<typeof MultiSelect>;
 export declare const Default: Story;
+export declare const GroupedOptions: Story;
 //# sourceMappingURL=MultiSelect.stories.d.ts.map

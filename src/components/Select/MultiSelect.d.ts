@@ -1,10 +1,13 @@
 import { FC } from '../../../node_modules/react';
-import { ActionMeta } from 'react-select';
+import { ActionMeta, OptionsOrGroups } from 'react-select';
 import { SelectOption } from './Select';
 interface MultiSelectProps {
     id: string;
     className?: string;
-    options: SelectOption[];
+    options: OptionsOrGroups<SelectOption, {
+        label: string;
+        options: SelectOption[];
+    }>;
     value?: SelectOption[];
     onChange: (selected: SelectOption[], actionMeta: ActionMeta<SelectOption>) => void;
     label?: string;
