@@ -7,6 +7,7 @@ interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
     }[];
     labels: {
         dataKey: string;
+        label: string;
         color: string;
     }[];
     tooltipContent?: ContentType<ValueType, NameType>;
