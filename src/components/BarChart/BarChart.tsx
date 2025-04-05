@@ -16,7 +16,7 @@ import { TooltipChart } from '../TooltipChart';
 interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any }[];
-  labels: { dataKey: string; color: string }[];
+  labels: { dataKey: string; label: string; color: string }[];
   tooltipContent?: ContentType<ValueType, NameType>;
   showLegend?: boolean;
 }
@@ -31,8 +31,8 @@ export const BarChart = ({ data, labels, height = 400, showLegend, tooltipConten
         <Tooltip content={tooltipContent} />
         {showLegend && <Legend />}
 
-        {labels.map(({ dataKey, color }) => (
-          <Bar key={dataKey} dataKey={dataKey} fill={color} />
+        {labels.map(({ dataKey, label, color }) => (
+          <Bar key={dataKey} dataKey={dataKey} name={label} fill={color} />
         ))}
       </BarChartRoot>
     </ResponsiveContainer>

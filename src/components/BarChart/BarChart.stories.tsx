@@ -25,10 +25,12 @@ export const Default: Story = {
     labels: [
       {
         dataKey: 'sales',
+        label: 'Sales',
         color: 'red',
       },
       {
         dataKey: 'sales2',
+        label: 'Sales 2',
         color: 'blue',
       },
     ],

@@ -29,8 +29,8 @@ export const LineChart = ({ data, labels, height = 400, tooltipContent = Tooltip
         <YAxis />
         <Tooltip content={tooltipContent} />
         <Legend />
-        {labels.map((label) => (
-          <Line key={label.dataKey} type="monotone" dataKey={label.dataKey} name={label.label} stroke={label.stroke} strokeWidth={2} />
+        {labels.map(({ dataKey, label, stroke }) => (
+          <Line key={dataKey} type="monotone" dataKey={dataKey} name={label} stroke={stroke} strokeWidth={2} />
         ))}
       </LineChartRoot>
     </ResponsiveContainer>
