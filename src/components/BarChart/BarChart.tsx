@@ -18,10 +18,10 @@ interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
   data: { [key: string]: any }[];
   labels: { dataKey: string; label: string; color: string }[];
   tooltipContent?: ContentType<ValueType, NameType>;
-  showLegend?: boolean;
+  hideLegend?: boolean;
 }
 
-export const BarChart = ({ data, labels, height = 400, showLegend, tooltipContent = TooltipChart }: BarChartProps) => {
+export const BarChart = ({ data, labels, height = 400, hideLegend, tooltipContent = TooltipChart }: BarChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <BarChartRoot data={data}>
@@ -29,7 +29,7 @@ export const BarChart = ({ data, labels, height = 400, showLegend, tooltipConten
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip content={tooltipContent} />
-        {showLegend && <Legend />}
+        {!hideLegend && <Legend />}
 
         {labels.map(({ dataKey, label, color }) => (
           <Bar key={dataKey} dataKey={dataKey} name={label} fill={color} />

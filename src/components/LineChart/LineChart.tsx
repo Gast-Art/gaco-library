@@ -11,16 +11,18 @@ import {
 } from 'recharts';
 import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 import { ContentType } from 'recharts/types/component/Tooltip';
+import { ChartLabel } from '../PieChart';
 import { TooltipChart } from '../TooltipChart';
 
 interface LineChartProps extends Omit<ResponsiveContainerProps, 'children'> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any }[];
-  labels: { dataKey: string; stroke: string; label: string }[];
+  labels: ChartLabel[];
   tooltipContent?: ContentType<ValueType, NameType>;
+  hideLegend?: boolean;
 }
 
-export const LineChart = ({ data, labels, height = 400, tooltipContent = TooltipChart, ...props }: LineChartProps) => {
+export const LineChart = ({ data, labels, height = 400, hideLegend, tooltipContent = TooltipChart, ...props }: LineChartProps) => {
   return (
     <ResponsiveContainer width="100%" height={height} {...props}>
       <LineChartRoot data={data}>
@@ -28,7 +30,8 @@ export const LineChart = ({ data, labels, height = 400, tooltipContent = Tooltip
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip content={tooltipContent} />
-        <Legend />
+        {!hideLegend && <Legend />}
+
         {labels.map(({ dataKey, label, stroke }) => (
           <Line key={dataKey} type="monotone" dataKey={dataKey} name={label} stroke={stroke} strokeWidth={2} />
         ))}
