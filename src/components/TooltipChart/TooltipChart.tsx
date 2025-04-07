@@ -12,7 +12,7 @@ const TooltipChart = ({ active, payload, label, tooltipValueFormatter = (label) 
   if (active) {
     return (
       <Card size={CardSize.sm}>
-        <CardSections.Title>{label}</CardSections.Title>
+        {label && <CardSections.Title>{label}</CardSections.Title>}
         <CardSections.Content>
           {payload?.map((entry: any, index: number) => (
             <div key={`item-${index}`}>{`${entry.name}: ${tooltipValueFormatter(entry.value)}`}</div>
