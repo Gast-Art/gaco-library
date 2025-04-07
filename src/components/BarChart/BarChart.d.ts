@@ -11,8 +11,8 @@ interface BarChartProps extends Omit<ResponsiveContainerProps, 'children'> {
         color: string;
     }[];
     tooltipContent?: ContentType<ValueType, NameType>;
-    showLegend?: boolean;
+    hideLegend?: boolean;
 }
-export declare const BarChart: ({ data, labels, height, showLegend, tooltipContent }: BarChartProps) => import("react/jsx-runtime").JSX.Element;
+export declare const BarChart: ({ data, labels, height, hideLegend, tooltipContent }: BarChartProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=BarChart.d.ts.map
