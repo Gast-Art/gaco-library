@@ -16,7 +16,7 @@ export const PieChart = ({ data, height = 400, tooltipContent = TooltipChart, ..
   return (
     <ResponsiveContainer width="100%" height={height} {...props}>
       <PieChartRoot>
-        <Pie data={data} dataKey="value" nameKey="name" outerRadius={100} innerRadius={75} paddingAngle={3}>
+        <Pie data={data} dataKey="value" nameKey="name" outerRadius={140} innerRadius={120} paddingAngle={3}>
           {data.map(({ color }, index) => (
             <Cell key={`cell-${index}`} fill={color} />
           ))}
