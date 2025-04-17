@@ -13,29 +13,35 @@ export declare enum FormFieldComponents {
     TEXT_AREA = "textArea",
     DATE_PICKER = "datePicker"
 }
+type FormField<T extends FieldValues = FieldValues> = ({
+    name: Path<T>;
+    component: FormFieldComponents.TEXT;
+} & Omit<ComponentProps<typeof TextInput>, 'id' | 'error'>) | ({
+    name: Path<T>;
+    component: FormFieldComponents.SELECT;
+} & Omit<ComponentProps<typeof Select>, 'id' | 'error' | 'onChange'>) | ({
+    name: Path<T>;
+    component: FormFieldComponents.MULTI_SELECT;
+} & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>) | ({
+    name: Path<T>;
+    component: FormFieldComponents.CREATABLE_SELECT;
+} & Omit<ComponentProps<typeof CreatableSelect>, 'id' | 'error' | 'onChange'>) | ({
+    name: Path<T>;
+    component: FormFieldComponents.TEXT_AREA;
+} & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>) | ({
+    name: Path<T>;
+    component: FormFieldComponents.DATE_PICKER;
+} & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>);
+interface FormGroup<T extends FieldValues = FieldValues> {
+    title?: string;
+    columns?: number;
+    fields: FormField<T>[];
+}
 interface FormProps<T extends FieldValues = FieldValues> {
     schema?: yup.ObjectSchema<any>;
     onSubmit: SubmitHandler<T>;
     labelSubmit?: string;
-    fields: Array<({
-        name: Path<T>;
-        component: FormFieldComponents.TEXT;
-    } & Omit<ComponentProps<typeof TextInput>, 'id' | 'error'>) | ({
-        name: Path<T>;
-        component: FormFieldComponents.SELECT;
-    } & Omit<ComponentProps<typeof Select>, 'id' | 'error' | 'onChange'>) | ({
-        name: Path<T>;
-        component: FormFieldComponents.MULTI_SELECT;
-    } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>) | ({
-        name: Path<T>;
-        component: FormFieldComponents.CREATABLE_SELECT;
-    } & Omit<ComponentProps<typeof CreatableSelect>, 'id' | 'error' | 'onChange'>) | ({
-        name: Path<T>;
-        component: FormFieldComponents.TEXT_AREA;
-    } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>) | ({
-        name: Path<T>;
-        component: FormFieldComponents.DATE_PICKER;
-    } & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>)>;
+    fields: Array<FormField<T> | FormGroup<T>>;
     isLoading?: boolean;
     initialValues?: DefaultValues<T>;
     className?: string;

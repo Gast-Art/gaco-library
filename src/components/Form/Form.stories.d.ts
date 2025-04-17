@@ -6,4 +6,5 @@ type Story = StoryObj<typeof Form>;
 export declare const Default: Story;
 export declare const Inline: Story;
 export declare const Loading: Story;
+export declare const Groups: Story;
 //# sourceMappingURL=Form.stories.d.ts.map
