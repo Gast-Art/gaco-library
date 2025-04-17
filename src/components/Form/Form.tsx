@@ -8,6 +8,7 @@ import { DatePicker } from '../DatePicker';
 import { CreatableSelect, MultiSelect, Select } from '../Select';
 import { TextArea } from '../TextArea';
 import { TextInput } from '../TextInput';
+import { H4 } from '../Typography';
 
 export enum FormFieldComponents {
   TEXT = 'text',
@@ -18,36 +19,43 @@ export enum FormFieldComponents {
   DATE_PICKER = 'datePicker',
 }
 
+type FormField<T extends FieldValues = FieldValues> =
+  | ({
+      name: Path<T>;
+      component: FormFieldComponents.TEXT;
+    } & Omit<ComponentProps<typeof TextInput>, 'id' | 'error'>)
+  | ({
+      name: Path<T>;
+      component: FormFieldComponents.SELECT;
+    } & Omit<ComponentProps<typeof Select>, 'id' | 'error' | 'onChange'>)
+  | ({
+      name: Path<T>;
+      component: FormFieldComponents.MULTI_SELECT;
+    } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>)
+  | ({
+      name: Path<T>;
+      component: FormFieldComponents.CREATABLE_SELECT;
+    } & Omit<ComponentProps<typeof CreatableSelect>, 'id' | 'error' | 'onChange'>)
+  | ({
+      name: Path<T>;
+      component: FormFieldComponents.TEXT_AREA;
+    } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>)
+  | ({
+      name: Path<T>;
+      component: FormFieldComponents.DATE_PICKER;
+    } & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>);
+
+interface FormGroup<T extends FieldValues = FieldValues> {
+  title?: string;
+  columns?: number;
+  fields: FormField<T>[];
+}
+
 interface FormProps<T extends FieldValues = FieldValues> {
   schema?: yup.ObjectSchema<any>;
   onSubmit: SubmitHandler<T>;
   labelSubmit?: string;
-  fields: Array<
-    | ({
-        name: Path<T>;
-        component: FormFieldComponents.TEXT;
-      } & Omit<ComponentProps<typeof TextInput>, 'id' | 'error'>)
-    | ({
-        name: Path<T>;
-        component: FormFieldComponents.SELECT;
-      } & Omit<ComponentProps<typeof Select>, 'id' | 'error' | 'onChange'>)
-    | ({
-        name: Path<T>;
-        component: FormFieldComponents.MULTI_SELECT;
-      } & Omit<ComponentProps<typeof MultiSelect>, 'id' | 'error' | 'onChange'>)
-    | ({
-        name: Path<T>;
-        component: FormFieldComponents.CREATABLE_SELECT;
-      } & Omit<ComponentProps<typeof CreatableSelect>, 'id' | 'error' | 'onChange'>)
-    | ({
-        name: Path<T>;
-        component: FormFieldComponents.TEXT_AREA;
-      } & Omit<ComponentProps<typeof TextArea>, 'id' | 'error'>)
-    | ({
-        name: Path<T>;
-        component: FormFieldComponents.DATE_PICKER;
-      } & Omit<ComponentProps<typeof DatePicker>, 'id' | 'error'>)
-  >;
+  fields: Array<FormField<T> | FormGroup<T>>;
   isLoading?: boolean;
   initialValues?: DefaultValues<T>;
   className?: string;
@@ -61,7 +69,7 @@ const SubmitButton = styled(ButtonRoot)`
 const FormElement = styled.form<{ $inline?: boolean }>`
   display: flex;
   flex-direction: ${({ $inline }) => ($inline ? 'row' : 'column')};
-  gap: 1rem;
+  gap: 0.5rem;
 
   ${({ $inline }) =>
     $inline &&
@@ -73,6 +81,17 @@ const FormElement = styled.form<{ $inline?: boolean }>`
       align-self: flex-end;
     }
   `}
+`;
+
+const FormGroupContainer = styled.div<{ $columns?: number }>`
+  display: grid;
+  grid-template-columns: ${({ $columns }) => ($columns ? `repeat(${$columns}, 1fr)` : '1fr')};
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
+
+const FormGroupTitle = styled(H4)`
+  margin: 0;
 `;
 
 const Form = <T extends FieldValues = FieldValues>({
@@ -98,105 +117,120 @@ const Form = <T extends FieldValues = FieldValues>({
 
   useEffect(() => reset(initialValues), [reset, initialValues]);
 
+  const renderField = (field: FormField<T>) => {
+    const controllerProps = {
+      key: String(field.name),
+      name: field.name,
+      control,
+      disabled: isLoading,
+    };
+
+    if (field.component === FormFieldComponents.TEXT) {
+      return (
+        <Controller
+          {...controllerProps}
+          render={({ field: fieldController }) => (
+            <TextInput id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
+          )}
+        />
+      );
+    }
+
+    if (field.component === FormFieldComponents.TEXT_AREA) {
+      return (
+        <Controller
+          {...controllerProps}
+          render={({ field: fieldController }) => (
+            <TextArea id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
+          )}
+        />
+      );
+    }
+
+    if (field.component === FormFieldComponents.SELECT) {
+      const flatOptions = field.options.flatMap((option) => {
+        if ('options' in option) {
+          return option.options;
+        }
+        return option;
+      });
+      return (
+        <Controller
+          {...controllerProps}
+          render={({ field: fieldController }) => (
+            <Select
+              id={field.name.toString()}
+              error={errors[field.name]?.message?.toString()}
+              {...field}
+              onChange={(value) => fieldController.onChange(value?.value)}
+              value={flatOptions.find((option) => option.value === fieldController.value)}
+            />
+          )}
+        />
+      );
+    }
+
+    if (field.component === FormFieldComponents.MULTI_SELECT) {
+      return (
+        <Controller
+          {...controllerProps}
+          render={({ field: fieldController }) => (
+            <MultiSelect
+              id={field.name.toString()}
+              error={errors[field.name]?.message?.toString()}
+              {...field}
+              onChange={(value) => fieldController.onChange(value)}
+              value={fieldController.value}
+            />
+          )}
+        />
+      );
+    }
+
+    if (field.component === FormFieldComponents.CREATABLE_SELECT) {
+      return (
+        <Controller
+          {...controllerProps}
+          render={({ field: fieldController }) => (
+            <CreatableSelect
+              id={field.name.toString()}
+              error={errors[field.name]?.message?.toString()}
+              {...field}
+              onChange={(value) => fieldController.onChange(value?.value)}
+              value={field.options.find((option) => option.value === fieldController.value)}
+            />
+          )}
+        />
+      );
+    }
+
+    if (field.component === FormFieldComponents.DATE_PICKER) {
+      return (
+        <Controller
+          {...controllerProps}
+          render={({ field: fieldController }) => (
+            <DatePicker id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
+          )}
+        />
+      );
+    }
+  };
+
   return (
     <FormElement onSubmit={handleSubmit(onSubmit)} className={className} $inline={inline}>
-      {fields.map((field) => {
-        const controllerProps = {
-          key: String(field.name),
-          name: field.name,
-          control,
-          disabled: isLoading,
-        };
-
-        if (field.component === FormFieldComponents.TEXT) {
+      {fields.map((fieldOrGroup, index) => {
+        if ('fields' in fieldOrGroup) {
           return (
-            <Controller
-              {...controllerProps}
-              render={({ field: fieldController }) => (
-                <TextInput id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
-              )}
-            />
+            <div>
+              {fieldOrGroup.title && <FormGroupTitle>{fieldOrGroup.title}</FormGroupTitle>}
+              <FormGroupContainer key={index} $columns={fieldOrGroup.columns}>
+                {fieldOrGroup.fields.map((field) => renderField(field))}
+              </FormGroupContainer>
+            </div>
           );
         }
 
-        if (field.component === FormFieldComponents.TEXT_AREA) {
-          return (
-            <Controller
-              {...controllerProps}
-              render={({ field: fieldController }) => (
-                <TextArea id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
-              )}
-            />
-          );
-        }
-
-        if (field.component === FormFieldComponents.SELECT) {
-          const flatOptions = field.options.flatMap((option) => {
-            if ('options' in option) {
-              return option.options;
-            }
-            return option;
-          });
-          return (
-            <Controller
-              {...controllerProps}
-              render={({ field: fieldController }) => (
-                <Select
-                  id={field.name.toString()}
-                  error={errors[field.name]?.message?.toString()}
-                  {...field}
-                  onChange={(value) => fieldController.onChange(value?.value)}
-                  value={flatOptions.find((option) => option.value === fieldController.value)}
-                />
-              )}
-            />
-          );
-        }
-
-        if (field.component === FormFieldComponents.MULTI_SELECT) {
-          return (
-            <Controller
-              {...controllerProps}
-              render={({ field: fieldController }) => (
-                <MultiSelect
-                  id={field.name.toString()}
-                  error={errors[field.name]?.message?.toString()}
-                  {...field}
-                  onChange={(value) => fieldController.onChange(value)}
-                  value={fieldController.value}
-                />
-              )}
-            />
-          );
-        }
-
-        if (field.component === FormFieldComponents.CREATABLE_SELECT) {
-          return (
-            <Controller
-              {...controllerProps}
-              render={({ field: fieldController }) => (
-                <CreatableSelect
-                  id={field.name.toString()}
-                  error={errors[field.name]?.message?.toString()}
-                  {...field}
-                  onChange={(value) => fieldController.onChange(value?.value)}
-                  value={field.options.find((option) => option.value === fieldController.value)}
-                />
-              )}
-            />
-          );
-        }
-
-        if (field.component === FormFieldComponents.DATE_PICKER) {
-          return (
-            <Controller
-              {...controllerProps}
-              render={({ field: fieldController }) => (
-                <DatePicker id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
-              )}
-            />
-          );
-        }
+        return renderField(fieldOrGroup);
       })}
 
       <SubmitButton type="submit" disabled={!isValid || isLoading || Object.keys(errors).length > 0} loading={isLoading}>

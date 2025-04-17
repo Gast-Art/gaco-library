@@ -165,3 +165,83 @@ export const Loading: Story = {
     isLoading: true,
   },
 };
+
+export const Groups: Story = {
+  args: {
+    fields: [
+      {
+        title: 'Group 1',
+        columns: 2,
+        fields: [
+          {
+            name: 'email',
+            label: 'Email',
+            component: FormFieldComponents.TEXT,
+            type: 'email',
+          },
+          {
+            name: 'password',
+            label: 'Password',
+            component: FormFieldComponents.TEXT,
+            type: 'password',
+          },
+        ],
+      },
+      {
+        title: 'Group 2',
+        fields: [
+          {
+            name: 'select',
+            label: 'Select',
+            component: FormFieldComponents.SELECT,
+            options: [
+              { value: '1', label: 'Option 1' },
+              { value: '2', label: 'Option 2' },
+              { value: '3', label: 'Option 3' },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Address',
+        columns: 2,
+        fields: [
+          {
+            name: 'address',
+            label: 'Address',
+            component: FormFieldComponents.TEXT,
+            type: 'text',
+          },
+          {
+            name: 'city',
+            label: 'City',
+            component: FormFieldComponents.TEXT,
+            type: 'text',
+          },
+          {
+            name: 'state',
+            label: 'State',
+            component: FormFieldComponents.TEXT,
+            type: 'text',
+          },
+          {
+            name: 'zip',
+            label: 'Zip Code',
+            component: FormFieldComponents.TEXT,
+            type: 'text',
+          },
+        ],
+      },
+    ],
+    schema: yup.object().shape({
+      email: yup.string().email().required(),
+      password: yup.string().required(),
+      select: yup.string().required(),
+      address: yup.string().required(),
+      city: yup.string().required(),
+      state: yup.string().required(),
+      zip: yup.string().required(),
+    }),
+    onSubmit: (data) => console.log(data),
+  },
+};
