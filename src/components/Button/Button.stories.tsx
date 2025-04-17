@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Store } from 'lucide-react';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -55,5 +56,16 @@ export const Loading: Story = {
   args: {
     children: 'Loading',
     loading: true,
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    children: (
+      <>
+        <Store />
+        With Icon
+      </>
+    ),
   },
 };

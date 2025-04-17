@@ -80,6 +80,7 @@ const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  gap: 0.5rem;
   border: none;
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
   box-shadow: ${({ theme }) => theme.shadows.default};
@@ -94,6 +95,11 @@ const StyledButton = styled.button<ButtonProps>`
   }
   ${({ variant = 'default' }) => buttonVariants[variant]}
   ${({ size = 'default' }) => buttonSizes[size]}
+
+  svg {
+    height: 1rem;
+    width: 1rem;
+  }
 `;
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
