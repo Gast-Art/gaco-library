@@ -1,6 +1,6 @@
 import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as c}from"./index-CR__hKHy.js";import{d as l,l as o}from"./styled-components.browser.esm-DnH8uv-2.js";import{S as d}from"./Spinner-xLrCEoRn.js";const e=l(d)`
   margin-right: 0.5rem;
-`,u={default:o`
+`,m={default:o`
     background-color: ${({theme:r})=>r.colors.primary};
     color: ${({theme:r})=>r.colors.primaryForeground};
     &:hover {
@@ -43,7 +43,7 @@ import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as c}from"./index-CR__hKH
       border-color: ${({theme:r})=>r.colors.errorForeground};
       border-right-color: transparent;
     }
-  `},m={sm:o`
+  `},u={sm:o`
     height: 1.5rem;
     padding: 0 0.75rem;
   `,default:o`
@@ -60,6 +60,7 @@ import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as c}from"./index-CR__hKH
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  gap: 0.5rem;
   border: none;
   border-radius: ${({theme:r})=>r.sizes.borderRadius};
   box-shadow: ${({theme:r})=>r.shadows.default};
@@ -72,6 +73,11 @@ import{j as a}from"./jsx-runtime-CLpGMVip.js";import{r as c}from"./index-CR__hKH
     cursor: not-allowed;
     opacity: 0.5;
   }
-  ${({variant:r="default"})=>u[r]}
-  ${({size:r="default"})=>m[r]}
+  ${({variant:r="default"})=>m[r]}
+  ${({size:r="default"})=>u[r]}
+
+  svg {
+    height: 1rem;
+    width: 1rem;
+  }
 `,n=c.forwardRef(({loading:r=!1,disabled:s,...t},i)=>a.jsxs(p,{ref:i,disabled:r||s,...t,children:[r&&a.jsx(e,{size:1,className:"mr-2"})," ",t.children]}));n.displayName="Button";n.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"sm"},{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""}},composes:["ButtonHTMLAttributes"]};export{n as B};
