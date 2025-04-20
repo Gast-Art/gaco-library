@@ -74,7 +74,7 @@ export const Dialog = ({ trigger, open, onOpenChange, title, content, actions, c
                   <CardSections.Title>{title}</CardSections.Title>
                 </DialogRoot.Title>
               )}
-              {content && (
+              {(content || children) && (
                 <DialogRoot.Description asChild>
                   <>
                     <CardSections.Content>{content}</CardSections.Content>
