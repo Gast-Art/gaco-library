@@ -166,12 +166,6 @@ export const Card: FC<CardProps> = ({ children, loading, error, info, size = Car
 
   return (
     <CardContainer $size={size} {...props}>
-      {(loading || error || info) && (
-        <LoadingOverlay error={error} info={info}>
-          {typeof loading === 'string' ? loading : undefined}
-        </LoadingOverlay>
-      )}
-
       {slotLeftColumn}
 
       <CardInner>
@@ -182,6 +176,12 @@ export const Card: FC<CardProps> = ({ children, loading, error, info, size = Car
       </CardInner>
 
       {slotRightColumn}
+
+      {(loading || error || info) && (
+        <LoadingOverlay error={error} info={info}>
+          {typeof loading === 'string' ? loading : undefined}
+        </LoadingOverlay>
+      )}
     </CardContainer>
   );
 };
