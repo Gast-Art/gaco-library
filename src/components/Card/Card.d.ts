@@ -12,6 +12,8 @@ interface CardProps extends PropsWithChildren {
     style?: CSSProperties;
     onClick?: () => void;
     loading?: string | boolean;
+    error?: string;
+    info?: string;
     size?: CardSize;
 }
 export declare const CardSections: {
