@@ -7,8 +7,8 @@ import{j as e}from"./jsx-runtime-CLpGMVip.js";import{d as t}from"./styled-compon
   z-index: ${({theme:o})=>o.zIndicies.LoadingOverlay};
 
   color: white;
-  background-color: black;
-  opacity: 50%;
+  background-color: #666;
+  opacity: 40%;
 
   display: flex;
   flex-direction: column;
