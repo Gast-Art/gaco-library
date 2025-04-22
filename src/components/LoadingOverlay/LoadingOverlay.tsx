@@ -1,3 +1,4 @@
+import { Ban, Info } from 'lucide-react';
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { Spinner as SpinnerRoot } from '../Spinner';
@@ -18,6 +19,10 @@ const OverlayWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  svg {
+    margin-bottom: 1rem;
+  }
 `;
 
 const Spinner = styled(SpinnerRoot)`
@@ -27,10 +32,25 @@ const Spinner = styled(SpinnerRoot)`
   border-right-color: transparent;
 `;
 
-export const LoadingOverlay = ({ children }: PropsWithChildren) => {
+interface LoadingOverlayProps extends PropsWithChildren {
+  info?: string;
+  error?: string;
+}
+
+export const LoadingOverlay = ({ children, info, error }: LoadingOverlayProps) => {
   return (
     <OverlayWrapper>
-      <Spinner />
+      {!error && !info && <Spinner />}
+      {error && (
+        <>
+          <Ban /> {error}
+        </>
+      )}
+      {info && (
+        <>
+          <Info /> {info}
+        </>
+      )}
       {children}
     </OverlayWrapper>
   );

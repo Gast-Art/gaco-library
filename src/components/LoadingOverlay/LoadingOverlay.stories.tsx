@@ -22,3 +22,15 @@ export const Default: Story = {
     children: 'Loading...',
   },
 };
+
+export const Error: Story = {
+  args: {
+    error: 'Error loading data',
+  },
+};
+
+export const Info: Story = {
+  args: {
+    info: 'No data found',
+  },
+};
