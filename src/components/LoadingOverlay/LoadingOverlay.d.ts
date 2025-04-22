@@ -1,3 +1,8 @@
 import { PropsWithChildren } from '../../../node_modules/react';
-export declare const LoadingOverlay: ({ children }: PropsWithChildren) => import("react/jsx-runtime").JSX.Element;
+interface LoadingOverlayProps extends PropsWithChildren {
+    info?: string;
+    error?: string;
+}
+export declare const LoadingOverlay: ({ children, info, error }: LoadingOverlayProps) => import("react/jsx-runtime").JSX.Element;
+export {};
 //# sourceMappingURL=LoadingOverlay.d.ts.map
