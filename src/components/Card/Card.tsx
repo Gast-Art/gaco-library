@@ -1,9 +1,9 @@
 import { Children, CSSProperties, FC, isValidElement, PropsWithChildren, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { media } from '../../theme';
+import { ButtonGroup } from '../ButtonGroup';
 import { LoadingOverlay } from '../LoadingOverlay';
 import { H3 } from '../Typography';
-import { ButtonGroup } from '../ButtonGroup';
 
 export enum CardSize {
   sm = 'sm',
@@ -104,6 +104,8 @@ interface CardProps extends PropsWithChildren {
   style?: CSSProperties;
   onClick?: () => void;
   loading?: string | boolean;
+  error?: string;
+  info?: string;
   size?: CardSize;
 }
 
@@ -126,7 +128,7 @@ interface CardProps extends PropsWithChildren {
   size?: CardSize;
 }
 
-export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...props }) => {
+export const Card: FC<CardProps> = ({ children, loading, error, info, size = CardSize.md, ...props }) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
   let slotActions: ReactNode;
@@ -164,7 +166,11 @@ export const Card: FC<CardProps> = ({ children, loading, size = CardSize.md, ...
 
   return (
     <CardContainer $size={size} {...props}>
-      {loading && <LoadingOverlay>{typeof loading === 'string' ? loading : undefined}</LoadingOverlay>}
+      {(loading || error || info) && (
+        <LoadingOverlay error={error} info={info}>
+          {typeof loading === 'string' ? loading : undefined}
+        </LoadingOverlay>
+      )}
 
       {slotLeftColumn}
 
