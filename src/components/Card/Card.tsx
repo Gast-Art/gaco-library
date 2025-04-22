@@ -104,8 +104,8 @@ interface CardProps extends PropsWithChildren {
   style?: CSSProperties;
   onClick?: () => void;
   loading?: string | boolean;
-  error?: string;
-  info?: string;
+  error?: string | boolean;
+  info?: string | boolean;
   size?: CardSize;
 }
 

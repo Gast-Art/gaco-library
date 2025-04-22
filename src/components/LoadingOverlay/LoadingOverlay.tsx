@@ -33,8 +33,8 @@ const Spinner = styled(SpinnerRoot)`
 `;
 
 interface LoadingOverlayProps extends PropsWithChildren {
-  info?: string;
-  error?: string;
+  info?: string | boolean;
+  error?: string | boolean;
 }
 
 export const LoadingOverlay = ({ children, info, error }: LoadingOverlayProps) => {
