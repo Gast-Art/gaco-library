@@ -81,3 +81,24 @@ export const WithActions: Story = {
     </Card>
   ),
 };
+
+export const IsLoading: Story = {
+  args: {
+    ...ButtonsInRightColumn.args,
+    loading: 'Loading some stuff...',
+  },
+};
+
+export const IsError: Story = {
+  args: {
+    ...ButtonsInRightColumn.args,
+    error: 'Error loading some stuff...',
+  },
+};
+
+export const IsInfo: Story = {
+  args: {
+    ...ButtonsInRightColumn.args,
+    info: 'Info about some stuff...',
+  },
+};

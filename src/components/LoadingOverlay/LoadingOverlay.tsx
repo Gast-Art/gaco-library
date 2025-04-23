@@ -12,8 +12,8 @@ const OverlayWrapper = styled.div`
   z-index: ${({ theme }) => theme.zIndicies.LoadingOverlay};
 
   color: white;
-  background-color: #666;
-  opacity: 40%;
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
 
   display: flex;
   flex-direction: column;
