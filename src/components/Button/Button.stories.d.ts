@@ -10,4 +10,5 @@ export declare const Large: Story;
 export declare const Destructive: Story;
 export declare const Loading: Story;
 export declare const WithIcon: Story;
+export declare const Upload: Story;
 //# sourceMappingURL=Button.stories.d.ts.map

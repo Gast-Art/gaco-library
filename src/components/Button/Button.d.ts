@@ -11,10 +11,12 @@ declare const buttonSizes: {
     lg: import('styled-components').RuleSet<object>;
     icon: import('styled-components').RuleSet<object>;
 };
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     loading?: boolean;
     variant?: keyof typeof buttonVariants;
     size?: keyof typeof buttonSizes;
+    onFileChange?: (files: FileList | null) => void;
+    type?: 'button' | 'submit' | 'reset' | 'file';
 }
 declare const Button: import('../../../node_modules/react').ForwardRefExoticComponent<ButtonProps & import('../../../node_modules/react').RefAttributes<HTMLButtonElement>>;
 export { Button };
