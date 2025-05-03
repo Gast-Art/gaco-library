@@ -8,6 +8,7 @@ import {
 } from '@radix-ui/react-tabs';
 import { ComponentRef, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
+import { media } from '../../theme';
 
 const Tabs = styled(TabsRoot)`
   display: flex;
@@ -18,7 +19,7 @@ const StyledTabsList = styled(TabsListRoot)<{ $inline?: boolean }>`
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background-color: ${({ theme }) => theme.colors.grayLighter};
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
   overflow-x: auto;
@@ -34,6 +35,10 @@ const StyledTabsList = styled(TabsListRoot)<{ $inline?: boolean }>`
             flex: 1;
           }
         `}
+
+  ${media.md`
+        margin-bottom: 1rem;
+    `}
 `;
 
 const triggerSizes = {
