@@ -69,3 +69,13 @@ export const WithIcon: Story = {
     ),
   },
 };
+
+export const Upload: Story = {
+  args: {
+    children: 'Upload',
+    type: 'file',
+    onFileChange: (files) => {
+      console.log(files);
+    },
+  },
+};

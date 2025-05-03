@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef, MouseEvent, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { Spinner as SpinnerRoot } from '../Spinner';
 
@@ -102,15 +102,37 @@ const StyledButton = styled.button<ButtonProps>`
   }
 `;
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+const HiddenInput = styled.input`
+  display: none;
+`;
+
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   loading?: boolean;
   variant?: keyof typeof buttonVariants;
   size?: keyof typeof buttonSizes;
+  onFileChange?: (files: FileList | null) => void;
+  type?: 'button' | 'submit' | 'reset' | 'file';
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ loading = false, disabled, ...props }, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ loading = false, disabled, onFileChange, type, ...props }, ref) => {
+  const hiddenInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (onFileChange) {
+      onFileChange(event.target.files);
+    }
+  };
+
+  const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (type === 'file' && hiddenInputRef.current) {
+      hiddenInputRef.current.click();
+    }
+    props.onClick?.(e);
+  };
+
   return (
-    <StyledButton ref={ref} disabled={loading || disabled} {...props}>
+    <StyledButton ref={ref} disabled={loading || disabled} onClick={handleButtonClick} {...props} type={type}>
+      {type === 'file' && <HiddenInput ref={hiddenInputRef} type="file" onChange={handleFileChange} disabled={loading || disabled} />}
       {loading && <Spinner size={1} className="mr-2" />} {props.children}
     </StyledButton>
   );
