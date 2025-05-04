@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEvent, useRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef, MouseEvent, ReactNode, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { Spinner as SpinnerRoot } from '../Spinner';
 
@@ -75,7 +75,7 @@ const buttonSizes = {
   `,
 };
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps & { $icon?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -96,6 +96,12 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ variant = 'default' }) => buttonVariants[variant]}
   ${({ size = 'default' }) => buttonSizes[size]}
 
+  ${({ $icon }) =>
+    $icon &&
+    css`
+      padding: 0 0.5rem;
+    `}
+
   svg {
     height: 1rem;
     width: 1rem;
@@ -109,12 +115,13 @@ const HiddenInput = styled.input`
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   loading?: boolean;
   variant?: keyof typeof buttonVariants;
+  icon?: ReactNode;
   size?: keyof typeof buttonSizes;
   onFileChange?: (files: FileList | null) => void;
   type?: 'button' | 'submit' | 'reset' | 'file';
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ loading = false, disabled, onFileChange, type, ...props }, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ loading = false, disabled, onFileChange, icon, type, ...props }, ref) => {
   const hiddenInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -131,7 +138,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ loading = false, di
   };
 
   return (
-    <StyledButton ref={ref} disabled={loading || disabled} onClick={handleButtonClick} {...props} type={type}>
+    <StyledButton ref={ref} disabled={loading || disabled} onClick={handleButtonClick} $icon={!!icon} {...props} type={type}>
+      {icon}
       {type === 'file' && <HiddenInput ref={hiddenInputRef} type="file" onChange={handleFileChange} disabled={loading || disabled} />}
       {loading && <Spinner size={1} className="mr-2" />} {props.children}
     </StyledButton>

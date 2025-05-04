@@ -59,6 +59,13 @@ export const Loading: Story = {
   },
 };
 
+export const Icon: Story = {
+  args: {
+    icon: <Store />,
+    variant: 'ghost',
+  },
+};
+
 export const WithIcon: Story = {
   args: {
     children: (
