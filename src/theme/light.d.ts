@@ -17,6 +17,7 @@ export declare const lightTheme: {
         bg: string;
         mutedBg: string;
         text: string;
+        textMuted: string;
         contentBg: string;
         separator: string;
         border: string;
