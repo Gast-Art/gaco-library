@@ -1,6 +1,6 @@
-import{j as i}from"./jsx-runtime-CLpGMVip.js";import{r as m}from"./index-CR__hKHy.js";import{d as s,l as r}from"./styled-components.browser.esm-DnH8uv-2.js";import{S as b}from"./Spinner-xLrCEoRn.js";const t=s(b)`
+import{j as i}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CR__hKHy.js";import{d as s,l as r}from"./styled-components.browser.esm-DnH8uv-2.js";import{S as y}from"./Spinner-xLrCEoRn.js";const t=s(y)`
   margin-right: 0.5rem;
-`,y={default:r`
+`,$={default:r`
     background-color: ${({theme:e})=>e.colors.primary};
     color: ${({theme:e})=>e.colors.primaryForeground};
     &:hover {
@@ -55,7 +55,7 @@ import{j as i}from"./jsx-runtime-CLpGMVip.js";import{r as m}from"./index-CR__hKH
   `,icon:r`
     height: 2.25rem;
     width: 2.25rem;
-  `},$=s.button`
+  `},w=s.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -73,13 +73,17 @@ import{j as i}from"./jsx-runtime-CLpGMVip.js";import{r as m}from"./index-CR__hKH
     cursor: not-allowed;
     opacity: 0.5;
   }
-  ${({variant:e="default"})=>y[e]}
+  ${({variant:e="default"})=>$[e]}
   ${({size:e="default"})=>v[e]}
+
+  ${({$icon:e})=>e&&r`
+      padding: 0 0.5rem;
+    `}
 
   svg {
     height: 1rem;
     width: 1rem;
   }
-`,w=s.input`
+`,k=s.input`
   display: none;
-`,p=m.forwardRef(({loading:e=!1,disabled:c,onFileChange:d,type:n,...o},f)=>{const l=m.useRef(null),g=a=>{d&&d(a.target.files)},h=a=>{var u;n==="file"&&l.current&&l.current.click(),(u=o.onClick)==null||u.call(o,a)};return i.jsxs($,{ref:f,disabled:e||c,onClick:h,...o,type:n,children:[n==="file"&&i.jsx(w,{ref:l,type:"file",onChange:g,disabled:e||c}),e&&i.jsx(t,{size:1,className:"mr-2"})," ",o.children]})});p.displayName="Button";p.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"sm"},{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""},onFileChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(files: FileList | null) => void",signature:{arguments:[{type:{name:"union",raw:"FileList | null",elements:[{name:"FileList"},{name:"null"}]},name:"files"}],return:{name:"void"}}},description:""},type:{required:!1,tsType:{name:"union",raw:"'button' | 'submit' | 'reset' | 'file'",elements:[{name:"literal",value:"'button'"},{name:"literal",value:"'submit'"},{name:"literal",value:"'reset'"},{name:"literal",value:"'file'"}]},description:""}},composes:["Omit"]};export{p as B};
+`,f=p.forwardRef(({loading:e=!1,disabled:c,onFileChange:d,icon:u,type:n,...o},g)=>{const a=p.useRef(null),h=l=>{d&&d(l.target.files)},b=l=>{var m;n==="file"&&a.current&&a.current.click(),(m=o.onClick)==null||m.call(o,l)};return i.jsxs(w,{ref:g,disabled:e||c,onClick:b,$icon:!!u,...o,type:n,children:[u,n==="file"&&i.jsx(k,{ref:a,type:"file",onChange:h,disabled:e||c}),e&&i.jsx(t,{size:1,className:"mr-2"})," ",o.children]})});f.displayName="Button";f.__docgenInfo={description:"",methods:[],displayName:"Button",props:{loading:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},variant:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonVariants",elements:[{name:"literal",value:"default"},{name:"literal",value:"outline"},{name:"literal",value:"ghost"},{name:"literal",value:"destructive"}]},description:""},icon:{required:!1,tsType:{name:"ReactNode"},description:""},size:{required:!1,tsType:{name:"union",raw:"keyof typeof buttonSizes",elements:[{name:"literal",value:"sm"},{name:"literal",value:"default"},{name:"literal",value:"lg"},{name:"literal",value:"icon"}]},description:""},onFileChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(files: FileList | null) => void",signature:{arguments:[{type:{name:"union",raw:"FileList | null",elements:[{name:"FileList"},{name:"null"}]},name:"files"}],return:{name:"void"}}},description:""},type:{required:!1,tsType:{name:"union",raw:"'button' | 'submit' | 'reset' | 'file'",elements:[{name:"literal",value:"'button'"},{name:"literal",value:"'submit'"},{name:"literal",value:"'reset'"},{name:"literal",value:"'file'"}]},description:""}},composes:["Omit"]};export{f as B};

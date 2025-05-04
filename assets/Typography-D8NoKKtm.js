@@ -33,7 +33,7 @@ import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-S
   ${m.sm`
     margin-bottom: 0.5rem;
   `}
-`,g=t.h4`
+`,l=t.h4`
   font-size: ${({theme:o})=>o.sizes.fonts.md};
   font-weight: bold;
   margin-bottom: 0.25rem;
@@ -41,6 +41,6 @@ import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-S
   ${m.sm`
     margin-bottom: 0.5rem;
   `}
-`;t.small`
+`,g=t.small`
   font-size: ${({theme:o})=>o.sizes.fonts.xxs};
-`;export{f as H,e as P,r as a,a as b,g as c};
+`;export{f as H,e as P,g as S,r as a,a as b,l as c};

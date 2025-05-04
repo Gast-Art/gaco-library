@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from '../../../node_modules/react';
+import { ButtonHTMLAttributes, ReactNode } from '../../../node_modules/react';
 declare const buttonVariants: {
     default: import('styled-components').RuleSet<object>;
     outline: import('styled-components').RuleSet<object>;
@@ -14,6 +14,7 @@ declare const buttonSizes: {
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     loading?: boolean;
     variant?: keyof typeof buttonVariants;
+    icon?: ReactNode;
     size?: keyof typeof buttonSizes;
     onFileChange?: (files: FileList | null) => void;
     type?: 'button' | 'submit' | 'reset' | 'file';
