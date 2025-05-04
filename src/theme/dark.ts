@@ -6,6 +6,7 @@ export const darkTheme = {
     bg: '#000',
     mutedBg: '#111',
     text: '#fff',
+    textMuted: '#999',
     contentBg: '#ffffff',
     separator: '#e0e0e0',
     border: '#e0e0e0',

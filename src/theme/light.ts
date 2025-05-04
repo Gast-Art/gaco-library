@@ -6,6 +6,7 @@ export const lightTheme = {
     bg: '#eeeeee',
     mutedBg: '#f5f5f5',
     text: '#000',
+    textMuted: '#666666',
     contentBg: '#ffffff',
     separator: '#e0e0e0',
     border: '#e0e0e0',

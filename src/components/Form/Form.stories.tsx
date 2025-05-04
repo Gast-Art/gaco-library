@@ -129,6 +129,7 @@ export const Default: Story = {
     initialValues: {
       email: 'email@email.com',
       password: undefined,
+      date: new Date(),
     },
     onSubmit: (data) => console.log(data),
   },
