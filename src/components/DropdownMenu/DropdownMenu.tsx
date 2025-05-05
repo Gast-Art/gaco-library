@@ -63,7 +63,7 @@ interface DropdownMenuProps {
 
 const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffset, side, sideOffset, dialogOpen }) => {
   return (
-    <RadixDropdownMenu.Root>
+    <RadixDropdownMenu.Root open={dialogOpen ? false : undefined}>
       {trigger && <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>}
 
       <RadixDropdownMenu.Portal>
@@ -72,15 +72,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffse
             item === 'seperator' ? (
               <Separator key={index} />
             ) : (
-              <DropdownMenuItem
-                key={index}
-                onSelect={(e) => {
-                  if (dialogOpen !== undefined) {
-                    e.preventDefault();
-                  }
-                  item.onSelect?.(e);
-                }}
-              >
+              <DropdownMenuItem key={index} onSelect={item.onSelect}>
                 {item.content}
               </DropdownMenuItem>
             ),
