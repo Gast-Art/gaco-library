@@ -40,11 +40,6 @@ export const DropdownMenuItemStyling = css`
     background-color: ${({ theme }) => theme.colors.mutedBg};
   }
 
-  &:disabled {
-    color: ${({ theme }) => theme.colors.textMuted};
-    cursor: not-allowed;
-  }
-
   svg {
     height: 1rem;
     width: 1rem;
@@ -52,8 +47,19 @@ export const DropdownMenuItemStyling = css`
   }
 `;
 
-const DropdownMenuItem = styled(RadixDropdownMenu.Item)`
+const DropdownMenuItem = styled(RadixDropdownMenu.Item)<{ disabled?: boolean }>`
   ${DropdownMenuItemStyling}
+
+  ${({ disabled, theme }) =>
+    disabled
+      ? `
+    color: ${theme.colors.textMuted};
+    cursor: not-allowed;
+    &:hover {
+      background-color: transparent;
+    }
+  `
+      : ''}
 `;
 
 interface DropdownMenuProps {

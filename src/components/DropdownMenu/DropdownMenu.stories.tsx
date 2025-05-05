@@ -32,7 +32,7 @@ export const Default: Story = {
         ),
         onSelect: () => {},
       },
-      { content: 'Item 2', onSelect: () => {} },
+      { content: 'Item 2', onSelect: () => {}, disabled: true },
       'seperator',
       { content: 'Item 3', onSelect: () => {} },
     ],
