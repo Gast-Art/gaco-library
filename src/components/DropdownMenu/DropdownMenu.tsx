@@ -52,7 +52,7 @@ const DropdownMenuItem = styled(RadixDropdownMenu.Item)`
 `;
 
 interface DropdownMenuProps {
-  items: ({ content: ReactNode; onSelect?: (e: Event) => void } | 'seperator')[];
+  items: ({ disabled?: boolean; content: ReactNode; onSelect?: (e: Event) => void } | 'seperator')[];
   trigger?: ReactNode;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
@@ -80,7 +80,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffse
             item === 'seperator' ? (
               <Separator key={index} />
             ) : (
-              <DropdownMenuItem key={index} onSelect={item.onSelect}>
+              <DropdownMenuItem key={index} onSelect={item.onSelect} disabled={item.disabled}>
                 {item.content}
               </DropdownMenuItem>
             ),
