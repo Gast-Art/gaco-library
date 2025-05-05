@@ -1,5 +1,5 @@
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 export const DropdownMenuContentStyling = css`
@@ -62,8 +62,16 @@ interface DropdownMenuProps {
 }
 
 const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffset, side, sideOffset, dialogOpen }) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (dialogOpen) {
+      setOpen(false);
+    }
+  }, [dialogOpen]);
+
   return (
-    <RadixDropdownMenu.Root open={dialogOpen ? false : undefined}>
+    <RadixDropdownMenu.Root open={open} onOpenChange={setOpen}>
       {trigger && <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>}
 
       <RadixDropdownMenu.Portal>
