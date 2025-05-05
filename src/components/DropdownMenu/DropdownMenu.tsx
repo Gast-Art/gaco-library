@@ -67,7 +67,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffse
       {trigger && <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>}
 
       <RadixDropdownMenu.Portal>
-        <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset} $hide={dialogOpen}>
+        <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
           {items.map((item, index) =>
             item === 'seperator' ? (
               <Separator key={index} />
