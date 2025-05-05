@@ -12,8 +12,9 @@ export const DropdownMenuContentStyling = css`
   z-index: ${({ theme }) => theme.zIndicies.dropdownMenu};
 `;
 
-const DropdownMenuContent = styled(RadixDropdownMenu.Content)`
+const DropdownMenuContent = styled(RadixDropdownMenu.Content)<{ $hide?: boolean }>`
   ${DropdownMenuContentStyling}
+  display: ${({ $hide }) => ($hide ? 'none' : 'block')};
 `;
 
 const Separator = styled(RadixDropdownMenu.Separator)`
@@ -51,26 +52,35 @@ const DropdownMenuItem = styled(RadixDropdownMenu.Item)`
 `;
 
 interface DropdownMenuProps {
-  items: ({ content: ReactNode; onSelect?: () => void } | 'seperator')[];
+  items: ({ content: ReactNode; onSelect?: (e: Event) => void } | 'seperator')[];
   trigger?: ReactNode;
   align?: 'start' | 'center' | 'end';
   alignOffset?: number;
   side?: 'left' | 'right';
   sideOffset?: number;
+  dialogOpen?: boolean;
 }
 
-const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffset, side, sideOffset }) => {
+const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffset, side, sideOffset, dialogOpen }) => {
   return (
     <RadixDropdownMenu.Root>
       {trigger && <RadixDropdownMenu.Trigger asChild>{trigger}</RadixDropdownMenu.Trigger>}
 
       <RadixDropdownMenu.Portal>
-        <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset}>
+        <DropdownMenuContent align={align} alignOffset={alignOffset} side={side} sideOffset={sideOffset} $hide={dialogOpen}>
           {items.map((item, index) =>
             item === 'seperator' ? (
               <Separator key={index} />
             ) : (
-              <DropdownMenuItem key={index} onSelect={item.onSelect}>
+              <DropdownMenuItem
+                key={index}
+                onSelect={(e) => {
+                  if (dialogOpen) {
+                    e.preventDefault();
+                  }
+                  item.onSelect?.(e);
+                }}
+              >
                 {item.content}
               </DropdownMenuItem>
             ),

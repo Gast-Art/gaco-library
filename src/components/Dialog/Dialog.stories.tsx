@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { useState } from 'react';
 import { Button } from '../Button';
+import { DropdownMenu } from '../DropdownMenu';
 import { Select } from '../Select';
 import { Dialog } from './Dialog';
 
@@ -42,6 +43,31 @@ export const Default: Story = {
 export const NoOutideState: Story = {
   render: (args) => {
     return <Dialog {...args} trigger={<Button>Open dialog</Button>} />;
+  },
+  args: {
+    ...Default.args,
+  },
+};
+
+export const ControlledOutside: Story = {
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <DropdownMenu
+          trigger={<Button>Open dropdown</Button>}
+          dialogOpen={open}
+          items={[
+            {
+              content: 'Open dialog',
+              onSelect: () => setOpen(true),
+            },
+          ]}
+        />
+        <Dialog {...args} open={open} onOpenChange={setOpen} />
+      </>
+    );
   },
   args: {
     ...Default.args,
