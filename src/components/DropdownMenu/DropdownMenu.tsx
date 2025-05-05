@@ -75,7 +75,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffse
               <DropdownMenuItem
                 key={index}
                 onSelect={(e) => {
-                  if (dialogOpen) {
+                  if (dialogOpen !== undefined) {
                     e.preventDefault();
                   }
                   item.onSelect?.(e);
