@@ -3,6 +3,7 @@ export declare const DropdownMenuContentStyling: import('styled-components').Rul
 export declare const DropdownMenuItemStyling: import('styled-components').RuleSet<object>;
 interface DropdownMenuProps {
     items: ({
+        disabled?: boolean;
         content: ReactNode;
         onSelect?: (e: Event) => void;
     } | 'seperator')[];
