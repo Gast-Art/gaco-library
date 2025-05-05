@@ -6,7 +6,7 @@ import{d as b}from"./index-ogSvIofg.js";import{R as r}from"./index-CR__hKHy.js";
     margin: 0;
     padding: 0;
     background-color: ${({theme:e})=>e.colors.background};
-    line-height: 1;
+    line-height: 1.2;
   }
 
   a {
