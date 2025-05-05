@@ -4,13 +4,14 @@ export declare const DropdownMenuItemStyling: import('styled-components').RuleSe
 interface DropdownMenuProps {
     items: ({
         content: ReactNode;
-        onSelect?: () => void;
+        onSelect?: (e: Event) => void;
     } | 'seperator')[];
     trigger?: ReactNode;
     align?: 'start' | 'center' | 'end';
     alignOffset?: number;
     side?: 'left' | 'right';
     sideOffset?: number;
+    dialogOpen?: boolean;
 }
 declare const DropdownMenu: FC<DropdownMenuProps>;
 export { DropdownMenu };
