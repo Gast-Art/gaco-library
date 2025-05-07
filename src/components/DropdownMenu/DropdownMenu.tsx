@@ -23,7 +23,7 @@ const Separator = styled(RadixDropdownMenu.Separator)`
 `;
 
 export const DropdownMenuItemStyling = css`
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   transition: background-color 0.2s ease;

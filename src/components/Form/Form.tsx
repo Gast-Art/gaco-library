@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ComponentProps, useEffect } from 'react';
+import { ComponentProps, useEffect, useMemo } from 'react';
 import { Controller, DefaultValues, FieldValues, Path, SubmitHandler, useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import * as yup from 'yup';
@@ -87,11 +87,11 @@ const FormGroupContainer = styled.div<{ $columns?: number }>`
   display: grid;
   grid-template-columns: ${({ $columns }) => ($columns ? `repeat(${$columns}, 1fr)` : '1fr')};
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 `;
 
 const FormGroupTitle = styled(H4)`
-  margin: 0;
+  margin: 0 0 0.125rem 0;
 `;
 
 const Form = <T extends FieldValues = FieldValues>({
@@ -117,20 +117,36 @@ const Form = <T extends FieldValues = FieldValues>({
 
   useEffect(() => reset(initialValues), [reset, initialValues]);
 
+  const describedSchema = useMemo(() => {
+    return schema?.describe();
+  }, [schema]);
+
   const renderField = (field: FormField<T>) => {
+    const isRequired =
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      describedSchema?.fields && describedSchema.fields[field.name]?.tests?.find(({ name }: { name: string }) => name === 'required');
+
     const controllerProps = {
       key: String(field.name),
       name: field.name,
       control,
       disabled: isLoading,
     };
+    const labelWithAsterisk = field.label && isRequired ? `${field.label}*` : field.label;
 
     if (field.component === FormFieldComponents.TEXT) {
       return (
         <Controller
           {...controllerProps}
           render={({ field: fieldController }) => (
-            <TextInput id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
+            <TextInput
+              id={field.name.toString()}
+              error={errors[field.name]?.message?.toString()}
+              {...field}
+              {...fieldController}
+              label={labelWithAsterisk}
+            />
           )}
         />
       );
@@ -141,7 +157,13 @@ const Form = <T extends FieldValues = FieldValues>({
         <Controller
           {...controllerProps}
           render={({ field: fieldController }) => (
-            <TextArea id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
+            <TextArea
+              id={field.name.toString()}
+              error={errors[field.name]?.message?.toString()}
+              {...field}
+              {...fieldController}
+              label={labelWithAsterisk}
+            />
           )}
         />
       );
@@ -164,6 +186,7 @@ const Form = <T extends FieldValues = FieldValues>({
               {...field}
               onChange={(value) => fieldController.onChange(value?.value)}
               value={flatOptions.find((option) => option.value === fieldController.value)}
+              label={labelWithAsterisk}
             />
           )}
         />
@@ -181,6 +204,7 @@ const Form = <T extends FieldValues = FieldValues>({
               {...field}
               onChange={(value) => fieldController.onChange(value)}
               value={fieldController.value}
+              label={labelWithAsterisk}
             />
           )}
         />
@@ -198,6 +222,7 @@ const Form = <T extends FieldValues = FieldValues>({
               {...field}
               onChange={(value) => fieldController.onChange(value?.value)}
               value={field.options.find((option) => option.value === fieldController.value)}
+              label={labelWithAsterisk}
             />
           )}
         />
@@ -209,7 +234,13 @@ const Form = <T extends FieldValues = FieldValues>({
         <Controller
           {...controllerProps}
           render={({ field: fieldController }) => (
-            <DatePicker id={field.name.toString()} error={errors[field.name]?.message?.toString()} {...field} {...fieldController} />
+            <DatePicker
+              id={field.name.toString()}
+              error={errors[field.name]?.message?.toString()}
+              {...field}
+              {...fieldController}
+              label={labelWithAsterisk}
+            />
           )}
         />
       );

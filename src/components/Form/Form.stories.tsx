@@ -238,7 +238,7 @@ export const Groups: Story = {
       email: yup.string().email().required(),
       password: yup.string().required(),
       select: yup.string().required(),
-      address: yup.string().required(),
+      address: yup.string(),
       city: yup.string().required(),
       state: yup.string().required(),
       zip: yup.string().required(),

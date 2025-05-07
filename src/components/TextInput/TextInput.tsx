@@ -19,7 +19,7 @@ const ErrorMessage = styled.span`
 const Label = styled.label`
   position: absolute;
   top: 0.5rem;
-  left: 0.25rem;
+  left: 0;
   right: 0.25rem;
   color: ${({ theme }) => theme.colors.textInputLabel};
   pointer-events: none;
@@ -46,7 +46,7 @@ const Input = styled.input<InputProps>`
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.textInputBorder};
   background-color: transparent;
-  padding: 0.25rem;
+  padding: 0.25rem 0;
   width: 100%;
   font-size: ${({ theme }) => theme.sizes.fonts.md};
 
@@ -59,6 +59,7 @@ const Input = styled.input<InputProps>`
 
   &:focus + ${Label}, &:not(:placeholder-shown) + ${Label} {
     top: -0.75rem;
+    left: 0;
     font-size: ${({ theme }) => theme.sizes.fonts.xs};
     color: ${({ theme }) => theme.colors.textInputLabel};
   }
@@ -74,6 +75,7 @@ const ErrorIcon = styled(CircleAlert)`
   position: absolute;
   right: 0.5rem;
   color: ${({ theme }) => theme.colors.error};
+  width: 1rem;
   pointer-events: none;
 `;
 

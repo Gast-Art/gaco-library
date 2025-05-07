@@ -36,7 +36,7 @@ const ErrorMessage = styled.span`
 
 const Label = styled.label<{ $active?: boolean }>`
   position: absolute;
-  left: 0.25rem;
+  left: 0rem;
   color: ${({ theme }) => theme.colors.textInputLabel};
   pointer-events: none;
   transition: all 0.2s ease;
@@ -77,6 +77,10 @@ const SelectStyling = css`
 
   .react-select__menu-list {
     padding: 0;
+  }
+
+  .react-select__value-container {
+    padding-left: 0;
   }
 
   .react-select__option {
