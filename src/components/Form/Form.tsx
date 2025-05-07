@@ -128,26 +128,22 @@ const Form = <T extends FieldValues = FieldValues>({
       describedSchema?.fields && describedSchema.fields[field.name]?.tests?.find(({ name }: { name: string }) => name === 'required');
 
     const controllerProps = {
-      key: String(field.name),
       name: field.name,
       control,
       disabled: isLoading,
+    };
+    const fieldProps = {
+      id: field.name.toString(),
+      error: errors[field.name]?.message?.toString(),
     };
     const labelWithAsterisk = field.label && isRequired ? `${field.label}*` : field.label;
 
     if (field.component === FormFieldComponents.TEXT) {
       return (
         <Controller
+          key={String(field.name)}
           {...controllerProps}
-          render={({ field: fieldController }) => (
-            <TextInput
-              id={field.name.toString()}
-              error={errors[field.name]?.message?.toString()}
-              {...field}
-              {...fieldController}
-              label={labelWithAsterisk}
-            />
-          )}
+          render={({ field: fieldController }) => <TextInput {...fieldProps} {...field} {...fieldController} label={labelWithAsterisk} />}
         />
       );
     }
@@ -155,16 +151,9 @@ const Form = <T extends FieldValues = FieldValues>({
     if (field.component === FormFieldComponents.TEXT_AREA) {
       return (
         <Controller
+          key={String(field.name)}
           {...controllerProps}
-          render={({ field: fieldController }) => (
-            <TextArea
-              id={field.name.toString()}
-              error={errors[field.name]?.message?.toString()}
-              {...field}
-              {...fieldController}
-              label={labelWithAsterisk}
-            />
-          )}
+          render={({ field: fieldController }) => <TextArea {...fieldProps} {...field} {...fieldController} label={labelWithAsterisk} />}
         />
       );
     }
@@ -178,11 +167,11 @@ const Form = <T extends FieldValues = FieldValues>({
       });
       return (
         <Controller
+          key={String(field.name)}
           {...controllerProps}
           render={({ field: fieldController }) => (
             <Select
-              id={field.name.toString()}
-              error={errors[field.name]?.message?.toString()}
+              {...fieldProps}
               {...field}
               onChange={(value) => fieldController.onChange(value?.value)}
               value={flatOptions.find((option) => option.value === fieldController.value)}
@@ -196,11 +185,11 @@ const Form = <T extends FieldValues = FieldValues>({
     if (field.component === FormFieldComponents.MULTI_SELECT) {
       return (
         <Controller
+          key={String(field.name)}
           {...controllerProps}
           render={({ field: fieldController }) => (
             <MultiSelect
-              id={field.name.toString()}
-              error={errors[field.name]?.message?.toString()}
+              {...fieldProps}
               {...field}
               onChange={(value) => fieldController.onChange(value)}
               value={fieldController.value}
@@ -214,11 +203,11 @@ const Form = <T extends FieldValues = FieldValues>({
     if (field.component === FormFieldComponents.CREATABLE_SELECT) {
       return (
         <Controller
+          key={String(field.name)}
           {...controllerProps}
           render={({ field: fieldController }) => (
             <CreatableSelect
-              id={field.name.toString()}
-              error={errors[field.name]?.message?.toString()}
+              {...fieldProps}
               {...field}
               onChange={(value) => fieldController.onChange(value?.value)}
               value={field.options.find((option) => option.value === fieldController.value)}
@@ -232,16 +221,9 @@ const Form = <T extends FieldValues = FieldValues>({
     if (field.component === FormFieldComponents.DATE_PICKER) {
       return (
         <Controller
+          key={String(field.name)}
           {...controllerProps}
-          render={({ field: fieldController }) => (
-            <DatePicker
-              id={field.name.toString()}
-              error={errors[field.name]?.message?.toString()}
-              {...field}
-              {...fieldController}
-              label={labelWithAsterisk}
-            />
-          )}
+          render={({ field: fieldController }) => <DatePicker {...fieldProps} {...field} {...fieldController} label={labelWithAsterisk} />}
         />
       );
     }
@@ -252,7 +234,7 @@ const Form = <T extends FieldValues = FieldValues>({
       {fields.map((fieldOrGroup, index) => {
         if ('fields' in fieldOrGroup) {
           return (
-            <div>
+            <div key={fieldOrGroup.title || index}>
               {fieldOrGroup.title && <FormGroupTitle>{fieldOrGroup.title}</FormGroupTitle>}
               <FormGroupContainer key={index} $columns={fieldOrGroup.columns}>
                 {fieldOrGroup.fields.map((field) => renderField(field))}
