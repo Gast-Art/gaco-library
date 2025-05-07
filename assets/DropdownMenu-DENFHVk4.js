@@ -53,7 +53,7 @@ import{j as y}from"./jsx-runtime-CLpGMVip.js";import{r as c}from"./index-CR__hKH
   height: 1px;
   background-color: ${({theme:e})=>e.colors.separator};
 `,xa=pn`
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
   color: ${({theme:e})=>e.colors.text};
   cursor: pointer;
   transition: background-color 0.2s ease;

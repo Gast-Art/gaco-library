@@ -1,4 +1,4 @@
-import{c as Mn}from"./createLucideIcon-BOMFEwrg.js";import{r as m,b as pt}from"./index-CR__hKHy.js";import{r as Vn}from"./index-D2e_E8nu.js";import{b as En,c as Rn,d as Dn}from"./DropdownMenu-jPTnbEAZ.js";import{d as tt,l as Tn}from"./styled-components.browser.esm-DnH8uv-2.js";/**
+import{c as Mn}from"./createLucideIcon-BOMFEwrg.js";import{r as m,b as pt}from"./index-CR__hKHy.js";import{r as Vn}from"./index-D2e_E8nu.js";import{b as En,c as Rn,d as Dn}from"./DropdownMenu-DENFHVk4.js";import{d as tt,l as Tn}from"./styled-components.browser.esm-DnH8uv-2.js";/**
  * @license lucide-react v0.476.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -44,7 +44,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin-left: 0.25rem;
 `,So=tt.label`
   position: absolute;
-  left: 0.25rem;
+  left: 0rem;
   color: ${({theme:t})=>t.colors.textInputLabel};
   pointer-events: none;
   transition: all 0.2s ease;
@@ -80,6 +80,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   .react-select__menu-list {
     padding: 0;
+  }
+
+  .react-select__value-container {
+    padding-left: 0;
   }
 
   .react-select__option {

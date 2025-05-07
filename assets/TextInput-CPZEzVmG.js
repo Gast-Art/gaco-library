@@ -1,4 +1,4 @@
-import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-components.browser.esm-DnH8uv-2.js";import{C as d}from"./circle-alert-C-cAHhHG.js";const c=s.div`
+import{j as r}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-components.browser.esm-DnH8uv-2.js";import{C as d}from"./circle-alert-C-cAHhHG.js";const c=s.div`
   position: relative;
   padding-top: 0.75rem;
 `,m=s.span`
@@ -11,7 +11,7 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-compon
 `,n=s.label`
   position: absolute;
   top: 0.5rem;
-  left: 0.25rem;
+  left: 0;
   right: 0.25rem;
   color: ${({theme:e})=>e.colors.textInputLabel};
   pointer-events: none;
@@ -30,7 +30,7 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-compon
   border: none;
   border-bottom: 1px solid ${({theme:e})=>e.colors.textInputBorder};
   background-color: transparent;
-  padding: 0.25rem;
+  padding: 0.25rem 0;
   width: 100%;
   font-size: ${({theme:e})=>e.sizes.fonts.md};
 
@@ -43,6 +43,7 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-compon
 
   &:focus + ${n}, &:not(:placeholder-shown) + ${n} {
     top: -0.75rem;
+    left: 0;
     font-size: ${({theme:e})=>e.sizes.fonts.xs};
     color: ${({theme:e})=>e.colors.textInputLabel};
   }
@@ -56,5 +57,6 @@ import{j as t}from"./jsx-runtime-CLpGMVip.js";import{d as s}from"./styled-compon
   position: absolute;
   right: 0.5rem;
   color: ${({theme:e})=>e.colors.error};
+  width: 1rem;
   pointer-events: none;
-`,b=({className:e,id:o,label:i,type:l="text",error:r,disabled:a,...p})=>t.jsxs(c,{className:e,children:[t.jsxs(u,{children:[t.jsx(f,{id:o,type:l,disabled:a,"aria-invalid":!!r,placeholder:" ","aria-describedby":r?`${o}-error`:void 0,$error:!!r,...p}),i&&t.jsx(n,{htmlFor:o,children:i}),r&&t.jsx(x,{})]}),r&&t.jsx(m,{id:`${o}-error`,children:r})]});b.__docgenInfo={description:"",methods:[],displayName:"TextInput",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},type:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:"'text'",computed:!1}},error:{required:!1,tsType:{name:"string"},description:""}},composes:["InputHTMLAttributes"]};export{b as T};
+`,b=({className:e,id:o,label:i,type:l="text",error:t,disabled:a,...p})=>r.jsxs(c,{className:e,children:[r.jsxs(u,{children:[r.jsx(f,{id:o,type:l,disabled:a,"aria-invalid":!!t,placeholder:" ","aria-describedby":t?`${o}-error`:void 0,$error:!!t,...p}),i&&r.jsx(n,{htmlFor:o,children:i}),t&&r.jsx(x,{})]}),t&&r.jsx(m,{id:`${o}-error`,children:t})]});b.__docgenInfo={description:"",methods:[],displayName:"TextInput",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},type:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:"'text'",computed:!1}},error:{required:!1,tsType:{name:"string"},description:""}},composes:["InputHTMLAttributes"]};export{b as T};
