@@ -17,7 +17,7 @@ export const AvatarImage = styled(AvatarPrimitive.Image)`
   width: 100%;
 `;
 
-export const StyledAvatarFallback = styled(AvatarPrimitive.Fallback)`
+export const AvatarFallback = styled(AvatarPrimitive.Fallback)`
   display: flex;
   height: 100%;
   width: 100%;
@@ -26,11 +26,3 @@ export const StyledAvatarFallback = styled(AvatarPrimitive.Fallback)`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.mutedBg};
 `;
-
-export const AvatarFallback = ({ delayMs = 1000, ...props }: React.ComponentProps<typeof AvatarPrimitive.Fallback>) => {
-  return (
-    <StyledAvatarFallback {...props} delayMs={delayMs}>
-      {props.children}
-    </StyledAvatarFallback>
-  );
-};
