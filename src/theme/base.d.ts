@@ -17,10 +17,11 @@ export declare const base: {
         body: string;
         title: string;
     };
-    zIndicies: {
+    zIndices: {
         loadingOverlay: number;
         dropdownMenu: number;
         dialog: number;
+        toast: number;
     };
     shadows: {
         default: string;

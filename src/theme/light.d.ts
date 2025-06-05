@@ -47,10 +47,11 @@ export declare const lightTheme: {
         body: string;
         title: string;
     };
-    zIndicies: {
+    zIndices: {
         loadingOverlay: number;
         dropdownMenu: number;
         dialog: number;
+        toast: number;
     };
     shadows: {
         default: string;
