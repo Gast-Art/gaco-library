@@ -71,6 +71,7 @@ export const CardContainer = styled.div<{ $size?: CardSize }>`
 `;
 
 const CardInner = styled.div`
+  min-width: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
