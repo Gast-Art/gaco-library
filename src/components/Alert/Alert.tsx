@@ -53,7 +53,7 @@ const Icon = styled.span`
   margin-right: 1rem;
 `;
 
-type AlertType = 'error' | 'warning' | 'success' | 'info';
+export type AlertType = 'error' | 'warning' | 'success' | 'info';
 
 export interface AlertProps extends PropsWithChildren {
   type: AlertType;
