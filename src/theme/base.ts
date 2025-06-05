@@ -17,10 +17,11 @@ export const base = {
     body: "'Figtree', sans-serif",
     title: "'Lora', serif",
   },
-  zIndicies: {
+  zIndices: {
     loadingOverlay: 9000,
     dropdownMenu: 8000,
     dialog: 7000,
+    toast: 10000,
   },
   shadows: {
     default: 'none',

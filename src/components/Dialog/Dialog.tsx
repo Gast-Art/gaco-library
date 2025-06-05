@@ -20,7 +20,7 @@ const DialogContent = styled(DialogRoot.Content)`
   transform: translate(-50%, -50%);
 
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
-  z-index: ${({ theme }) => theme.zIndicies.dialog};
+  z-index: ${({ theme }) => theme.zIndices.dialog};
   width: 90%;
   max-width: 30rem;
 `;

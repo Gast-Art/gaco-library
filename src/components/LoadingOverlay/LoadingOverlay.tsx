@@ -9,7 +9,7 @@ const OverlayWrapper = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: ${({ theme }) => theme.zIndicies.LoadingOverlay};
+  z-index: ${({ theme }) => theme.zIndices.LoadingOverlay};
 
   color: white;
   background-color: rgba(0, 0, 0, 0.35);

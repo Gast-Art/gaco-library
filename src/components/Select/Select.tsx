@@ -49,7 +49,7 @@ export const Select: FC<SelectProps> = ({ id, className, options, value, error, 
           placeholder=" "
           classNamePrefix="react-select"
           styles={{
-            menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndicies.dropdownMenu }),
+            menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndices.dropdownMenu }),
           }}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
