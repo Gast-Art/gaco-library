@@ -60,14 +60,26 @@ const buttonSizes = {
   sm: css`
     height: 1.5rem;
     padding: 0 0.75rem;
+    svg {
+      height: 0.75rem;
+      width: 0.75rem;
+    }
   `,
   default: css`
     height: ${({ theme }) => theme.sizes.formControl};
     padding: 0 1rem;
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
   `,
   lg: css`
     height: 2.5rem;
     padding: 0 2rem;
+    svg {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
   `,
   icon: css`
     height: 2.25rem;
@@ -101,11 +113,6 @@ const StyledButton = styled.button<ButtonProps & { $icon?: boolean }>`
     css`
       padding: 0 0.5rem;
     `}
-
-  svg {
-    height: 1rem;
-    width: 1rem;
-  }
 `;
 
 const HiddenInput = styled.input`

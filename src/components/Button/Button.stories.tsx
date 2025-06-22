@@ -66,6 +66,14 @@ export const Icon: Story = {
   },
 };
 
+export const LargeIcon: Story = {
+  args: {
+    icon: <Store size={24} />,
+    size: 'lg',
+    variant: 'ghost',
+  },
+};
+
 export const WithIcon: Story = {
   args: {
     children: (
