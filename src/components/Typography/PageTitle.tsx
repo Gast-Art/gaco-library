@@ -11,5 +11,5 @@ export const PageTitle = styled.h1`
 
   ${media.md`
     margin-bottom: 1rem;
-    `}
+  `}
 `;
