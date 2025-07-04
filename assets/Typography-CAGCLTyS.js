@@ -8,7 +8,7 @@ import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-B
 
   ${m.md`
     margin-bottom: 1rem;
-    `}
+  `}
 `,r=t.h1`
   font-size: ${({theme:o})=>o.sizes.fonts.xxl};
   font-weight: bold;
