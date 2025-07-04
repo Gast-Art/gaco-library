@@ -32,8 +32,8 @@ export const LineChart = ({ data, labels, height = 400, hideLegend, tooltipConte
         <Tooltip content={tooltipContent} />
         {!hideLegend && <Legend />}
 
-        {labels.map(({ dataKey, label, stroke }) => (
-          <Line key={dataKey} type="monotone" dataKey={dataKey} name={label} stroke={stroke} strokeWidth={2} />
+        {labels.map((label) => (
+          <Line key={label.dataKey} type="monotone" {...label} strokeWidth={2} />
         ))}
       </LineChartRoot>
     </ResponsiveContainer>
