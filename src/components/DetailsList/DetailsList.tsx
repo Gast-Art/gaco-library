@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DetailsList = styled.dl`
+export const DetailsList = styled.dl<{ $hideBorder?: boolean }>`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-row-gap: 0.25rem;
@@ -13,11 +13,11 @@ export const DetailsList = styled.dl`
   dd {
     margin: 0;
     padding: 0 0.5rem 0.125rem;
-    border-bottom: 1px ${({ theme }) => theme.colors.mutedBg} solid;
+    ${({ theme, $hideBorder }) => ($hideBorder ? `border-bottom: 1px ${theme.colors.mutedBg} solid;` : '')};
   }
 
   dd {
-    font-weight: 500;
+    font-weight: 600;
   }
 
   dt:last-of-type,
