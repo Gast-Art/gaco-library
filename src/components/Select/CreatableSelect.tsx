@@ -18,6 +18,7 @@ interface CreatableSelectProps {
   filterOption?: (option: SelectOption, inputValue: string) => boolean;
   label?: string;
   error?: string;
+  isClearable?: boolean;
 }
 
 const StyledCreatableSelect = styled(CreatableSelectRoot<SelectOption>)`
@@ -44,6 +45,7 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({
   onCreateOption,
   filterOption,
   label,
+  isClearable = true,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -56,7 +58,7 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({
           id={id}
           options={options}
           menuPortalTarget={document.body}
-          isClearable
+          isClearable={isClearable}
           value={value}
           defaultInputValue={defaultInputValue}
           createOptionPosition={createOptionPosition}

@@ -502,6 +502,26 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.9.tgz#50dea3616bc8191fb8e112283b49eaff03e78429"
   integrity sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==
 
+"@gaco/gaco-library@^0.29.4":
+  version "0.29.4"
+  resolved "https://registry.yarnpkg.com/@gaco/gaco-library/-/gaco-library-0.29.4.tgz#a51c2abdb52b3a8584f13269cf97a4d9548d4063"
+  integrity sha512-h8KALIy/LRubm5+9i3ZixDsnDMm4dU8Yhh26kAfxdCwH6FIgsO0KIzb//3frATh+2q0Sp+RoyaoBeMuZx9MxEw==
+  dependencies:
+    "@hookform/resolvers" "^4.1.3"
+    "@maptiler/sdk" "^3.0.1"
+    "@radix-ui/react-dialog" "^1.1.6"
+    "@storybook/addon-backgrounds" "^8.6.0"
+    "@storybook/theming" "^8.5.3"
+    date-fns "^4.1.0"
+    lucide-react "^0.476.0"
+    radix-ui "^1.1.3"
+    react-hook-form "^7.54.2"
+    react-icons "^5.4.0"
+    react-select "^5.10.1"
+    recharts "^2.15.1"
+    styled-components "^6.1.15"
+    yup "^1.6.1"
+
 "@hookform/resolvers@^4.1.3":
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-4.1.3.tgz#97a20cc0e88d3b66c50e1e9fd6e089a94c689e07"
@@ -2272,6 +2292,26 @@ add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
   integrity sha512-qQLMr+8o0WC4FZGQTcJiKBVC59JylcPSrTtk6usvmIDFUOCKegapy1VHQwRbFMOFyb/inzUVqHs+eMYKDM1YeQ==
+
+ag-charts-types@12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-12.0.0.tgz#e3cf60a5947a26f8ca0333eb166c678f7450303a"
+  integrity sha512-/SFzPVLnCzRDsEV6Lh/dqdbdgSowK23jBogYAWLZnQuHjM3o7wbV78yv4WXlQSb5TcubNk3GEdhRLgIMR17WIg==
+
+ag-grid-community@34.0.0, ag-grid-community@^34.0.0:
+  version "34.0.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-34.0.0.tgz#d7526175ef1de04076b9a05797d431ac93e0a3b7"
+  integrity sha512-mSHETYazOYHxYpA4p4fea/iJhM7SW0t12gaSaoS4wOLUEwo0vI+Lgq3F9ZSAyErcXpj9MLCSmRqQrpzBn3epHQ==
+  dependencies:
+    ag-charts-types "12.0.0"
+
+ag-grid-react@^34.0.0:
+  version "34.0.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-34.0.0.tgz#29486c57331ed2869da6f8fbd583a269fd94271a"
+  integrity sha512-PuLvms8EN+0+xkpBqWIVtsD4c6zma9sWSKEiCWdD8BLMSA0ZOkQE3oH9yOE1IFJ3Ji32eDm/smIKi/9EQCn3YQ==
+  dependencies:
+    ag-grid-community "34.0.0"
+    prop-types "^15.8.1"
 
 ajv-draft-04@~1.0.0:
   version "1.0.0"
