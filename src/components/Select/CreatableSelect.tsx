@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { SelectOption } from './Select';
 import { Container, ErrorMessage, Label, SelectStyling } from './styles';
 
-interface CreatableSelectProps {
+export interface CreatableSelectProps {
   id: string;
   className?: string;
   options: SelectOption[];

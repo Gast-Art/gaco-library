@@ -20,6 +20,7 @@ export const base = {
   zIndices: {
     loadingOverlay: 9000,
     dropdownMenu: 8000,
+    dialogOverlay: 6950,
     dialog: 7000,
     toast: 10000,
   },
