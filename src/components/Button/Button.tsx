@@ -87,7 +87,9 @@ const buttonSizes = {
   `,
 };
 
-const StyledButton = styled.button<ButtonProps & { $icon?: boolean }>`
+const StyledButton = styled.button<
+  ButtonProps & { $icon?: boolean; $variant?: keyof typeof buttonVariants; $size?: keyof typeof buttonSizes }
+>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -128,30 +130,41 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   type?: 'button' | 'submit' | 'reset' | 'file';
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ loading = false, disabled, onFileChange, icon, type, ...props }, ref) => {
-  const hiddenInputRef = useRef<HTMLInputElement>(null);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ loading = false, disabled, onFileChange, icon, type, variant, size, ...props }, ref) => {
+    const hiddenInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onFileChange) {
-      onFileChange(event.target.files);
-    }
-  };
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (onFileChange) {
+        onFileChange(event.target.files);
+      }
+    };
 
-  const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-    if (type === 'file' && hiddenInputRef.current) {
-      hiddenInputRef.current.click();
-    }
-    props.onClick?.(e);
-  };
+    const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+      if (type === 'file' && hiddenInputRef.current) {
+        hiddenInputRef.current.click();
+      }
+      props.onClick?.(e);
+    };
 
-  return (
-    <StyledButton ref={ref} disabled={loading || disabled} onClick={handleButtonClick} $icon={!!icon} {...props} type={type}>
-      {icon}
-      {type === 'file' && <HiddenInput ref={hiddenInputRef} type="file" onChange={handleFileChange} disabled={loading || disabled} />}
-      {loading && <Spinner size={1} className="mr-2" />} {props.children}
-    </StyledButton>
-  );
-});
+    return (
+      <StyledButton
+        ref={ref}
+        disabled={loading || disabled}
+        onClick={handleButtonClick}
+        $icon={!!icon}
+        $variant={variant}
+        $size={size}
+        {...props}
+        type={type}
+      >
+        {icon}
+        {type === 'file' && <HiddenInput ref={hiddenInputRef} type="file" onChange={handleFileChange} disabled={loading || disabled} />}
+        {loading && <Spinner size={1} className="mr-2" />} {props.children}
+      </StyledButton>
+    );
+  },
+);
 
 Button.displayName = 'Button';
 

@@ -15,7 +15,7 @@ const DialogOverlay = styled(DialogRoot.Overlay)`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
-  z-index: 6000;
+  z-index: ${({ theme }) => theme.zIndices.dialogOverlay};
 `;
 
 const DialogContent = styled(DialogRoot.Content)`
