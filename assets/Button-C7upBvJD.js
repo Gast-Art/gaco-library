@@ -23,7 +23,7 @@ import{j as l}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CXuOLBz
       border-right-color: transparent;
     }
   `,ghost:r`
-    background-color: 'transparent';
+    background-color: transparent;
     color: ${({theme:e})=>e.colors.primary};
     box-shadow: none;
     &:hover {
