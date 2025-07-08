@@ -85,8 +85,8 @@ import{j as l}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CR__hKH
     cursor: not-allowed;
     opacity: 0.5;
   }
-  ${({variant:e="default"})=>w[e]}
-  ${({size:e="default"})=>k[e]}
+  ${({$variant:e="default"})=>w[e]}
+  ${({$size:e="default"})=>k[e]}
 
   ${({$icon:e})=>e&&r`
       padding: 0 0.5rem;
