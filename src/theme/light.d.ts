@@ -50,6 +50,7 @@ export declare const lightTheme: {
     zIndices: {
         loadingOverlay: number;
         dropdownMenu: number;
+        dialogOverlay: number;
         dialog: number;
         toast: number;
     };

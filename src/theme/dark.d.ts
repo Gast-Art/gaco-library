@@ -50,6 +50,7 @@ export declare const darkTheme: {
     zIndices: {
         loadingOverlay: number;
         dropdownMenu: number;
+        dialogOverlay: number;
         dialog: number;
         toast: number;
     };

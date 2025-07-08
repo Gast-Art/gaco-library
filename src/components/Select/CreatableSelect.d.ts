@@ -1,7 +1,7 @@
 import { FC } from '../../../node_modules/react';
 import { ActionMeta, SingleValue } from 'react-select';
 import { SelectOption } from './Select';
-interface CreatableSelectProps {
+export interface CreatableSelectProps {
     id: string;
     className?: string;
     options: SelectOption[];
@@ -13,7 +13,7 @@ interface CreatableSelectProps {
     filterOption?: (option: SelectOption, inputValue: string) => boolean;
     label?: string;
     error?: string;
+    isClearable?: boolean;
 }
 export declare const CreatableSelect: FC<CreatableSelectProps>;
-export {};
 //# sourceMappingURL=CreatableSelect.d.ts.map
