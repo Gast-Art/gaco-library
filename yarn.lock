@@ -7901,6 +7901,11 @@ styled-components@^6.1.15:
     stylis "4.3.2"
     tslib "2.6.2"
 
+styled-normalize@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-8.1.1.tgz#333e2f7832d6d6443d05eacb2b29908dc26a0222"
+  integrity sha512-Nd6iLDjKuxotRHSewe+qFqvw33WxIotbjZ3YkC8802manACBchUIb7vJt/C8ylDrO5850HmlnQTApwJLuN9sug==
+
 stylis@4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.2.0.tgz#79daee0208964c8fe695a42fcffcac633a211a51"
