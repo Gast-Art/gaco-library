@@ -19,6 +19,7 @@ const buttonVariants = {
     }
   `,
   outline: css`
+    background-color: transparent;
     border: 1px solid ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.primary};
     &:hover {
