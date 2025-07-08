@@ -12,4 +12,10 @@ export const PageTitle = styled.h1`
   ${media.md`
     margin-bottom: 1rem;
   `}
+
+  small {
+    font-size: ${({ theme }) => theme.sizes.fonts.lg};
+    font-weight: normal;
+    color: ${({ theme }) => theme.colors.textMuted};
+  }
 `;

@@ -160,7 +160,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {icon}
         {type === 'file' && <HiddenInput ref={hiddenInputRef} type="file" onChange={handleFileChange} disabled={loading || disabled} />}
-        {loading && <Spinner size={1} className="mr-2" />} {props.children}
+        {loading && <Spinner size={1} />} {props.children}
       </StyledButton>
     );
   },

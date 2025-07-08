@@ -89,6 +89,21 @@ const Content = styled.div`
 
 const Title = styled(H3)`
   margin-top: 0;
+
+  svg {
+    display: none;
+    height: 1rem;
+    width: 1rem;
+    color: ${({ theme }) => theme.colors.textMuted};
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  ${media.md`
+    svg {
+      display: inline;
+    }
+  `}
 `;
 
 const LeftColumn = styled.div``;

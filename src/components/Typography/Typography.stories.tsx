@@ -4,7 +4,9 @@ import { H1, H2, H3, H4, Small } from './Typography';
 
 const HierarchyExample = () => (
   <>
-    <PageTitle>PageTitle</PageTitle>
+    <PageTitle>
+      PageTitle <small>Subtitle</small>
+    </PageTitle>
     <H1>H1 Heading</H1>
     <H2>H2 Heading</H2>
     <H3>H3 Heading</H3>
