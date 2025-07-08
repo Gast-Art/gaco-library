@@ -1,5 +1,5 @@
 import { CircleAlert } from 'lucide-react';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -39,6 +39,7 @@ const InputWrapper = styled.div`
 
 interface InputProps {
   $error?: boolean;
+  $hasIcon?: boolean;
 }
 
 const Input = styled.input<InputProps>`
@@ -50,7 +51,8 @@ const Input = styled.input<InputProps>`
   width: 100%;
   font-size: ${({ theme }) => theme.sizes.fonts.md};
 
-  ${({ $error, theme }) => $error && `padding-right: 2rem; border-bottom-color: ${theme.colors.error};`}
+  ${({ $hasIcon, $error }) => ($hasIcon || $error) && 'padding-right: 2rem;'}
+  ${({ $error, theme }) => $error && `border-bottom-color: ${theme.colors.error};`}
 
   &:focus {
     ${({ theme, $error }) => !$error && `border-bottom-color: ${theme.colors.textInputBorderFocus};`}
@@ -79,14 +81,32 @@ const ErrorIcon = styled(CircleAlert)`
   pointer-events: none;
 `;
 
+const IconWrapper = styled.div`
+  position: absolute;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    color: ${({ theme }) => theme.colors.textInputIcon};
+  }
+`;
+
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label?: string;
   type?: string;
   error?: string;
+  icon?: ReactNode;
 }
 
-export const TextInput = ({ className, id, label, type = 'text', error, disabled, ...props }: TextInputProps) => {
+export const TextInput = ({ className, id, label, type = 'text', error, disabled, icon, ...props }: TextInputProps) => {
   return (
     <Container className={className}>
       <InputWrapper>
@@ -98,10 +118,18 @@ export const TextInput = ({ className, id, label, type = 'text', error, disabled
           placeholder=" "
           aria-describedby={error ? `${id}-error` : undefined}
           $error={!!error}
+          $hasIcon={!!icon || !!error}
+          {...(error ? { 'aria-errormessage': `${id}-error` } : {})}
+          {...(label ? { 'aria-label': label } : {})}
           {...props}
         />
         {label && <Label htmlFor={id}>{label}</Label>}
-        {error && <ErrorIcon />}
+        {icon && <IconWrapper>{icon}</IconWrapper>}
+        {error && (
+          <IconWrapper>
+            <ErrorIcon />
+          </IconWrapper>
+        )}
       </InputWrapper>
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
     </Container>

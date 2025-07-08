@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Search } from 'lucide-react';
 import { TextInput } from './TextInput';
 
 const meta: Meta<typeof TextInput> = {
@@ -35,5 +36,12 @@ export const WithError: Story = {
   args: {
     label: 'Error',
     error: 'Error message',
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    label: 'With Icon',
+    icon: <Search />,
   },
 };
