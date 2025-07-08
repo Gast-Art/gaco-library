@@ -11,6 +11,7 @@ import{j as l}from"./jsx-runtime-CLpGMVip.js";import{r as p}from"./index-CXuOLBz
       border-right-color: transparent;
     }
   `,outline:r`
+    background-color: transparent;
     border: 1px solid ${({theme:e})=>e.colors.primary};
     color: ${({theme:e})=>e.colors.primary};
     &:hover {
