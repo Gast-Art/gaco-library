@@ -7,4 +7,5 @@ export declare const Default: Story;
 export declare const WithLabel: Story;
 export declare const TypeNumber: Story;
 export declare const WithError: Story;
+export declare const WithIcon: Story;
 //# sourceMappingURL=TextInput.stories.d.ts.map
