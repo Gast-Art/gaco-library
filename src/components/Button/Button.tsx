@@ -107,8 +107,8 @@ const StyledButton = styled.button<
     cursor: not-allowed;
     opacity: 0.5;
   }
-  ${({ variant = 'default' }) => buttonVariants[variant]}
-  ${({ size = 'default' }) => buttonSizes[size]}
+  ${({ $variant = 'default' }) => buttonVariants[$variant]}
+  ${({ $size = 'default' }) => buttonSizes[$size]}
 
   ${({ $icon }) =>
     $icon &&
