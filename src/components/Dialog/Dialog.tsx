@@ -4,6 +4,10 @@ import { PropsWithChildren, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { Card, CardSections } from '../Card';
 
+const DialogPortal = styled(DialogRoot.Portal)`
+  z-index: ${({ theme }) => theme.zIndices.dialogOverlay};
+`;
+
 const DialogOverlay = styled(DialogRoot.Overlay)`
   position: fixed;
   top: 0;
@@ -60,7 +64,7 @@ export const Dialog = ({ trigger, open, onOpenChange, title, content, actions, c
   return (
     <DialogRoot.Root open={open !== undefined ? open : isOpen} onOpenChange={handleOpenChange}>
       {trigger && <DialogRoot.Trigger asChild>{trigger}</DialogRoot.Trigger>}
-      <DialogRoot.Portal>
+      <DialogPortal>
         <DialogOverlay>
           <DialogContent>
             <Card>
@@ -87,7 +91,7 @@ export const Dialog = ({ trigger, open, onOpenChange, title, content, actions, c
             </Card>
           </DialogContent>
         </DialogOverlay>
-      </DialogRoot.Portal>
+      </DialogPortal>
     </DialogRoot.Root>
   );
 };
