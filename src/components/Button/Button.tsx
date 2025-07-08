@@ -32,7 +32,7 @@ const buttonVariants = {
     }
   `,
   ghost: css`
-    background-color: 'transparent';
+    background-color: transparent;
     color: ${({ theme }) => theme.colors.primary};
     box-shadow: none;
     &:hover {
