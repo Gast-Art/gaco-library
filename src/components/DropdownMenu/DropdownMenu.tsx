@@ -43,7 +43,7 @@ export const DropdownMenuItemStyling = css`
   svg {
     height: 1rem;
     width: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
   }
 `;
 

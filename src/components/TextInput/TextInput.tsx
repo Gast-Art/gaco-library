@@ -37,6 +37,24 @@ const InputWrapper = styled.div`
   align-items: center;
 `;
 
+const IconWrapper = styled.div`
+  position: absolute;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+
+  svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    transition: color 0.2s ease;
+    color: ${({ theme }) => theme.colors.textInputBorder};
+  }
+`;
+
 interface InputProps {
   $error?: boolean;
   $hasIcon?: boolean;
@@ -50,6 +68,7 @@ const Input = styled.input<InputProps>`
   padding: 0.25rem 0;
   width: 100%;
   font-size: ${({ theme }) => theme.sizes.fonts.md};
+  transition: border-color 0.2s ease;
 
   ${({ $hasIcon, $error }) => ($hasIcon || $error) && 'padding-right: 2rem;'}
   ${({ $error, theme }) => $error && `border-bottom-color: ${theme.colors.error};`}
@@ -57,6 +76,9 @@ const Input = styled.input<InputProps>`
   &:focus {
     ${({ theme, $error }) => !$error && `border-bottom-color: ${theme.colors.textInputBorderFocus};`}
     outline: none;
+    & ~ ${IconWrapper} svg {
+      color: ${({ theme }) => theme.colors.textInputBorderFocus};
+    }
   }
 
   &:focus + ${Label}, &:not(:placeholder-shown) + ${Label} {
@@ -74,28 +96,9 @@ const Input = styled.input<InputProps>`
 `;
 
 const ErrorIcon = styled(CircleAlert)`
-  position: absolute;
-  right: 0.5rem;
   color: ${({ theme }) => theme.colors.error};
   width: 1rem;
   pointer-events: none;
-`;
-
-const IconWrapper = styled.div`
-  position: absolute;
-  right: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1rem;
-  height: 1rem;
-  pointer-events: none;
-
-  svg {
-    width: 0.875rem;
-    height: 0.875rem;
-    color: ${({ theme }) => theme.colors.textInputIcon};
-  }
 `;
 
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {

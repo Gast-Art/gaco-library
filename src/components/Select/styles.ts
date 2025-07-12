@@ -48,7 +48,7 @@ const Label = styled.label<{ $active?: boolean }>`
         font-size: ${theme.sizes.fonts.xs};
         `
       : `
-        top: 50%;
+        top: 1.25rem;
         font-size: ${theme.sizes.fonts.md};
   `}
 `;
@@ -56,6 +56,7 @@ const Label = styled.label<{ $active?: boolean }>`
 const SelectStyling = css`
   .react-select__control {
     min-height: ${({ theme }) => theme.sizes.formControl};
+    height: ${({ theme }) => theme.sizes.formControl};
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.colors.textInputBorder};
     border-radius: 0;
@@ -64,6 +65,10 @@ const SelectStyling = css`
     &:hover {
       border-bottom-color: ${({ theme }) => theme.colors.textInputBorderFocus};
     }
+  }
+
+  .react-select__dropdown-indicator {
+    padding: 0.25rem;
   }
 
   .react-select__control--is-focused {

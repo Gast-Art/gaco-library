@@ -150,6 +150,16 @@ export const Inline: Story = {
         component: FormFieldComponents.TEXT,
         type: 'password',
       },
+      {
+        name: 'select',
+        label: 'Select',
+        component: FormFieldComponents.SELECT,
+        options: [
+          { value: '1', label: 'Option 1' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ],
+      },
     ],
     schema: yup.object().shape({
       email: yup.string().email().required(),
