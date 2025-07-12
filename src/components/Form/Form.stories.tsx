@@ -145,10 +145,9 @@ export const Inline: Story = {
         type: 'email',
       },
       {
-        name: 'password',
-        label: 'Password',
-        component: FormFieldComponents.TEXT,
-        type: 'password',
+        name: 'date',
+        label: 'Date',
+        component: FormFieldComponents.DATE_PICKER,
       },
       {
         name: 'select',
@@ -163,7 +162,8 @@ export const Inline: Story = {
     ],
     schema: yup.object().shape({
       email: yup.string().email().required(),
-      password: yup.string().required(),
+      date: yup.date().required(),
+      select: yup.string().required(),
     }),
     onSubmit: (data) => console.log(data),
     inline: true,

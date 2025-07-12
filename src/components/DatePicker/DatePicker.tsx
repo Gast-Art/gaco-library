@@ -33,6 +33,7 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled.input<{ $error?: boolean }>`
+  height: ${({ theme }) => theme.sizes.formControl};
   width: 100%;
   border: none;
   border-bottom: 1px solid ${({ theme, $error }) => ($error ? theme.colors.error : theme.colors.textInputBorder)};
