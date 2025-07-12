@@ -25,6 +25,7 @@ import{j as b}from"./jsx-runtime-CLpGMVip.js";import{d as P}from"./styled-compon
   display: flex;
   align-items: center;
 `,ne=P.input`
+  height: ${({theme:e})=>e.sizes.formControl};
   width: 100%;
   border: none;
   border-bottom: 1px solid ${({theme:e,$error:t})=>t?e.colors.error:e.colors.textInputBorder};
