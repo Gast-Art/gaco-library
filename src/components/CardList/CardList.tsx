@@ -1,6 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import styled from 'styled-components';
 import { CardContainer, Card as CardRoot, CardSections, CardSize } from '../Card';
+import { LoadingOverlay as LoadingOverlayRoot } from '../LoadingOverlay';
 
 export interface CardProps extends PropsWithChildren {
   className?: string;
@@ -26,7 +27,13 @@ const Card = (card: CardProps) => {
   );
 };
 
+const LoadingOverlay = styled(LoadingOverlayRoot)`
+  border-radius: ${({ theme }) => theme.sizes.borderRadius};
+`;
+
 const CardListContainer = styled.div`
+  position: relative;
+
   > ${CardContainer} {
     border-radius: 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.grayLighter};
@@ -46,14 +53,16 @@ const CardListContainer = styled.div`
 
 interface CardListProps extends PropsWithChildren {
   cards?: CardProps[];
+  loading?: string | boolean;
   columns?: number;
 }
 
-export const CardList = ({ children, cards }: CardListProps) => {
+export const CardList = ({ children, cards, loading }: CardListProps) => {
   return (
     <CardListContainer>
       {cards?.map((card) => <Card key={card.id} {...card} />)}
       {children}
+      {loading && <LoadingOverlay>{typeof loading === 'string' ? loading : ''}</LoadingOverlay>}
     </CardListContainer>
   );
 };

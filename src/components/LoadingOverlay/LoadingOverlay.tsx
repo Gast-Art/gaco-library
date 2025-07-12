@@ -35,11 +35,12 @@ const Spinner = styled(SpinnerRoot)`
 interface LoadingOverlayProps extends PropsWithChildren {
   info?: string | boolean;
   error?: string | boolean;
+  className?: string;
 }
 
-export const LoadingOverlay = ({ children, info, error }: LoadingOverlayProps) => {
+export const LoadingOverlay = ({ children, info, error, className }: LoadingOverlayProps) => {
   return (
-    <OverlayWrapper>
+    <OverlayWrapper className={className}>
       {!error && !info && <Spinner />}
       {error && (
         <>

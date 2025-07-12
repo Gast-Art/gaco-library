@@ -45,3 +45,10 @@ export const Default: Story = {
     cards: generateCards(5),
   },
 };
+
+export const Loading: Story = {
+  args: {
+    cards: generateCards(5),
+    loading: 'Loading cards...',
+  },
+};
