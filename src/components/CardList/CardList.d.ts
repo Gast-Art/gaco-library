@@ -12,8 +12,9 @@ export interface CardProps extends PropsWithChildren {
 }
 interface CardListProps extends PropsWithChildren {
     cards?: CardProps[];
+    loading?: string | boolean;
     columns?: number;
 }
-export declare const CardList: ({ children, cards }: CardListProps) => import("react/jsx-runtime").JSX.Element;
+export declare const CardList: ({ children, cards, loading }: CardListProps) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=CardList.d.ts.map
