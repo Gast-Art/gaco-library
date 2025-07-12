@@ -73,7 +73,7 @@ import{j as y}from"./jsx-runtime-CLpGMVip.js";import{r as c}from"./index-CR__hKH
   svg {
     height: 1rem;
     width: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
   }
 `,ba=xt(ha)`
   ${xa}

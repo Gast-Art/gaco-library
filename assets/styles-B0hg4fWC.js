@@ -1,4 +1,4 @@
-import{c as Mn}from"./createLucideIcon-BOMFEwrg.js";import{r as m,b as pt}from"./index-CR__hKHy.js";import{r as Vn}from"./index-D2e_E8nu.js";import{b as En,c as Rn,d as Dn}from"./DropdownMenu-Dk-Jjiz2.js";import{d as tt,l as Tn}from"./styled-components.browser.esm-DnH8uv-2.js";/**
+import{c as Mn}from"./createLucideIcon-BOMFEwrg.js";import{r as m,b as pt}from"./index-CR__hKHy.js";import{r as Vn}from"./index-D2e_E8nu.js";import{b as En,c as Rn,d as Dn}from"./DropdownMenu-BnJwZij2.js";import{d as tt,l as Tn}from"./styled-components.browser.esm-DnH8uv-2.js";/**
  * @license lucide-react v0.476.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -53,12 +53,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         top: 0rem;
         font-size: ${e.sizes.fonts.xs};
         `:`
-        top: 50%;
+        top: 1.25rem;
         font-size: ${e.sizes.fonts.md};
   `}
 `,yo=Tn`
   .react-select__control {
     min-height: ${({theme:t})=>t.sizes.formControl};
+    height: ${({theme:t})=>t.sizes.formControl};
     border: none;
     border-bottom: 1px solid ${({theme:t})=>t.colors.textInputBorder};
     border-radius: 0;
@@ -67,6 +68,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     &:hover {
       border-bottom-color: ${({theme:t})=>t.colors.textInputBorderFocus};
     }
+  }
+
+  .react-select__dropdown-indicator {
+    padding: 0.25rem;
   }
 
   .react-select__control--is-focused {
