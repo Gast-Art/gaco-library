@@ -5,6 +5,7 @@ module.exports = {
     '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
     '../src/stories/*.stories.@(js|jsx|ts|tsx)',
   ],
+
   addons: [
     {
       name: '@storybook/addon-docs',
@@ -39,6 +40,7 @@ module.exports = {
         base: './',
       };
     }
+    config.resolve.alias['next/link'] = require.resolve('./NextLinkMock');
     return config;
   },
   framework: {
