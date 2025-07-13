@@ -1,0 +1,1 @@
+import{u as o,b as s,_ as n}from"./styles-DTNTT4wx.js";import{r as e}from"./index-CR__hKHy.js";import"./index-D2e_E8nu.js";var S=e.forwardRef(function(a,t){var r=o(a);return e.createElement(s,n({ref:t},r))}),p=S;export{p as S};
