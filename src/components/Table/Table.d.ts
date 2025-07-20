@@ -6,7 +6,7 @@ declare module '@tanstack/react-table' {
 }
 type TableProps<TData extends object> = {
     data: TData[];
-    setData: (data: TData[]) => void;
+    setData?: (data: TData[]) => void;
     columns: ColumnDef<TData>[];
     groupBy?: string[];
     inline?: boolean;
