@@ -54,6 +54,8 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
     cursor: not-allowed;
   }
 `,f=s(d)`
+  width: 0.875rem;
+  height: 0.875rem;
   position: absolute;
   right: 0.5rem;
   color: ${({theme:e})=>e.colors.error};

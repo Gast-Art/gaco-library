@@ -5,4 +5,5 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 export declare const Default: Story;
 export declare const GroupedOptions: Story;
+export declare const WithError: Story;
 //# sourceMappingURL=Select.stories.d.ts.map
