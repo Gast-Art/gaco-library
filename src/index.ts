@@ -19,6 +19,7 @@ export * from './components/Map';
 export * from './components/PieChart';
 export * from './components/Select';
 export * from './components/Spinner';
+export * from './components/Table';
 export * from './components/Tabs';
 export * from './components/TextArea';
 export * from './components/TextInput';

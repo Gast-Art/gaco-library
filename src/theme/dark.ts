@@ -17,6 +17,7 @@ export const darkTheme = {
     textInputBorderFocus: '#666666',
     textInputLabel: '#666666',
     textInputDisabledBackground: '#f5f5f5',
+    tableHeaderBg: '#f7f7f7',
     ...base.colors,
   },
 };

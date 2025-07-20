@@ -1,6 +1,6 @@
 {
   "name": "@gaco/gaco-library",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "description": "GACO components library, for use in GACO projects.",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -97,6 +97,7 @@
     "@radix-ui/react-dialog": "^1.1.6",
     "@storybook/addon-backgrounds": "^8.6.0",
     "@storybook/theming": "^8.5.3",
+    "@tanstack/react-table": "^8.21.3",
     "ag-grid-community": "^34.0.0",
     "ag-grid-react": "^34.0.0",
     "date-fns": "^4.1.0",

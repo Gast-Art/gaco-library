@@ -1,5 +1,5 @@
 import { ChevronDown, CircleAlert } from 'lucide-react';
-import { FC, useState } from 'react';
+import { FC, FocusEvent, useState } from 'react';
 import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups, SingleValue } from 'react-select';
 
 import styled, { useTheme } from 'styled-components';
@@ -17,6 +17,8 @@ export interface SelectProps {
   menuPortalTarget?: HTMLElement;
   value?: SingleValue<SelectOption>;
   onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
+  onBlur?: (event: FocusEvent<HTMLDivElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
   label?: string;
   error?: string;
 }
@@ -33,7 +35,18 @@ const SelectDropdownIndicator = (props: SelectIndicatorProps) => {
   return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
-export const Select: FC<SelectProps> = ({ id, className, options, value, error, onChange, label, menuPortalTarget = document.body }) => {
+export const Select: FC<SelectProps> = ({
+  id,
+  className,
+  options,
+  value,
+  error,
+  onChange,
+  onBlur,
+  onFocus,
+  label,
+  menuPortalTarget = document.body,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const theme = useTheme();
 
@@ -51,8 +64,14 @@ export const Select: FC<SelectProps> = ({ id, className, options, value, error, 
           styles={{
             menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndices.dropdownMenu }),
           }}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={(e) => {
+            setIsFocused(true);
+            onFocus?.(e);
+          }}
+          onBlur={(e) => {
+            setIsFocused(false);
+            onBlur?.(e);
+          }}
           components={{
             DropdownIndicator: (props) => <SelectDropdownIndicator {...props} error={error} />,
           }}
