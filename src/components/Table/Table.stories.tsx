@@ -186,6 +186,7 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
       { name: 'Charlie', favoriteColor: 'red', email: 'charlie@email,com' },
       { name: 'David', favoriteColor: 'red', email: 'david@email,com' },
     ],
+    groupBy: ['favoriteColor'],
   },
   parameters: {
     controls: {

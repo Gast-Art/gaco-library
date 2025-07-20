@@ -1,6 +1,7 @@
 import {
   ColumnDef,
   ColumnOrderState,
+  ExpandedState,
   flexRender,
   getCoreRowModel,
   getGroupedRowModel,
@@ -78,7 +79,7 @@ const SortIcon = styled(ArrowUpDown)<{ $direction?: 'asc' | 'desc' }>`
 
 type TableProps<TData extends object> = {
   data: TData[];
-  setData: (data: TData[]) => void;
+  setData?: (data: TData[]) => void;
   columns: ColumnDef<TData>[];
   groupBy?: string[];
   inline?: boolean;
@@ -100,13 +101,13 @@ function useSkipper() {
   return [shouldSkip, skip] as const;
 }
 
-export const Table = <TData extends object>({ data, setData, columns, groupBy = [], inline = false }: TableProps<TData>) => {
+export const Table = function Table<TData extends object>({ data, setData, columns, groupBy = [], inline = false }: TableProps<TData>) {
   const [grouping, setGrouping] = useState<GroupingState>(groupBy);
   const columnIds = columns.map((col) => col.id ?? '');
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(columnIds);
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [expanded, setExpanded] = useState<ExpandedState>({});
   const [autoResetPageIndex, skipAutoResetPageIndex] = useSkipper();
-
   const dragColId = useRef<string | null>(null);
   const [dropTargetId, setDropTargetId] = useState<{
     id: string;
@@ -116,19 +117,24 @@ export const Table = <TData extends object>({ data, setData, columns, groupBy = 
   const table = useReactTable<TData>({
     data,
     columns,
-    state: { grouping, columnOrder, sorting },
+    state: { grouping, columnOrder, sorting, expanded },
     onGroupingChange: setGrouping,
     onColumnOrderChange: setColumnOrder,
     onSortingChange: setSorting,
+    onExpandedChange: setExpanded,
     getCoreRowModel: getCoreRowModel(),
     getGroupedRowModel: getGroupedRowModel(),
     getSortedRowModel: getSortedRowModel(),
     autoResetPageIndex,
+    autoResetExpanded: false,
     meta: {
       updateData: (rowIndex, columnId, value) => {
         // Skip page index reset until after next rerender
         skipAutoResetPageIndex();
-        setData(
+
+        const prevExpanded = expanded;
+
+        setData?.(
           data.map((row: TData, index: number): TData => {
             if (index === rowIndex) {
               return {
@@ -139,6 +145,7 @@ export const Table = <TData extends object>({ data, setData, columns, groupBy = 
             return row;
           }),
         );
+        setExpanded(prevExpanded);
       },
     },
   });
