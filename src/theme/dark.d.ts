@@ -28,6 +28,7 @@ export declare const darkTheme: {
         textInputBorderFocus: string;
         textInputLabel: string;
         textInputDisabledBackground: string;
+        tableHeaderBg: string;
     };
     sizes: {
         borderRadius: string;

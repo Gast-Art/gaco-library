@@ -1,4 +1,4 @@
-import { FC } from '../../../node_modules/react';
+import { FC, FocusEvent } from '../../../node_modules/react';
 import { ActionMeta, OptionsOrGroups, SingleValue } from 'react-select';
 export interface SelectOption {
     value: string;
@@ -14,6 +14,8 @@ export interface SelectProps {
     menuPortalTarget?: HTMLElement;
     value?: SingleValue<SelectOption>;
     onChange: (selected: SingleValue<SelectOption>, actionMeta: ActionMeta<SelectOption>) => void;
+    onBlur?: (event: FocusEvent<HTMLDivElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
     label?: string;
     error?: string;
 }

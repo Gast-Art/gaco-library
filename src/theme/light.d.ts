@@ -28,6 +28,7 @@ export declare const lightTheme: {
         textInputBorderFocus: string;
         textInputLabel: string;
         textInputDisabledBackground: string;
+        tableHeaderBg: string;
     };
     sizes: {
         borderRadius: string;
