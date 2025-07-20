@@ -1,9 +1,9 @@
-import { ChevronDown, CircleAlert } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { FC, FocusEvent, useState } from 'react';
 import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups, SingleValue } from 'react-select';
 
 import styled, { useTheme } from 'styled-components';
-import { Container, ErrorMessage, Label, SelectStyling } from './styles';
+import { Container, ErrorIcon, ErrorMessage, Label, SelectStyling } from './styles';
 
 export interface SelectOption {
   value: string;
@@ -32,7 +32,7 @@ interface SelectIndicatorProps extends DropdownIndicatorProps<SelectOption, fals
 }
 
 const SelectDropdownIndicator = (props: SelectIndicatorProps) => {
-  return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
+  return <components.DropdownIndicator {...props}>{props.error ? <ErrorIcon /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
 export const Select: FC<SelectProps> = ({

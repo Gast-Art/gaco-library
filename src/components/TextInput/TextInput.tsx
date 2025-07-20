@@ -37,6 +37,11 @@ const InputWrapper = styled.div`
   align-items: center;
 `;
 
+const ErrorIcon = styled(CircleAlert)`
+  width: 1rem;
+  pointer-events: none;
+`;
+
 const IconWrapper = styled.div`
   position: absolute;
   right: 0.5rem;
@@ -52,6 +57,10 @@ const IconWrapper = styled.div`
     height: 0.875rem;
     transition: color 0.2s ease;
     color: ${({ theme }) => theme.colors.textInputBorder};
+  }
+
+  ${ErrorIcon} {
+    color: ${({ theme }) => theme.colors.error};
   }
 `;
 
@@ -93,12 +102,6 @@ const Input = styled.input<InputProps>`
     border-bottom-color: ${({ theme }) => theme.colors.textInputDisabledBackground};
     cursor: not-allowed;
   }
-`;
-
-const ErrorIcon = styled(CircleAlert)`
-  color: ${({ theme }) => theme.colors.error};
-  width: 1rem;
-  pointer-events: none;
 `;
 
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {

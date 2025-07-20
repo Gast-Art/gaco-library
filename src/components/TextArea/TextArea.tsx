@@ -72,6 +72,8 @@ const StyledTextarea = styled.textarea<TextareaProps>`
 `;
 
 const ErrorIcon = styled(CircleAlert)`
+  width: 0.875rem;
+  height: 0.875rem;
   position: absolute;
   right: 0.5rem;
   color: ${({ theme }) => theme.colors.error};

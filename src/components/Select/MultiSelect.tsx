@@ -1,9 +1,9 @@
-import { ChevronDown, CircleAlert } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { FC, useState } from 'react';
 import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups } from 'react-select';
 import styled from 'styled-components';
 import { SelectOption } from './Select';
-import { Container, ErrorMessage, Label, SelectStyling } from './styles';
+import { Container, ErrorIcon, ErrorMessage, Label, SelectStyling } from './styles';
 
 interface MultiSelectProps {
   id: string;
@@ -24,7 +24,7 @@ interface MultiSelectIndicatorProps extends DropdownIndicatorProps<SelectOption,
 }
 
 const MultiSelectDropdownIndicator = (props: MultiSelectIndicatorProps) => {
-  return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
+  return <components.DropdownIndicator {...props}>{props.error ? <ErrorIcon /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
 export const MultiSelect: FC<MultiSelectProps> = ({ id, className, options, value, onChange, label, error }) => {

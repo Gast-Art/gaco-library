@@ -58,3 +58,16 @@ export const GroupedOptions: Story = {
     label: 'Select an option',
   },
 };
+
+export const WithError: Story = {
+  render: Template,
+  args: {
+    options: [
+      { value: '1', label: 'Option 1' },
+      { value: '2', label: 'Option 2' },
+      { value: '3', label: 'Option 3' },
+    ],
+    label: 'Select an option',
+    error: 'This field is required',
+  },
+};

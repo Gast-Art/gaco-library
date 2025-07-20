@@ -1,10 +1,10 @@
-import { ChevronDown, CircleAlert } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { FC, useState } from 'react';
 import { ActionMeta, DropdownIndicatorProps, SingleValue, components } from 'react-select';
 import CreatableSelectRoot from 'react-select/creatable';
 import styled from 'styled-components';
 import { SelectOption } from './Select';
-import { Container, ErrorMessage, Label, SelectStyling } from './styles';
+import { Container, ErrorIcon, ErrorMessage, Label, SelectStyling } from './styles';
 
 export interface CreatableSelectProps {
   id: string;
@@ -30,7 +30,7 @@ interface CreatableSelectIndicatorProps extends DropdownIndicatorProps<SelectOpt
 }
 
 const CreatableSelectDropdownIndicator = (props: CreatableSelectIndicatorProps) => {
-  return <components.DropdownIndicator {...props}>{props.error ? <CircleAlert /> : <ChevronDown />}</components.DropdownIndicator>;
+  return <components.DropdownIndicator {...props}>{props.error ? <ErrorIcon /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
 export const CreatableSelect: FC<CreatableSelectProps> = ({

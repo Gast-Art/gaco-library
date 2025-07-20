@@ -1,5 +1,11 @@
+import { CircleAlert } from 'lucide-react';
 import styled, { css } from 'styled-components';
 import { DropdownMenuContentStyling, DropdownMenuItemStyling } from '../DropdownMenu';
+
+const ErrorIcon = styled(CircleAlert)`
+  width: 0.875rem;
+  margin: 0 0.25rem;
+`;
 
 const Container = styled.div<{ $error?: boolean }>`
   position: relative;
@@ -111,4 +117,4 @@ const SelectStyling = css`
   }
 `;
 
-export { Container, ErrorMessage, Label, SelectStyling };
+export { Container, ErrorIcon, ErrorMessage, Label, SelectStyling };
