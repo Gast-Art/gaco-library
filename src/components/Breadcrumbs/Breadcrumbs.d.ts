@@ -1,11 +1,11 @@
-import { default as React, FC } from '../../../node_modules/react';
-interface BreadcrumbItem {
+import { FC, ReactNode } from '../../../node_modules/react';
+export interface BreadcrumbItem {
     label: string;
     href?: string;
 }
 interface BreadcrumbsProps {
     items: BreadcrumbItem[];
-    separator?: React.ReactNode;
+    separator?: ReactNode;
 }
 export declare const Breadcrumbs: FC<BreadcrumbsProps>;
 export {};
