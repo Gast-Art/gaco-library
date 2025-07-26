@@ -7,14 +7,17 @@ import {
   getGroupedRowModel,
   getSortedRowModel,
   GroupingState,
+  OnChangeFn,
   Row,
   RowData,
+  RowSelectionState,
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
 import { ArrowUpDown, ChevronRight as ChevronRightRoot } from 'lucide-react';
 import { DragEvent, Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
+import { Checkbox } from '../Checkbox';
 
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
@@ -60,6 +63,13 @@ const GroupRow = styled.tr`
   background: ${({ theme }) => theme.colors.tableGroupBg || theme.colors.tableHeaderBg};
 `;
 
+const CheckboxContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 const ChevronRight = styled(ChevronRightRoot)<{ $expanded: boolean }>`
   width: 1rem;
   height: 1rem;
@@ -77,12 +87,27 @@ const SortIcon = styled(ArrowUpDown)<{ $direction?: 'asc' | 'desc' }>`
   ${({ $direction }) => ($direction === 'asc' ? 'transform: rotate(180deg);' : $direction === 'desc' ? '' : 'opacity: 0.5;')}
 `;
 
+const GroupCount = styled.span`
+  margin-left: 0.5rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+`;
+
+const GroupSelectionLabel = styled.span`
+  margin-right: 0.5rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+  font-size: ${({ theme }) => theme.sizes.fonts.sm};
+`;
+
 type TableProps<TData extends object> = {
   data: TData[];
   setData?: (data: TData[]) => void;
   columns: ColumnDef<TData>[];
   groupBy?: string[];
   inline?: boolean;
+  enableRowSelection?: boolean;
+  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
+  rowSelection?: RowSelectionState;
+  groupSelectionLabel?: string;
 };
 
 function useSkipper() {
@@ -101,7 +126,17 @@ function useSkipper() {
   return [shouldSkip, skip] as const;
 }
 
-export const Table = function Table<TData extends object>({ data, setData, columns, groupBy = [], inline = false }: TableProps<TData>) {
+export const Table = function Table<TData extends object>({
+  data,
+  setData,
+  columns,
+  groupBy = [],
+  enableRowSelection,
+  rowSelection,
+  onRowSelectionChange,
+  groupSelectionLabel,
+  inline = false,
+}: TableProps<TData>) {
   const [grouping, setGrouping] = useState<GroupingState>(groupBy);
   const columnIds = columns.map((col) => col.id ?? '');
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(columnIds);
@@ -117,7 +152,7 @@ export const Table = function Table<TData extends object>({ data, setData, colum
   const table = useReactTable<TData>({
     data,
     columns,
-    state: { grouping, columnOrder, sorting, expanded },
+    state: { grouping, columnOrder, sorting, expanded, rowSelection },
     onGroupingChange: setGrouping,
     onColumnOrderChange: setColumnOrder,
     onSortingChange: setSorting,
@@ -125,6 +160,8 @@ export const Table = function Table<TData extends object>({ data, setData, colum
     getCoreRowModel: getCoreRowModel(),
     getGroupedRowModel: getGroupedRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    onRowSelectionChange,
+    enableRowSelection: enableRowSelection && !!onRowSelectionChange,
     autoResetPageIndex,
     autoResetExpanded: false,
     meta: {
@@ -201,14 +238,26 @@ export const Table = function Table<TData extends object>({ data, setData, colum
 
   const renderRow = (row: Row<TData>) => {
     if (row.getIsGrouped()) {
+      const canGroupSelect = row.getCanSelect();
+      const colSpan = row.getVisibleCells().length - (canGroupSelect ? 1 : 0);
+
       return (
         <Fragment key={row.id}>
           <GroupRow onClick={() => handleGroupToggle(row)}>
-            <StyledTd colSpan={row.getVisibleCells().length}>
+            <StyledTd colSpan={colSpan}>
               <ChevronRight $expanded={row.getIsExpanded()} />
               {row.getGroupingValue(row.groupingColumnId ?? '')?.toString() ?? ''}
-              <span style={{ marginLeft: '0.5rem', color: '#888' }}>({row.subRows.length})</span>
+              <GroupCount>({row.subRows.length})</GroupCount>
             </StyledTd>
+
+            {canGroupSelect && (
+              <StyledTd style={{ textAlign: 'end' }}>
+                <CheckboxContainer>
+                  <GroupSelectionLabel>{groupSelectionLabel}</GroupSelectionLabel>
+                  <Checkbox checked={row.getIsSelected()} onChange={() => row.toggleSelected()} style={{ marginLeft: '0.5rem' }} />
+                </CheckboxContainer>
+              </StyledTd>
+            )}
           </GroupRow>
           {row.getIsExpanded() && row.subRows.map((subRow) => renderRow(subRow))}
         </Fragment>

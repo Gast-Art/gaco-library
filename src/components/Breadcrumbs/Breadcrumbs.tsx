@@ -1,15 +1,15 @@
 import Link from 'next/link';
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface BreadcrumbItem {
+export interface BreadcrumbItem {
   label: string;
   href?: string;
 }
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
-  separator?: React.ReactNode;
+  separator?: ReactNode;
 }
 
 const BreadcrumbNav = styled.nav`

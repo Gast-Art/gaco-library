@@ -143,6 +143,9 @@ const Select = styled(SelectRoot)`
 export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: SelectInputColumnProps[] }> = {
   render: (args) => {
     const [data, setData] = useState<SelectInputColumnProps[]>(args.data);
+    const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({});
+
+    console.log('Row selection:', rowSelection);
 
     const columns: ColumnDef<SelectInputColumnProps>[] = [
       {
@@ -177,7 +180,9 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
       },
     ];
 
-    return <Table {...args} data={data} setData={setData} columns={columns} />;
+    return (
+      <Table {...args} data={data} setData={setData} columns={columns} onRowSelectionChange={setRowSelection} rowSelection={rowSelection} />
+    );
   },
   args: {
     data: [
@@ -186,6 +191,8 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
       { name: 'Charlie', favoriteColor: 'red', email: 'charlie@email,com' },
       { name: 'David', favoriteColor: 'red', email: 'david@email,com' },
     ],
+    groupSelectionLabel: 'Select All',
+    enableRowSelection: true,
     groupBy: ['favoriteColor'],
   },
   parameters: {
