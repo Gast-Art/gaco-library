@@ -1,20 +1,29 @@
 import { ColumnDef, OnChangeFn, RowData, RowSelectionState } from '@tanstack/react-table';
+export type ExtendedColumnDef<TData extends {
+    [key: string]: any;
+}> = ColumnDef<TData> & {
+    updateGroup?: boolean;
+};
 declare module '@tanstack/react-table' {
     interface TableMeta<TData extends RowData> {
         updateData: (rowIndex: number, columnId: string, value: unknown) => void;
     }
 }
-type TableProps<TData extends object> = {
+type TableProps<TData extends {
+    [key: string]: any;
+}> = {
     data: TData[];
     setData?: (data: TData[]) => void;
-    columns: ColumnDef<TData>[];
-    groupBy?: string[];
+    columns: ExtendedColumnDef<TData>[];
+    groupBy?: string;
     inline?: boolean;
     enableRowSelection?: boolean;
     onRowSelectionChange?: OnChangeFn<RowSelectionState>;
     rowSelection?: RowSelectionState;
     groupSelectionLabel?: string;
 };
-export declare const Table: <TData extends object>({ data, setData, columns, groupBy, enableRowSelection, rowSelection, onRowSelectionChange, groupSelectionLabel, inline, }: TableProps<TData>) => import("react/jsx-runtime").JSX.Element;
+export declare const Table: <TData extends {
+    [key: string]: any;
+}>({ data, setData, columns, groupBy, enableRowSelection, rowSelection, onRowSelectionChange, groupSelectionLabel, inline, }: TableProps<TData>) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Table.d.ts.map
