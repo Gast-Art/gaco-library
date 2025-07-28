@@ -60,7 +60,7 @@ export const InlineTable: StoryObj<ComponentProps<typeof Table>> = {
 
 export const GroupedRows: StoryObj<ComponentProps<typeof Table>> = {
   args: {
-    groupBy: ['category'],
+    groupBy: 'category',
     columns: [
       { id: 'category', accessorKey: 'category', header: 'Category' },
       { id: 'item', accessorKey: 'item', header: 'Item' },
@@ -145,8 +145,6 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
     const [data, setData] = useState<SelectInputColumnProps[]>(args.data);
     const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({});
 
-    console.log('Row selection:', rowSelection);
-
     const columns: ExtendedColumnDef<SelectInputColumnProps>[] = [
       {
         id: 'name',
@@ -163,7 +161,6 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
           const [value, setValue] = useState<SelectOption>();
 
           const onBlur = () => {
-            console.log('called', value);
             table.options.meta?.updateData(index, id, value?.value);
           };
 
