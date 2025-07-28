@@ -6,7 +6,7 @@ export type ExtendedColumnDef<TData extends {
 };
 declare module '@tanstack/react-table' {
     interface TableMeta<TData extends RowData> {
-        updateData: (rowIndex: number, columnId: string, value: unknown) => void;
+        updateData: (updater: (old: TData[]) => TData[]) => void;
     }
 }
 type TableProps<TData extends {
