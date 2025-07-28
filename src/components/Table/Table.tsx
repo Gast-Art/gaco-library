@@ -19,6 +19,10 @@ import { DragEvent, Fragment, useCallback, useEffect, useRef, useState } from 'r
 import { styled } from 'styled-components';
 import { Checkbox } from '../Checkbox';
 
+export type ExtendedColumnDef<TData extends { [key: string]: any }> = ColumnDef<TData> & {
+  updateGroup?: boolean;
+};
+
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
     updateData: (rowIndex: number, columnId: string, value: unknown) => void;
@@ -98,11 +102,11 @@ const GroupSelectionLabel = styled.span`
   font-size: ${({ theme }) => theme.sizes.fonts.sm};
 `;
 
-type TableProps<TData extends object> = {
+type TableProps<TData extends { [key: string]: any }> = {
   data: TData[];
   setData?: (data: TData[]) => void;
-  columns: ColumnDef<TData>[];
-  groupBy?: string[];
+  columns: ExtendedColumnDef<TData>[];
+  groupBy?: string;
   inline?: boolean;
   enableRowSelection?: boolean;
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
@@ -126,18 +130,18 @@ function useSkipper() {
   return [shouldSkip, skip] as const;
 }
 
-export const Table = function Table<TData extends object>({
+export const Table = function Table<TData extends { [key: string]: any }>({
   data,
   setData,
   columns,
-  groupBy = [],
+  groupBy,
   enableRowSelection,
   rowSelection,
   onRowSelectionChange,
   groupSelectionLabel,
   inline = false,
 }: TableProps<TData>) {
-  const [grouping, setGrouping] = useState<GroupingState>(groupBy);
+  const [grouping, setGrouping] = useState<GroupingState>(groupBy ? [groupBy] : []);
   const columnIds = columns.map((col) => col.id ?? '');
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(columnIds);
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -169,7 +173,28 @@ export const Table = function Table<TData extends object>({
         // Skip page index reset until after next rerender
         skipAutoResetPageIndex();
 
+        const shouldUpdateGroup = columns.find((col) => col.id === columnId)?.updateGroup && groupBy;
         const prevExpanded = expanded;
+
+        if (shouldUpdateGroup) {
+          const row = data?.[rowIndex];
+          if (!row) return;
+
+          const groupValue = row[groupBy];
+          if (!groupValue) return;
+
+          setData?.(
+            data.map((row: TData, index: number): TData => {
+              if (index === rowIndex || row[groupBy] === groupValue) {
+                return {
+                  ...row,
+                  [columnId]: value,
+                } as TData;
+              }
+              return row;
+            }),
+          );
+        }
 
         setData?.(
           data.map((row: TData, index: number): TData => {
