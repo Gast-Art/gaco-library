@@ -177,14 +177,18 @@ export const Table = function Table<TData extends { [key: string]: any }>({
         const prevExpanded = expanded;
 
         if (shouldUpdateGroup) {
+          console.log('shouldUpdateGroup', rowIndex, columnId, value);
           const row = data?.[rowIndex];
           if (!row) return;
+          console.log('row', row);
 
           const groupValue = row[groupBy];
           if (!groupValue) return;
+          console.log('groupValue', groupValue);
 
           setData?.(
             data.map((row: TData, index: number): TData => {
+              console.log(5, 'index', index, 'rowIndex', rowIndex, 'rowGroupBy', row[groupBy], 'groupValue', groupValue);
               if (index === rowIndex || row[groupBy] === groupValue) {
                 return {
                   ...row,
