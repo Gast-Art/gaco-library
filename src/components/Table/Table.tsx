@@ -25,7 +25,7 @@ export type ExtendedColumnDef<TData extends { [key: string]: any }> = ColumnDef<
 
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
-    updateData: (rowIndex: number, columnId: string, value: unknown) => void;
+    updateData: (updater: (old: TData[]) => TData[]) => void;
   }
 }
 
@@ -169,48 +169,10 @@ export const Table = function Table<TData extends { [key: string]: any }>({
     autoResetPageIndex,
     autoResetExpanded: false,
     meta: {
-      updateData: (rowIndex, columnId, value) => {
-        // Skip page index reset until after next rerender
+      updateData: (updater: (old: TData[]) => TData[]) => {
         skipAutoResetPageIndex();
-
-        const shouldUpdateGroup = columns.find((col) => col.id === columnId)?.updateGroup && groupBy;
         const prevExpanded = expanded;
-
-        if (shouldUpdateGroup) {
-          console.log('shouldUpdateGroup', rowIndex, columnId, value);
-          const row = data?.[rowIndex];
-          if (!row) return;
-          console.log('row', row);
-
-          const groupValue = row[groupBy];
-          if (!groupValue) return;
-          console.log('groupValue', groupValue);
-
-          setData?.(
-            data.map((row: TData, index: number): TData => {
-              console.log(5, 'index', index, 'rowIndex', rowIndex, 'rowGroupBy', row[groupBy], 'groupValue', groupValue);
-              if (index === rowIndex || row[groupBy] === groupValue) {
-                return {
-                  ...row,
-                  [columnId]: value,
-                } as TData;
-              }
-              return row;
-            }),
-          );
-        }
-
-        setData?.(
-          data.map((row: TData, index: number): TData => {
-            if (index === rowIndex) {
-              return {
-                ...row,
-                [columnId]: value,
-              } as TData;
-            }
-            return row;
-          }),
-        );
+        setData?.(updater(data));
         setExpanded(prevExpanded);
       },
     },

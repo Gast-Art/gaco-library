@@ -105,7 +105,11 @@ export const TextInputColumn: StoryObj<ComponentProps<typeof Table> & { data: Te
           const [value, setValue] = useState(initialValue);
 
           const onBlur = () => {
-            table.options.meta?.updateData(index, id, value);
+            table.options.meta?.updateData((oldData) => {
+              const newData = [...oldData];
+              newData[index] = { ...newData[index], [id]: value };
+              return newData;
+            });
           };
 
           useEffect(() => {
@@ -161,7 +165,11 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
           const [value, setValue] = useState<SelectOption>();
 
           const onBlur = () => {
-            table.options.meta?.updateData(index, id, value?.value);
+            table.options.meta?.updateData((oldData) => {
+              const newData = [...oldData];
+              newData[index] = { ...newData[index], [id]: value?.value || '' };
+              return newData;
+            });
           };
 
           useEffect(() => {
