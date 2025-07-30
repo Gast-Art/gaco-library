@@ -1,3 +1,4 @@
+import { cloneElement, ReactElement } from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -23,14 +24,31 @@ interface LineChartProps extends Omit<ResponsiveContainerProps, 'children'> {
 }
 
 export const LineChart = ({ data, labels, height = 400, hideLegend, tooltipContent = TooltipChart, ...props }: LineChartProps) => {
+  const labelFormatter = (value: string) => labels.find((label) => label.dataKey === value)?.label;
+
+  // Wrap tooltipContent to inject labelFormatter
+  const tooltipWithLabelFormatter = (tooltipProps: any) => {
+    if (typeof tooltipContent === 'function') {
+      return tooltipContent({
+        ...tooltipProps,
+        tooltipLabelFormatter: labelFormatter,
+      });
+    }
+    // If tooltipContent is a React element, clone it with new props
+    return cloneElement(tooltipContent as ReactElement, {
+      ...tooltipProps,
+      tooltipLabelFormatter: labelFormatter,
+    });
+  };
+
   return (
     <ResponsiveContainer width="100%" height={height} {...props}>
       <LineChartRoot data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip content={tooltipContent} />
-        {!hideLegend && <Legend />}
+        <Tooltip content={tooltipWithLabelFormatter} />
+        {!hideLegend && <Legend formatter={labelFormatter} />}
 
         {labels.map((label) => (
           <Line key={label.dataKey} type="monotone" {...label} strokeWidth={2} />

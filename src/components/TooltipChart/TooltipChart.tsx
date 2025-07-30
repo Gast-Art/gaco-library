@@ -5,17 +5,25 @@ import { Card, CardSections, CardSize } from '../Card';
 
 interface TooltipChartProps extends TooltipProps<ValueType, NameType> {
   tooltipValueFormatter?: (value: any) => string;
+  tooltipLabelFormatter?: (label: string) => string;
   children?: ReactNode;
 }
 
-const TooltipChart = ({ active, payload, label, tooltipValueFormatter = (label) => label.toString(), children }: TooltipChartProps) => {
+const TooltipChart = ({
+  active,
+  payload,
+  label,
+  tooltipLabelFormatter = (label) => label.toUpperCase(),
+  tooltipValueFormatter = (label) => label.toString(),
+  children,
+}: TooltipChartProps) => {
   if (active) {
     return (
       <Card size={CardSize.sm}>
         {label && <CardSections.Title>{label}</CardSections.Title>}
         <CardSections.Content>
           {payload?.map((entry: any, index: number) => (
-            <div key={`item-${index}`}>{`${entry.name}: ${tooltipValueFormatter(entry.value)}`}</div>
+            <div key={`item-${index}`}>{`${tooltipLabelFormatter(entry.name)}: ${tooltipValueFormatter(entry.value)}`}</div>
           ))}
 
           {children}
