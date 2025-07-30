@@ -37,7 +37,10 @@ const StyledTable = styled.table`
   width: 100%;
 `;
 
-const StyledTh = styled.th<{ $isDragging?: boolean; $isDropTarget?: 'left' | 'right'; $sortable?: boolean }>`
+const StyledTh = styled.th<{ $isDragging?: boolean; $isDropTarget?: 'left' | 'right'; $sortable?: boolean; $sticky?: boolean }>`
+  position: ${({ $sticky }) => ($sticky ? 'sticky' : 'static')};
+  top: 0;
+  z-index: 1;
   padding: 0.75rem 1rem;
   background: ${({ theme }) => theme.colors.tableHeaderBg};
   border-bottom: 2px solid ${({ theme }) => theme.colors.border};
@@ -108,6 +111,7 @@ type TableProps<TData extends { [key: string]: any }> = {
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
   rowSelection?: RowSelectionState;
   groupSelectionLabel?: string;
+  stickyHeader?: boolean;
 };
 
 function useSkipper() {
@@ -136,6 +140,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
   onRowSelectionChange,
   groupSelectionLabel,
   inline = false,
+  stickyHeader = false,
 }: TableProps<TData>) {
   const [grouping, setGrouping] = useState<GroupingState>(groupBy ? [groupBy] : []);
   const columnIds = columns.map((col) => col.id ?? '');
@@ -282,10 +287,12 @@ export const Table = function Table<TData extends { [key: string]: any }>({
                     onDragEnd={handleDragEnd}
                     $isDragging={dragColId.current === colId}
                     $isDropTarget={dropTargetId?.id === colId ? dropTargetId.side : undefined}
+                    $sticky={stickyHeader}
                     $sortable={isSortable}
                     onClick={isSortable ? header.column.getToggleSortingHandler() : undefined}
                   >
                     {flexRender(header.column.columnDef.header, header.getContext())}
+
                     {isSortable && (
                       <SortIcon
                         $direction={sortDirection === false ? undefined : sortDirection === 'asc' ? 'asc' : 'desc'}

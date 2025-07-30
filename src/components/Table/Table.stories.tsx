@@ -38,6 +38,13 @@ export default meta;
 
 export const Default: StoryObj<ComponentProps<typeof Table>> = {};
 
+export const StickyHeader: StoryObj<ComponentProps<typeof Table>> = {
+  args: {
+    stickyHeader: true,
+    ...meta.args,
+  },
+};
+
 export const EmptyData: StoryObj<ComponentProps<typeof Table>> = {
   args: {
     data: [],
