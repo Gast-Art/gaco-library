@@ -16,9 +16,10 @@ type TableProps<TData extends {
     onRowSelectionChange?: OnChangeFn<RowSelectionState>;
     rowSelection?: RowSelectionState;
     groupSelectionLabel?: string;
+    stickyHeader?: boolean;
 };
 export declare const Table: <TData extends {
     [key: string]: any;
-}>({ data, setData, columns, groupBy, enableRowSelection, rowSelection, onRowSelectionChange, groupSelectionLabel, inline, }: TableProps<TData>) => import("react/jsx-runtime").JSX.Element;
+}>({ data, setData, columns, groupBy, enableRowSelection, rowSelection, onRowSelectionChange, groupSelectionLabel, inline, stickyHeader, }: TableProps<TData>) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Table.d.ts.map

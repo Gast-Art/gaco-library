@@ -4,6 +4,7 @@ import { Table } from './Table';
 declare const meta: Meta<ComponentProps<typeof Table>>;
 export default meta;
 export declare const Default: StoryObj<ComponentProps<typeof Table>>;
+export declare const StickyHeader: StoryObj<ComponentProps<typeof Table>>;
 export declare const EmptyData: StoryObj<ComponentProps<typeof Table>>;
 export declare const InlineTable: StoryObj<ComponentProps<typeof Table>>;
 export declare const GroupedRows: StoryObj<ComponentProps<typeof Table>>;
