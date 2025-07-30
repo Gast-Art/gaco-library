@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Card } from '../Card/Card';
 import { SelectOption, Select as SelectRoot } from '../Select';
 import { TextInput } from '../TextInput';
-import { ExtendedColumnDef, Table } from './Table';
+import { Table } from './Table';
 
 const meta: Meta<ComponentProps<typeof Table>> = {
   title: 'Molecules/Table',
@@ -149,7 +149,7 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
     const [data, setData] = useState<SelectInputColumnProps[]>(args.data);
     const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({});
 
-    const columns: ExtendedColumnDef<SelectInputColumnProps>[] = [
+    const columns: ColumnDef<SelectInputColumnProps>[] = [
       {
         id: 'name',
         accessorKey: 'name',
@@ -159,7 +159,6 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
         id: 'favoriteColor',
         accessorKey: 'favoriteColor',
         header: 'Favorite Color',
-        updateGroup: true,
         cell: ({ getValue, row: { index }, column: { id }, table }) => {
           const initialValue = getValue();
           const [value, setValue] = useState<SelectOption>();

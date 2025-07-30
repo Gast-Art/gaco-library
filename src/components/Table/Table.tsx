@@ -19,10 +19,6 @@ import { DragEvent, Fragment, useCallback, useEffect, useRef, useState } from 'r
 import { styled } from 'styled-components';
 import { Checkbox } from '../Checkbox';
 
-export type ExtendedColumnDef<TData extends { [key: string]: any }> = ColumnDef<TData> & {
-  updateGroup?: boolean;
-};
-
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends RowData> {
     updateData: (updater: (old: TData[]) => TData[]) => void;
@@ -105,7 +101,7 @@ const GroupSelectionLabel = styled.span`
 type TableProps<TData extends { [key: string]: any }> = {
   data: TData[];
   setData?: (data: TData[]) => void;
-  columns: ExtendedColumnDef<TData>[];
+  columns: ColumnDef<TData, any>[];
   groupBy?: string;
   inline?: boolean;
   enableRowSelection?: boolean;
