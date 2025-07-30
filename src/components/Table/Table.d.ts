@@ -1,9 +1,4 @@
 import { ColumnDef, OnChangeFn, RowData, RowSelectionState } from '@tanstack/react-table';
-export type ExtendedColumnDef<TData extends {
-    [key: string]: any;
-}> = ColumnDef<TData> & {
-    updateGroup?: boolean;
-};
 declare module '@tanstack/react-table' {
     interface TableMeta<TData extends RowData> {
         updateData: (updater: (old: TData[]) => TData[]) => void;
@@ -14,7 +9,7 @@ type TableProps<TData extends {
 }> = {
     data: TData[];
     setData?: (data: TData[]) => void;
-    columns: ExtendedColumnDef<TData>[];
+    columns: ColumnDef<TData, any>[];
     groupBy?: string;
     inline?: boolean;
     enableRowSelection?: boolean;
