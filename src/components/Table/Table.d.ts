@@ -7,6 +7,7 @@ declare module '@tanstack/react-table' {
 type TableProps<TData extends {
     [key: string]: any;
 }> = {
+    className?: string;
     data: TData[];
     setData?: (data: TData[]) => void;
     columns: ColumnDef<TData, any>[];
@@ -20,6 +21,6 @@ type TableProps<TData extends {
 };
 export declare const Table: <TData extends {
     [key: string]: any;
-}>({ data, setData, columns, groupBy, enableRowSelection, rowSelection, onRowSelectionChange, groupSelectionLabel, inline, stickyHeader, }: TableProps<TData>) => import("react/jsx-runtime").JSX.Element;
+}>({ className, data, setData, columns, groupBy, enableRowSelection, rowSelection, onRowSelectionChange, groupSelectionLabel, inline, stickyHeader, }: TableProps<TData>) => import("react/jsx-runtime").JSX.Element;
 export {};
 //# sourceMappingURL=Table.d.ts.map
