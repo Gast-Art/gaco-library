@@ -102,6 +102,7 @@ const GroupSelectionLabel = styled.span`
 `;
 
 type TableProps<TData extends { [key: string]: any }> = {
+  className?: string;
   data: TData[];
   setData?: (data: TData[]) => void;
   columns: ColumnDef<TData, any>[];
@@ -131,6 +132,7 @@ function useSkipper() {
 }
 
 export const Table = function Table<TData extends { [key: string]: any }>({
+  className,
   data,
   setData,
   columns,
@@ -266,7 +268,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
   };
 
   return (
-    <TableContainer $inline={inline}>
+    <TableContainer $inline={inline} className={className}>
       <StyledTable>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
