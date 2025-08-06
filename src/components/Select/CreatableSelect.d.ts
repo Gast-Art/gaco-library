@@ -14,6 +14,7 @@ export interface CreatableSelectProps {
     label?: string;
     error?: string;
     isClearable?: boolean;
+    noOptionsMessage?: () => string;
 }
 export declare const CreatableSelect: FC<CreatableSelectProps>;
 //# sourceMappingURL=CreatableSelect.d.ts.map

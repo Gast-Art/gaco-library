@@ -18,6 +18,7 @@ export interface SelectProps {
     onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
     label?: string;
     error?: string;
+    noOptionsMessage?: () => string;
 }
 export declare const Select: FC<SelectProps>;
 //# sourceMappingURL=Select.d.ts.map
