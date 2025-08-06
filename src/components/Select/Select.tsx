@@ -21,6 +21,7 @@ export interface SelectProps {
   onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
   label?: string;
   error?: string;
+  noOptionsMessage?: () => string;
 }
 
 const StyledSelect = styled(SelectRoot<SelectOption>)`
@@ -46,6 +47,7 @@ export const Select: FC<SelectProps> = ({
   onFocus,
   label,
   menuPortalTarget = document.body,
+  noOptionsMessage,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const theme = useTheme();
@@ -61,6 +63,7 @@ export const Select: FC<SelectProps> = ({
           onChange={(value, actionMeta) => onChange(value, actionMeta)}
           placeholder=" "
           classNamePrefix="react-select"
+          noOptionsMessage={noOptionsMessage}
           styles={{
             menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndices.dropdownMenu }),
           }}

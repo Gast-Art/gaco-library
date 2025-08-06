@@ -19,6 +19,7 @@ export interface CreatableSelectProps {
   label?: string;
   error?: string;
   isClearable?: boolean;
+  noOptionsMessage?: () => string;
 }
 
 const StyledCreatableSelect = styled(CreatableSelectRoot<SelectOption>)`
@@ -46,6 +47,7 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({
   filterOption,
   label,
   isClearable = true,
+  noOptionsMessage,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -69,6 +71,7 @@ export const CreatableSelect: FC<CreatableSelectProps> = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           filterOption={filterOption}
+          noOptionsMessage={noOptionsMessage}
           components={{
             DropdownIndicator: (props) => <CreatableSelectDropdownIndicator {...props} error={error} />,
           }}
