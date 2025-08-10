@@ -7,7 +7,6 @@ const AlertWrapper = styled.div<{ type: AlertType }>`
   align-items: center;
   padding: 1rem;
   border-radius: ${({ theme }) => theme.sizes.borderRadius};
-  margin: 0.5rem 0;
   color: white;
   background-color: ${({ type, theme }) => {
     switch (type) {

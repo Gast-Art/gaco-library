@@ -13,6 +13,11 @@ export const PageTitle = styled.h1`
     margin-bottom: 1rem;
   `}
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   small {
     font-size: ${({ theme }) => theme.sizes.fonts.lg};
     font-weight: normal;

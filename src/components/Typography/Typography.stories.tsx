@@ -7,6 +7,9 @@ const HierarchyExample = () => (
     <PageTitle>
       PageTitle <small>Subtitle</small>
     </PageTitle>
+    <PageTitle>
+      Page Title <a href="#">Link</a>
+    </PageTitle>
     <H1>H1 Heading</H1>
     <H2>H2 Heading</H2>
     <H3>H3 Heading</H3>
