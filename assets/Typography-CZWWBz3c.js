@@ -10,6 +10,11 @@ import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-C
     margin-bottom: 1rem;
   `}
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   small {
     font-size: ${({theme:o})=>o.sizes.fonts.lg};
     font-weight: normal;

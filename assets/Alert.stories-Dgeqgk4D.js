@@ -8,7 +8,6 @@ import{j as s}from"./jsx-runtime-DPtPVAOg.js";import{d as S}from"./styled-compon
   align-items: center;
   padding: 1rem;
   border-radius: ${({theme:e})=>e.sizes.borderRadius};
-  margin: 0.5rem 0;
   color: white;
   background-color: ${({type:e,theme:r})=>{switch(e){case"error":return r.colors.error;case"warning":return r.colors.warning;case"success":return r.colors.success;case"info":return r.colors.info;default:return r.colors.info}}};
   border-bottom: 4px solid
