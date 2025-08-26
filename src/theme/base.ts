@@ -43,5 +43,6 @@ export const base = {
     grayDarker: '#6c757d',
     gray: '#c0c3c6',
     grayLighter: '#e3e3e3',
+    anchor: '#0070f3',
   },
 };
