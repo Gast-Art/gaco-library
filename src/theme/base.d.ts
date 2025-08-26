@@ -43,6 +43,7 @@ export declare const base: {
         grayDarker: string;
         gray: string;
         grayLighter: string;
+        anchor: string;
     };
 };
 //# sourceMappingURL=base.d.ts.map

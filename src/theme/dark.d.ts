@@ -14,6 +14,7 @@ export declare const darkTheme: {
         grayDarker: string;
         gray: string;
         grayLighter: string;
+        anchor: string;
         bg: string;
         mutedBg: string;
         text: string;

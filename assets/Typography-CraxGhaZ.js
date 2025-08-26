@@ -1,4 +1,4 @@
-import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-CY34xYRe.js";import{m as s}from"./media-BIK856jo.js";const i=t.h1`
+import{d as t}from"./styled-components.browser.esm-DnH8uv-2.js";import"./light-DG7axscF.js";import{m as s}from"./media-BIK856jo.js";const i=t.h1`
   font-size: ${({theme:o})=>o.sizes.fonts.xxxl};
   font-family: ${({theme:o})=>o.fonts.title};
   font-weight: bold;
