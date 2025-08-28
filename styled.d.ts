@@ -15,10 +15,7 @@ declare module 'styled-components' {
       [key: string]: string;
     };
     sizes: {
-      [key: string]: string | number;
-      fonts: {
-        [key: string]: string | number;
-      };
+      [key: string]: any;
     };
   }
 }
