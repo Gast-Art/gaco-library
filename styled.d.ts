@@ -8,7 +8,7 @@ declare module 'styled-components' {
     shadows: {
       [key: string]: string;
     };
-    zIndicies: {
+    zIndices: {
       [key: string]: number;
     };
     fonts: {
