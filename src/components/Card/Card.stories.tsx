@@ -96,6 +96,13 @@ export const IsError: Story = {
   },
 };
 
+export const IsSuccess: Story = {
+  args: {
+    ...ButtonsInRightColumn.args,
+    success: 'Successfully loaded some stuff...',
+  },
+};
+
 export const IsInfo: Story = {
   args: {
     ...ButtonsInRightColumn.args,

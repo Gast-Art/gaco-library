@@ -121,6 +121,7 @@ interface CardProps extends PropsWithChildren {
   onClick?: () => void;
   loading?: string | boolean;
   error?: string | boolean;
+  success?: string | boolean;
   info?: string | boolean;
   size?: CardSize;
 }
@@ -144,7 +145,7 @@ interface CardProps extends PropsWithChildren {
   size?: CardSize;
 }
 
-export const Card: FC<CardProps> = ({ children, loading, error, info, size = CardSize.md, ...props }) => {
+export const Card: FC<CardProps> = ({ children, loading, error, info, success, size = CardSize.md, ...props }) => {
   let slotTitle: ReactNode;
   let slotContent: ReactNode;
   let slotActions: ReactNode;
@@ -193,8 +194,8 @@ export const Card: FC<CardProps> = ({ children, loading, error, info, size = Car
 
       {slotRightColumn}
 
-      {(loading || error || info) && (
-        <LoadingOverlay error={error} info={info}>
+      {(loading || error || info || success) && (
+        <LoadingOverlay error={error} info={info} success={success}>
           {typeof loading === 'string' ? loading : undefined}
         </LoadingOverlay>
       )}
