@@ -6,4 +6,5 @@ type Story = StoryObj<typeof LoadingOverlay>;
 export declare const Default: Story;
 export declare const Error: Story;
 export declare const Info: Story;
+export declare const Success: Story;
 //# sourceMappingURL=LoadingOverlay.stories.d.ts.map

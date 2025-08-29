@@ -13,6 +13,7 @@ interface CardProps extends PropsWithChildren {
     onClick?: () => void;
     loading?: string | boolean;
     error?: string | boolean;
+    success?: string | boolean;
     info?: string | boolean;
     size?: CardSize;
 }
