@@ -34,3 +34,9 @@ export const Info: Story = {
     info: 'No data found',
   },
 };
+
+export const Success: Story = {
+  args: {
+    success: 'Data loaded successfully',
+  },
+};
