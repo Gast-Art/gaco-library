@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { FC, FocusEvent, useState } from 'react';
+import { FocusEvent, forwardRef, useState } from 'react';
 import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups, SingleValue } from 'react-select';
 
 import styled, { useTheme } from 'styled-components';
@@ -36,53 +36,45 @@ const SelectDropdownIndicator = (props: SelectIndicatorProps) => {
   return <components.DropdownIndicator {...props}>{props.error ? <ErrorIcon /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
-export const Select: FC<SelectProps> = ({
-  id,
-  className,
-  options,
-  value,
-  error,
-  onChange,
-  onBlur,
-  onFocus,
-  label,
-  menuPortalTarget = document.body,
-  noOptionsMessage,
-}) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const theme = useTheme();
+export const Select = forwardRef<HTMLDivElement, SelectProps>(
+  ({ id, className, options, value, error, onChange, onBlur, onFocus, label, menuPortalTarget = document.body, noOptionsMessage }, ref) => {
+    const [isFocused, setIsFocused] = useState(false);
+    const theme = useTheme();
 
-  return (
-    <div className={className}>
-      <Container $error={!!error}>
-        <StyledSelect
-          id={id}
-          options={options}
-          menuPortalTarget={menuPortalTarget}
-          value={value}
-          onChange={(value, actionMeta) => onChange(value, actionMeta)}
-          placeholder=" "
-          classNamePrefix="react-select"
-          noOptionsMessage={noOptionsMessage}
-          styles={{
-            menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndices.dropdownMenu }),
-          }}
-          onFocus={(e) => {
-            setIsFocused(true);
-            onFocus?.(e);
-          }}
-          onBlur={(e) => {
-            setIsFocused(false);
-            onBlur?.(e);
-          }}
-          components={{
-            DropdownIndicator: (props) => <SelectDropdownIndicator {...props} error={error} />,
-          }}
-        />
+    return (
+      <div className={className} ref={ref}>
+        <Container $error={!!error}>
+          <StyledSelect
+            id={id}
+            options={options}
+            menuPortalTarget={menuPortalTarget}
+            value={value}
+            onChange={(value, actionMeta) => onChange(value, actionMeta)}
+            placeholder=" "
+            classNamePrefix="react-select"
+            noOptionsMessage={noOptionsMessage}
+            styles={{
+              menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndices.dropdownMenu }),
+            }}
+            onFocus={(e) => {
+              setIsFocused(true);
+              onFocus?.(e);
+            }}
+            onBlur={(e) => {
+              setIsFocused(false);
+              onBlur?.(e);
+            }}
+            components={{
+              DropdownIndicator: (props) => <SelectDropdownIndicator {...props} error={error} />,
+            }}
+          />
 
-        {label && <Label $active={!!value?.value.length || isFocused}>{label}</Label>}
-      </Container>
-      {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
-    </div>
-  );
-};
+          {label && <Label $active={!!value?.value.length || isFocused}>{label}</Label>}
+        </Container>
+        {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
+      </div>
+    );
+  },
+);
+
+Select.displayName = 'Select';

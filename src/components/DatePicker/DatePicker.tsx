@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { Calendar } from 'lucide-react';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -70,13 +70,13 @@ interface DatePickerProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export const DatePicker = ({ id, label, error, value, ...props }: DatePickerProps) => {
+export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(({ id, label, error, value, ...props }, ref) => {
   const formattedValue = typeof value === 'string' ? value : value instanceof Date ? format(value, 'yyyy-MM-dd') : undefined;
 
   return (
     <Container>
       <InputWrapper>
-        <Input id={id} type="date" $error={!!error} value={formattedValue} {...props} />
+        <Input id={id} type="date" $error={!!error} value={formattedValue} ref={ref} {...props} />
         <IconWrapper $error={!!error}>
           <Calendar size={16} />
         </IconWrapper>
@@ -86,4 +86,6 @@ export const DatePicker = ({ id, label, error, value, ...props }: DatePickerProp
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
-};
+});
+
+DatePicker.displayName = 'DatePicker';

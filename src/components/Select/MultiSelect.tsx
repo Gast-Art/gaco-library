@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { FC, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import SelectRoot, { ActionMeta, components, DropdownIndicatorProps, OptionsOrGroups } from 'react-select';
 import styled from 'styled-components';
 import { SelectOption } from './Select';
@@ -27,13 +27,14 @@ const MultiSelectDropdownIndicator = (props: MultiSelectIndicatorProps) => {
   return <components.DropdownIndicator {...props}>{props.error ? <ErrorIcon /> : <ChevronDown />}</components.DropdownIndicator>;
 };
 
-export const MultiSelect: FC<MultiSelectProps> = ({ id, className, options, value, onChange, label, error }) => {
+export const MultiSelect = forwardRef<any, MultiSelectProps>(({ id, className, options, value, onChange, label, error }, ref) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <div className={className}>
       <Container $error={!!error}>
         <StyledMultiSelect
+          ref={ref}
           id={id}
           isMulti
           menuPortalTarget={document.body}
@@ -54,4 +55,6 @@ export const MultiSelect: FC<MultiSelectProps> = ({ id, className, options, valu
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
     </div>
   );
-};
+});
+
+MultiSelect.displayName = 'MultiSelect';

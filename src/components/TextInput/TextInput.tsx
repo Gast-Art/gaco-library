@@ -1,5 +1,5 @@
 import { CircleAlert } from 'lucide-react';
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { InputHTMLAttributes, ReactNode, forwardRef } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -112,32 +112,37 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactNode;
 }
 
-export const TextInput = ({ className, id, label, type = 'text', error, disabled, icon, ...props }: TextInputProps) => {
-  return (
-    <Container className={className}>
-      <InputWrapper>
-        <Input
-          id={id}
-          type={type}
-          disabled={disabled}
-          aria-invalid={!!error}
-          placeholder=" "
-          aria-describedby={error ? `${id}-error` : undefined}
-          $error={!!error}
-          $hasIcon={!!icon || !!error}
-          {...(error ? { 'aria-errormessage': `${id}-error` } : {})}
-          {...(label ? { 'aria-label': label } : {})}
-          {...props}
-        />
-        {label && <Label htmlFor={id}>{label}</Label>}
-        {icon && <IconWrapper>{icon}</IconWrapper>}
-        {error && (
-          <IconWrapper>
-            <ErrorIcon />
-          </IconWrapper>
-        )}
-      </InputWrapper>
-      {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
-    </Container>
-  );
-};
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ className, id, label, type = 'text', error, disabled, icon, ...props }, ref) => {
+    return (
+      <Container className={className}>
+        <InputWrapper>
+          <Input
+            ref={ref}
+            id={id}
+            type={type}
+            disabled={disabled}
+            aria-invalid={!!error}
+            placeholder=" "
+            aria-describedby={error ? `${id}-error` : undefined}
+            $error={!!error}
+            $hasIcon={!!icon || !!error}
+            {...(error ? { 'aria-errormessage': `${id}-error` } : {})}
+            {...(label ? { 'aria-label': label } : {})}
+            {...props}
+          />
+          {label && <Label htmlFor={id}>{label}</Label>}
+          {icon && <IconWrapper>{icon}</IconWrapper>}
+          {error && (
+            <IconWrapper>
+              <ErrorIcon />
+            </IconWrapper>
+          )}
+        </InputWrapper>
+        {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
+      </Container>
+    );
+  },
+);
+
+TextInput.displayName = 'TextInput';

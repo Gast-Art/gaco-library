@@ -1,5 +1,5 @@
 import { CircleAlert } from 'lucide-react';
-import { TextareaHTMLAttributes } from 'react';
+import { TextareaHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -86,7 +86,7 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
   error?: string;
 }
 
-export const TextArea = ({ className, id, label, error, disabled, ...props }: TextAreaProps) => {
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({ className, id, label, error, disabled, ...props }, ref) => {
   return (
     <Container className={className}>
       <TextareaWrapper>
@@ -97,6 +97,7 @@ export const TextArea = ({ className, id, label, error, disabled, ...props }: Te
           placeholder=" "
           aria-describedby={error ? `${id}-error` : undefined}
           $error={!!error}
+          ref={ref}
           {...props}
         />
         {label && <Label htmlFor={id}>{label}</Label>}
@@ -105,4 +106,6 @@ export const TextArea = ({ className, id, label, error, disabled, ...props }: Te
       {error && <ErrorMessage id={`${id}-error`}>{error}</ErrorMessage>}
     </Container>
   );
-};
+});
+
+TextArea.displayName = 'TextArea';
