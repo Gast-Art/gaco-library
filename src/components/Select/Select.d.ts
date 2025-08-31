@@ -1,4 +1,4 @@
-import { FC, FocusEvent } from '../../../node_modules/react';
+import { FocusEvent } from '../../../node_modules/react';
 import { ActionMeta, OptionsOrGroups, SingleValue } from 'react-select';
 export interface SelectOption {
     value: string;
@@ -20,5 +20,5 @@ export interface SelectProps {
     error?: string;
     noOptionsMessage?: () => string;
 }
-export declare const Select: FC<SelectProps>;
+export declare const Select: import('../../../node_modules/react').ForwardRefExoticComponent<SelectProps & import('../../../node_modules/react').RefAttributes<HTMLDivElement>>;
 //# sourceMappingURL=Select.d.ts.map

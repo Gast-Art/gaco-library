@@ -1,7 +1,7 @@
-import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-components.browser.esm-DnH8uv-2.js";import{C as d}from"./circle-alert-C-cAHhHG.js";const c=s.div`
+import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{r as p}from"./index-CR__hKHy.js";import{d as s}from"./styled-components.browser.esm-DnH8uv-2.js";import{C as m}from"./circle-alert-C-cAHhHG.js";const x=s.div`
   position: relative;
   padding-top: 0.75rem;
-`,p=s.span`
+`,f=s.span`
   color: ${({theme:e})=>e.colors.error};
   font-size: ${({theme:e})=>e.sizes.fonts.xxs};
   display: flex;
@@ -20,11 +20,11 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-`,m=s.div`
+`,b=s.div`
   position: relative;
   display: flex;
   align-items: center;
-`,x=s.textarea`
+`,u=s.textarea`
   min-height: 4rem;
   border: none;
   border-bottom: 1px solid ${({theme:e})=>e.colors.textInputBorder};
@@ -35,10 +35,10 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
   font-family: ${({theme:e})=>e.fonts.body};
   resize: vertical;
 
-  ${({$error:e,theme:o})=>e&&`padding-right: 2rem; border-bottom-color: ${o.colors.error};`}
+  ${({$error:e,theme:r})=>e&&`padding-right: 2rem; border-bottom-color: ${r.colors.error};`}
 
   &:focus {
-    ${({theme:e,$error:o})=>!o&&`border-bottom-color: ${e.colors.textInputBorderFocus};`}
+    ${({theme:e,$error:r})=>!r&&`border-bottom-color: ${e.colors.textInputBorderFocus};`}
     outline: none;
   }
 
@@ -53,11 +53,11 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
     border-bottom-color: ${({theme:e})=>e.colors.textInputDisabledBackground};
     cursor: not-allowed;
   }
-`,f=s(d)`
+`,g=s(m)`
   width: 0.875rem;
   height: 0.875rem;
   position: absolute;
   right: 0.5rem;
   color: ${({theme:e})=>e.colors.error};
   pointer-events: none;
-`,b=({className:e,id:o,label:i,error:r,disabled:a,...l})=>t.jsxs(c,{className:e,children:[t.jsxs(m,{children:[t.jsx(x,{id:o,disabled:a,"aria-invalid":!!r,placeholder:" ","aria-describedby":r?`${o}-error`:void 0,$error:!!r,...l}),i&&t.jsx(n,{htmlFor:o,children:i}),r&&t.jsx(f,{})]}),r&&t.jsx(p,{id:`${o}-error`,children:r})]});b.__docgenInfo={description:"",methods:[],displayName:"TextArea",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},error:{required:!1,tsType:{name:"string"},description:""}},composes:["TextareaHTMLAttributes"]};export{b as T};
+`,a=p.forwardRef(({className:e,id:r,label:i,error:o,disabled:l,...d},c)=>t.jsxs(x,{className:e,children:[t.jsxs(b,{children:[t.jsx(u,{id:r,disabled:l,"aria-invalid":!!o,placeholder:" ","aria-describedby":o?`${r}-error`:void 0,$error:!!o,ref:c,...d}),i&&t.jsx(n,{htmlFor:r,children:i}),o&&t.jsx(g,{})]}),o&&t.jsx(f,{id:`${r}-error`,children:o})]}));a.displayName="TextArea";a.__docgenInfo={description:"",methods:[],displayName:"TextArea",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},error:{required:!1,tsType:{name:"string"},description:""}},composes:["TextareaHTMLAttributes"]};export{a as T};

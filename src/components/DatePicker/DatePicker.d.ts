@@ -4,6 +4,6 @@ interface DatePickerProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
     error?: string;
 }
-export declare const DatePicker: ({ id, label, error, value, ...props }: DatePickerProps) => import("react/jsx-runtime").JSX.Element;
+export declare const DatePicker: import('../../../node_modules/react').ForwardRefExoticComponent<DatePickerProps & import('../../../node_modules/react').RefAttributes<HTMLInputElement>>;
 export {};
 //# sourceMappingURL=DatePicker.d.ts.map

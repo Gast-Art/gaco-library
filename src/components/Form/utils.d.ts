@@ -1,3 +1,3 @@
 import { FormFieldComponents } from './Form';
-export declare const getField: (componentType?: FormFieldComponents) => import('../../../node_modules/react').FC<import('../Select').SelectProps> | (({ className, id, label, type, error, disabled, icon, ...props }: import('../TextInput').TextInputProps) => import("react/jsx-runtime").JSX.Element);
+export declare const getField: (componentType?: FormFieldComponents) => import('../../../node_modules/react').ForwardRefExoticComponent<import('../Select').SelectProps & import('../../../node_modules/react').RefAttributes<HTMLDivElement>> | import('../../../node_modules/react').ForwardRefExoticComponent<import('../TextInput').TextInputProps & import('../../../node_modules/react').RefAttributes<HTMLInputElement>>;
 //# sourceMappingURL=utils.d.ts.map

@@ -6,5 +6,5 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
     error?: string;
     icon?: ReactNode;
 }
-export declare const TextInput: ({ className, id, label, type, error, disabled, icon, ...props }: TextInputProps) => import("react/jsx-runtime").JSX.Element;
+export declare const TextInput: import('../../../node_modules/react').ForwardRefExoticComponent<TextInputProps & import('../../../node_modules/react').RefAttributes<HTMLInputElement>>;
 //# sourceMappingURL=TextInput.d.ts.map

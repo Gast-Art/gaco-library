@@ -4,5 +4,5 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
     label?: string;
     error?: string;
 }
-export declare const TextArea: ({ className, id, label, error, disabled, ...props }: TextAreaProps) => import("react/jsx-runtime").JSX.Element;
+export declare const TextArea: import('../../../node_modules/react').ForwardRefExoticComponent<TextAreaProps & import('../../../node_modules/react').RefAttributes<HTMLTextAreaElement>>;
 //# sourceMappingURL=TextArea.d.ts.map

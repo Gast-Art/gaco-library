@@ -1,4 +1,3 @@
-import { FC } from '../../../node_modules/react';
 import { ActionMeta, SingleValue } from 'react-select';
 import { SelectOption } from './Select';
 export interface CreatableSelectProps {
@@ -16,5 +15,5 @@ export interface CreatableSelectProps {
     isClearable?: boolean;
     noOptionsMessage?: () => string;
 }
-export declare const CreatableSelect: FC<CreatableSelectProps>;
+export declare const CreatableSelect: import('../../../node_modules/react').ForwardRefExoticComponent<CreatableSelectProps & import('../../../node_modules/react').RefAttributes<any>>;
 //# sourceMappingURL=CreatableSelect.d.ts.map

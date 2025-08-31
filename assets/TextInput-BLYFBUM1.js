@@ -1,14 +1,14 @@
-import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-components.browser.esm-DnH8uv-2.js";import{C as u}from"./circle-alert-C-cAHhHG.js";const x=s.div`
+import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{r as x}from"./index-CR__hKHy.js";import{d as s}from"./styled-components.browser.esm-DnH8uv-2.js";import{C as g}from"./circle-alert-C-cAHhHG.js";const h=s.div`
   position: relative;
   padding-top: 0.75rem;
-`,f=s.span`
+`,$=s.span`
   color: ${({theme:e})=>e.colors.error};
   font-size: ${({theme:e})=>e.sizes.fonts.xxs};
   display: flex;
   align-items: center;
   margin-top: 0.25rem;
   margin-left: 0.25rem;
-`,l=s.label`
+`,a=s.label`
   position: absolute;
   top: 0.5rem;
   left: 0;
@@ -21,14 +21,14 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-`,g=s.div`
+`,b=s.div`
   position: relative;
   display: flex;
   align-items: center;
-`,c=s(u)`
+`,d=s(g)`
   width: 1rem;
   pointer-events: none;
-`,a=s.div`
+`,l=s.div`
   position: absolute;
   right: 0.5rem;
   display: flex;
@@ -45,10 +45,10 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
     color: ${({theme:e})=>e.colors.textInputBorder};
   }
 
-  ${c} {
+  ${d} {
     color: ${({theme:e})=>e.colors.error};
   }
-`,h=s.input`
+`,I=s.input`
   height: ${({theme:e})=>e.sizes.formControl};
   border: none;
   border-bottom: 1px solid ${({theme:e})=>e.colors.textInputBorder};
@@ -64,12 +64,12 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
   &:focus {
     ${({theme:e,$error:o})=>!o&&`border-bottom-color: ${e.colors.textInputBorderFocus};`}
     outline: none;
-    & ~ ${a} svg {
+    & ~ ${l} svg {
       color: ${({theme:e})=>e.colors.textInputBorderFocus};
     }
   }
 
-  &:focus + ${l}, &:not(:placeholder-shown) + ${l} {
+  &:focus + ${a}, &:not(:placeholder-shown) + ${a} {
     top: -0.75rem;
     left: 0;
     font-size: ${({theme:e})=>e.sizes.fonts.xs};
@@ -81,4 +81,4 @@ import{j as t}from"./jsx-runtime-DPtPVAOg.js";import{d as s}from"./styled-compon
     border-bottom-color: ${({theme:e})=>e.colors.textInputDisabledBackground};
     cursor: not-allowed;
   }
-`,$=({className:e,id:o,label:n,type:d="text",error:r,disabled:p,icon:i,...m})=>t.jsxs(x,{className:e,children:[t.jsxs(g,{children:[t.jsx(h,{id:o,type:d,disabled:p,"aria-invalid":!!r,placeholder:" ","aria-describedby":r?`${o}-error`:void 0,$error:!!r,$hasIcon:!!i||!!r,...r?{"aria-errormessage":`${o}-error`}:{},...n?{"aria-label":n}:{},...m}),n&&t.jsx(l,{htmlFor:o,children:n}),i&&t.jsx(a,{children:i}),r&&t.jsx(a,{children:t.jsx(c,{})})]}),r&&t.jsx(f,{id:`${o}-error`,children:r})]});$.__docgenInfo={description:"",methods:[],displayName:"TextInput",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},type:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:"'text'",computed:!1}},error:{required:!1,tsType:{name:"string"},description:""},icon:{required:!1,tsType:{name:"ReactNode"},description:""}},composes:["InputHTMLAttributes"]};export{$ as T};
+`,p=x.forwardRef(({className:e,id:o,label:n,type:c="text",error:r,disabled:m,icon:i,...u},f)=>t.jsxs(h,{className:e,children:[t.jsxs(b,{children:[t.jsx(I,{ref:f,id:o,type:c,disabled:m,"aria-invalid":!!r,placeholder:" ","aria-describedby":r?`${o}-error`:void 0,$error:!!r,$hasIcon:!!i||!!r,...r?{"aria-errormessage":`${o}-error`}:{},...n?{"aria-label":n}:{},...u}),n&&t.jsx(a,{htmlFor:o,children:n}),i&&t.jsx(l,{children:i}),r&&t.jsx(l,{children:t.jsx(d,{})})]}),r&&t.jsx($,{id:`${o}-error`,children:r})]}));p.displayName="TextInput";p.__docgenInfo={description:"",methods:[],displayName:"TextInput",props:{id:{required:!0,tsType:{name:"string"},description:""},label:{required:!1,tsType:{name:"string"},description:""},type:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:"'text'",computed:!1}},error:{required:!1,tsType:{name:"string"},description:""},icon:{required:!1,tsType:{name:"ReactNode"},description:""}},composes:["InputHTMLAttributes"]};export{p as T};
