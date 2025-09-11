@@ -102,7 +102,6 @@ export const Default: Story = {
           { value: '3', label: 'Option 3' },
         ],
         onCreateOption: (inputValue) => {
-          console.log('Create option:', inputValue);
           return { value: inputValue, label: inputValue };
         },
       },
@@ -120,9 +119,10 @@ export const Default: Story = {
     schema: yup.object().shape({
       email: yup.string().email().required(),
       password: yup.string().required(),
-      select: yup.string().required(),
-      multiSelect: yup.array().min(1).required(),
-      creatableSelect: yup.string().required(),
+      select: yup.string(),
+      groupedSelect: yup.string(),
+      multiSelect: yup.array().min(1),
+      creatableSelect: yup.string(),
       textArea: yup.string().required(),
       date: yup.date().required(),
     }),

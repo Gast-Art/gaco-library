@@ -124,10 +124,8 @@ const Form = <T extends FieldValues = FieldValues>({
   }, [schema]);
 
   const renderField = (field: FormField<T>) => {
-    const isRequired =
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      describedSchema?.fields && describedSchema.fields[field.name]?.tests?.find(({ name }: { name: string }) => name === 'required');
+    // @ts-ignore-next-line
+    const isRequired = describedSchema?.fields && describedSchema.fields[field.name]?.optional === false;
 
     const controllerProps = {
       name: field.name,
