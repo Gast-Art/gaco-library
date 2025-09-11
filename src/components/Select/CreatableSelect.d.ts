@@ -4,6 +4,7 @@ export interface CreatableSelectProps {
     id: string;
     className?: string;
     options: SelectOption[];
+    menuPortalTarget?: HTMLElement;
     value?: SingleValue<SelectOption>;
     defaultInputValue?: string;
     createOptionPosition?: 'first' | 'last';
