@@ -2,7 +2,7 @@ import { ChevronDown } from 'lucide-react';
 import { forwardRef, useState } from 'react';
 import { ActionMeta, DropdownIndicatorProps, SingleValue, components } from 'react-select';
 import CreatableSelectRoot from 'react-select/creatable';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { SelectOption } from './Select';
 import { Container, ErrorIcon, ErrorMessage, Label, SelectStyling } from './styles';
 
@@ -10,6 +10,7 @@ export interface CreatableSelectProps {
   id: string;
   className?: string;
   options: SelectOption[];
+  menuPortalTarget?: HTMLElement;
   value?: SingleValue<SelectOption>;
   defaultInputValue?: string;
   createOptionPosition?: 'first' | 'last';
@@ -47,6 +48,7 @@ export const CreatableSelect = forwardRef<any, CreatableSelectProps>(
       onChange,
       onCreateOption,
       filterOption,
+      menuPortalTarget = document.body,
       label,
       isClearable = true,
       noOptionsMessage,
@@ -54,6 +56,7 @@ export const CreatableSelect = forwardRef<any, CreatableSelectProps>(
     ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
+    const theme = useTheme();
 
     const hasValue = !!value?.value.length || !!defaultInputValue;
 
@@ -64,7 +67,7 @@ export const CreatableSelect = forwardRef<any, CreatableSelectProps>(
             ref={ref}
             id={id}
             options={options}
-            menuPortalTarget={document.body}
+            menuPortalTarget={menuPortalTarget}
             isClearable={isClearable}
             value={value}
             defaultInputValue={defaultInputValue}
@@ -77,6 +80,9 @@ export const CreatableSelect = forwardRef<any, CreatableSelectProps>(
             onBlur={() => setIsFocused(false)}
             filterOption={filterOption}
             noOptionsMessage={noOptionsMessage}
+            styles={{
+              menuPortal: (base) => ({ ...base, pointerEvents: 'auto', zIndex: theme.zIndices.dropdownMenu }),
+            }}
             components={{
               DropdownIndicator: (props) => <CreatableSelectDropdownIndicator {...props} error={error} />,
             }}
