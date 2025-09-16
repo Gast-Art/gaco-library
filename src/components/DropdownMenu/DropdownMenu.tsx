@@ -91,7 +91,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ trigger, items, align, alignOffse
             item === 'seperator' ? (
               <Separator key={index} />
             ) : (
-              <DropdownMenuItem key={index} onSelect={item.onSelect} disabled={item.disabled}>
+              <DropdownMenuItem key={index} onSelect={item.onSelect} disabled={item.disabled} onClick={(e) => e.stopPropagation()}>
                 {item.content}
               </DropdownMenuItem>
             ),
