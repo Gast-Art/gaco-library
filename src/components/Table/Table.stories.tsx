@@ -67,6 +67,7 @@ export const InlineTable: StoryObj<ComponentProps<typeof Table>> = {
 
 export const GroupedRows: StoryObj<ComponentProps<typeof Table>> = {
   args: {
+    enableRowSelection: true,
     groupBy: 'category',
     columns: [
       { id: 'category', accessorKey: 'category', header: 'Category' },
@@ -74,10 +75,10 @@ export const GroupedRows: StoryObj<ComponentProps<typeof Table>> = {
       { id: 'quantity', accessorKey: 'quantity', header: 'Quantity' },
     ],
     data: [
-      { category: 'Fruits', item: 'Apple', quantity: 10 },
-      { category: 'Fruits', item: 'Banana', quantity: 20 },
-      { category: 'Vegetables', item: 'Carrot', quantity: 15 },
-      { category: 'Vegetables', item: 'Broccoli', quantity: 5 },
+      { id: 'apple', category: 'Fruits', item: 'Apple', quantity: 10 },
+      { id: 'banana', category: 'Fruits', item: 'Banana', quantity: 20 },
+      { id: 'carrot', category: 'Vegetables', item: 'Carrot', quantity: 15 },
+      { id: 'broccoli', category: 'Vegetables', item: 'Broccoli', quantity: 5 },
     ],
   },
 };

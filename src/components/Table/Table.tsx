@@ -131,6 +131,14 @@ function useSkipper() {
   return [shouldSkip, skip] as const;
 }
 
+const areAllLeafSubRowsSelected = (row: Row<any>): boolean => {
+  if (!row.getCanSelect()) {
+    return row.getIsSelected();
+  }
+
+  return row.subRows.every(areAllLeafSubRowsSelected);
+};
+
 export const Table = function Table<TData extends { [key: string]: any }>({
   className,
   data,
@@ -232,8 +240,10 @@ export const Table = function Table<TData extends { [key: string]: any }>({
 
   const renderRow = (row: Row<TData>) => {
     if (row.getIsGrouped()) {
-      const canGroupSelect = row.getCanSelect();
+      const isRowAGroup = row.subRows && row.subRows.length > 0;
+      const canGroupSelect = row.getCanSelect() && isRowAGroup;
       const colSpan = row.getVisibleCells().length - (canGroupSelect ? 1 : 0);
+      const isAllSubRowsSelected = areAllLeafSubRowsSelected(row);
 
       return (
         <Fragment key={row.id}>
@@ -246,10 +256,19 @@ export const Table = function Table<TData extends { [key: string]: any }>({
 
             {canGroupSelect && (
               <StyledTd style={{ textAlign: 'end' }}>
-                <CheckboxContainer>
-                  <GroupSelectionLabel>{groupSelectionLabel}</GroupSelectionLabel>
-                  <Checkbox checked={row.getIsSelected()} onChange={() => row.toggleSelected()} style={{ marginLeft: '0.5rem' }} />
-                </CheckboxContainer>
+                {enableRowSelection && (
+                  <CheckboxContainer>
+                    <GroupSelectionLabel>{groupSelectionLabel}</GroupSelectionLabel>
+                    <Checkbox
+                      checked={isAllSubRowsSelected}
+                      onChange={(e) => {
+                        e.stopPropagation();
+                        row.toggleSelected();
+                      }}
+                      style={{ marginLeft: '0.5rem' }}
+                    />
+                  </CheckboxContainer>
+                )}
               </StyledTd>
             )}
           </GroupRow>
