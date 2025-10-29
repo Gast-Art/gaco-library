@@ -24,4 +24,7 @@ interface SelectInputColumnProps {
 export declare const SelectColumn: StoryObj<ComponentProps<typeof Table> & {
     data: SelectInputColumnProps[];
 }>;
+export declare const GroupSelectionColumn: StoryObj<ComponentProps<typeof Table> & {
+    data: SelectInputColumnProps[];
+}>;
 //# sourceMappingURL=Table.stories.d.ts.map
