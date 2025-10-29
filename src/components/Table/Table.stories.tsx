@@ -206,6 +206,7 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
     ],
     groupSelectionLabel: 'Select All',
     enableRowSelection: true,
+    enableGroupSelection: true,
     groupBy: 'favoriteColor',
   },
   parameters: {
@@ -215,5 +216,15 @@ export const SelectColumn: StoryObj<ComponentProps<typeof Table> & { data: Selec
   },
   argTypes: {
     data: { control: 'object' },
+  },
+};
+
+export const GroupSelectionColumn: StoryObj<ComponentProps<typeof Table> & { data: SelectInputColumnProps[] }> = {
+  ...SelectColumn,
+  args: {
+    ...SelectColumn.args,
+    enableGroupSelection: true,
+    groupSelectionLabel: 'Select All',
+    enableRowSelection: false,
   },
 };

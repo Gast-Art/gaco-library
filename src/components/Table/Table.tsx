@@ -109,6 +109,7 @@ type TableProps<TData extends { [key: string]: any }> = {
   groupBy?: string;
   inline?: boolean;
   enableRowSelection?: boolean;
+  enableGroupSelection?: boolean;
   onRowSelectionChange?: OnChangeFn<RowSelectionState>;
   rowSelection?: RowSelectionState;
   groupSelectionLabel?: string;
@@ -133,10 +134,16 @@ function useSkipper() {
 
 const areAllLeafSubRowsSelected = (row: Row<any>): boolean => {
   if (!row.getCanSelect()) {
+    return false;
+  }
+
+  const subRows = row.subRows ?? [];
+
+  if (subRows.length === 0) {
     return row.getIsSelected();
   }
 
-  return row.subRows.every(areAllLeafSubRowsSelected);
+  return subRows.every(areAllLeafSubRowsSelected);
 };
 
 export const Table = function Table<TData extends { [key: string]: any }>({
@@ -146,6 +153,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
   columns,
   groupBy,
   enableRowSelection,
+  enableGroupSelection,
   rowSelection,
   onRowSelectionChange,
   groupSelectionLabel,
@@ -164,10 +172,22 @@ export const Table = function Table<TData extends { [key: string]: any }>({
     side: 'left' | 'right';
   } | null>(null);
 
+  const tableState: {
+    grouping: GroupingState;
+    columnOrder: ColumnOrderState;
+    sorting: SortingState;
+    expanded: ExpandedState;
+    rowSelection?: RowSelectionState;
+  } = { grouping, columnOrder, sorting, expanded };
+
+  if (rowSelection !== undefined) {
+    tableState.rowSelection = rowSelection;
+  }
+
   const table = useReactTable<TData>({
     data,
     columns,
-    state: { grouping, columnOrder, sorting, expanded, rowSelection },
+    state: tableState,
     onGroupingChange: setGrouping,
     onColumnOrderChange: setColumnOrder,
     onSortingChange: setSorting,
@@ -176,7 +196,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
     getGroupedRowModel: getGroupedRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onRowSelectionChange,
-    enableRowSelection: enableRowSelection && !!onRowSelectionChange,
+    enableRowSelection: (enableRowSelection || enableGroupSelection) && !!onRowSelectionChange,
     autoResetPageIndex,
     autoResetExpanded: false,
     meta: {
@@ -241,8 +261,8 @@ export const Table = function Table<TData extends { [key: string]: any }>({
   const renderRow = (row: Row<TData>) => {
     if (row.getIsGrouped()) {
       const isRowAGroup = row.subRows && row.subRows.length > 0;
-      const canGroupSelect = row.getCanSelect() && isRowAGroup;
-      const colSpan = row.getVisibleCells().length - (canGroupSelect ? 1 : 0);
+      const canGroupSelect = row.getCanSelect() && isRowAGroup && enableGroupSelection;
+      const colSpan = row.getVisibleCells().length;
       const isAllSubRowsSelected = areAllLeafSubRowsSelected(row);
 
       return (
@@ -256,19 +276,17 @@ export const Table = function Table<TData extends { [key: string]: any }>({
 
             {canGroupSelect && (
               <StyledTd style={{ textAlign: 'end' }}>
-                {enableRowSelection && (
-                  <CheckboxContainer>
-                    <GroupSelectionLabel>{groupSelectionLabel}</GroupSelectionLabel>
-                    <Checkbox
-                      checked={isAllSubRowsSelected}
-                      onChange={(e) => {
-                        e.stopPropagation();
-                        row.toggleSelected();
-                      }}
-                      style={{ marginLeft: '0.5rem' }}
-                    />
-                  </CheckboxContainer>
-                )}
+                <CheckboxContainer>
+                  <GroupSelectionLabel>{groupSelectionLabel}</GroupSelectionLabel>
+                  <Checkbox
+                    checked={isAllSubRowsSelected}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      row.toggleSelected();
+                    }}
+                    style={{ marginLeft: '0.5rem' }}
+                  />
+                </CheckboxContainer>
               </StyledTd>
             )}
           </GroupRow>
@@ -281,6 +299,17 @@ export const Table = function Table<TData extends { [key: string]: any }>({
           {row.getVisibleCells().map((cell) => (
             <StyledTd key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</StyledTd>
           ))}
+          {enableRowSelection && (
+            <StyledTd key={`${row.id}.select`} style={{ textAlign: 'end' }}>
+              <Checkbox
+                checked={row.getIsSelected()}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  row.toggleSelected();
+                }}
+              />
+            </StyledTd>
+          )}
         </tr>
       );
     }
@@ -311,6 +340,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
                     $sticky={stickyHeader}
                     $sortable={isSortable}
                     onClick={isSortable ? header.column.getToggleSortingHandler() : undefined}
+                    colSpan={(enableRowSelection || enableGroupSelection) && header.column.getIsLastColumn() ? 2 : 1}
                   >
                     {flexRender(header.column.columnDef.header, header.getContext())}
 
