@@ -106,6 +106,7 @@ type TableProps<TData extends { [key: string]: any }> = {
   data: TData[];
   setData?: (data: TData[]) => void;
   columns: ColumnDef<TData, any>[];
+  getRowId?: (originalRow: TData, index: number, parent?: Row<TData>) => string;
   groupBy?: string;
   inline?: boolean;
   enableRowSelection?: boolean;
@@ -151,6 +152,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
   data,
   setData,
   columns,
+  getRowId,
   groupBy,
   enableRowSelection,
   enableGroupSelection,
@@ -192,6 +194,7 @@ export const Table = function Table<TData extends { [key: string]: any }>({
     onColumnOrderChange: setColumnOrder,
     onSortingChange: setSorting,
     onExpandedChange: setExpanded,
+    getRowId,
     getCoreRowModel: getCoreRowModel(),
     getGroupedRowModel: getGroupedRowModel(),
     getSortedRowModel: getSortedRowModel(),
